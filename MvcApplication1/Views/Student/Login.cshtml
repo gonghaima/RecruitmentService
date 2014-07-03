@@ -1,0 +1,20 @@
+﻿@model MvcApplication1.Models.ViewModels.Student
+@{
+    ViewBag.Title = "Student Login";
+}
+
+<h2>Student Login</h2>
+@using (Html.BeginForm())
+{
+    <ol>
+        <li>
+            @Html.LabelFor(c=>c.UserName)
+            @Html.TextBoxFor(c=>c.UserName)
+        </li>
+        <li>
+            @Html.LabelFor(c=>c.Password)
+            @Html.PasswordFor(c=>c.Password)
+        </li>
+    </ol>
+    <input type="submit" value="Login" />
+}

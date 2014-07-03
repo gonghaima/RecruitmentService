@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="dataModelStoreContainer">
+          <EntitySet Name="RI" EntityType="dataModel.Store.RI" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="dataModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoleInfo" EntityType="dataModel.Store.RoleInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UR" EntityType="dataModel.Store.UR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="dataModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_RI_Role" Association="dataModel.Store.FK_RI_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="RI" EntitySet="RI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RI_RoleInfo" Association="dataModel.Store.FK_RI_RoleInfo">
+            <End Role="RoleInfo" EntitySet="RoleInfo" />
+            <End Role="RI" EntitySet="RI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UR_Role" Association="dataModel.Store.FK_UR_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UR" EntitySet="UR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UR_User" Association="dataModel.Store.FK_UR_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UR" EntitySet="UR" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RI">
+          <Key>
+            <PropertyRef Name="RId" />
+            <PropertyRef Name="IId" />
+          </Key>
+          <Property Name="RId" Type="int" Nullable="false" />
+          <Property Name="IId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoleInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UR">
+          <Key>
+            <PropertyRef Name="UId" />
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="UId" Type="int" Nullable="false" />
+          <Property Name="RId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_RI_Role">
+          <End Role="Role" Type="dataModel.Store.Role" Multiplicity="1" />
+          <End Role="RI" Type="dataModel.Store.RI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RI">
+              <PropertyRef Name="RId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RI_RoleInfo">
+          <End Role="RoleInfo" Type="dataModel.Store.RoleInfo" Multiplicity="1" />
+          <End Role="RI" Type="dataModel.Store.RI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RI">
+              <PropertyRef Name="RId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UR_Role">
+          <End Role="Role" Type="dataModel.Store.Role" Multiplicity="1" />
+          <End Role="UR" Type="dataModel.Store.UR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UR">
+              <PropertyRef Name="RId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UR_User">
+          <End Role="User" Type="dataModel.Store.User" Multiplicity="1" />
+          <End Role="UR" Type="dataModel.Store.UR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UR">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dataEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="RIs" EntityType="dataModel.RI" />
+          <EntitySet Name="Roles" EntityType="dataModel.Role" />
+          <EntitySet Name="RoleInfoes" EntityType="dataModel.RoleInfo" />
+          <EntitySet Name="Users" EntityType="dataModel.User" />
+          <AssociationSet Name="FK_RI_Role" Association="dataModel.FK_RI_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="RI" EntitySet="RIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RI_RoleInfo" Association="dataModel.FK_RI_RoleInfo">
+            <End Role="RoleInfo" EntitySet="RoleInfoes" />
+            <End Role="RI" EntitySet="RIs" />
+          </AssociationSet>
+          <AssociationSet Name="UR" Association="dataModel.UR">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RI">
+          <Key>
+            <PropertyRef Name="RId" />
+            <PropertyRef Name="IId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" />
+          <Property Name="IId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="dataModel.FK_RI_Role" FromRole="RI" ToRole="Role" />
+          <NavigationProperty Name="RoleInfo" Relationship="dataModel.FK_RI_RoleInfo" FromRole="RI" ToRole="RoleInfo" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="RIs" Relationship="dataModel.FK_RI_Role" FromRole="Role" ToRole="RI" />
+          <NavigationProperty Name="Users" Relationship="dataModel.UR" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="RoleInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="RIs" Relationship="dataModel.FK_RI_RoleInfo" FromRole="RoleInfo" ToRole="RI" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Roles" Relationship="dataModel.UR" FromRole="User" ToRole="Role" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_RI_Role">
+          <End Role="Role" Type="dataModel.Role" Multiplicity="1" />
+          <End Role="RI" Type="dataModel.RI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RI">
+              <PropertyRef Name="RId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RI_RoleInfo">
+          <End Role="RoleInfo" Type="dataModel.RoleInfo" Multiplicity="1" />
+          <End Role="RI" Type="dataModel.RI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RI">
+              <PropertyRef Name="RId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UR">
+          <End Role="Role" Type="dataModel.Role" Multiplicity="*" />
+          <End Role="User" Type="dataModel.User" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dataModelStoreContainer" CdmEntityContainer="dataEntities">
+          <EntitySetMapping Name="RIs">
+            <EntityTypeMapping TypeName="dataModel.RI">
+              <MappingFragment StoreEntitySet="RI">
+                <ScalarProperty Name="RId" ColumnName="RId" />
+                <ScalarProperty Name="IId" ColumnName="IId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="dataModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleInfoes">
+            <EntityTypeMapping TypeName="dataModel.RoleInfo">
+              <MappingFragment StoreEntitySet="RoleInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="dataModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UR" TypeName="dataModel.UR" StoreEntitySet="UR">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="Id" ColumnName="RId" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
