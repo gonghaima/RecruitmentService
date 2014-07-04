@@ -151,6 +151,7 @@
     <Compile Include="Models\DBModels\User.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\Email.cs" />
     <Compile Include="Models\ViewModels\RegisterInterface.cs" />
     <Compile Include="Models\ViewModels\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

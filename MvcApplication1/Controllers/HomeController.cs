@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using MvcApplication1.Models.ViewModels;
 
 namespace MvcApplication1.Controllers
 {
@@ -16,5 +13,10 @@ namespace MvcApplication1.Controllers
             return View();
         }
 
+        public void Test()
+        {
+            Email em = new Email();
+            em.sendMail();
+        }
     }
 }

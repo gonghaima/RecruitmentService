@@ -17,11 +17,13 @@ namespace MvcApplication1.Models.DBModels
         public RoleInfo()
         {
             this.RIs = new HashSet<RI>();
+            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<RI> RIs { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

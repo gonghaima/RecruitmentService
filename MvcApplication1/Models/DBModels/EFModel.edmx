@@ -10,6 +10,7 @@
           <EntitySet Name="Role" EntityType="dataModel.Store.Role" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RoleInfo" EntityType="dataModel.Store.RoleInfo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UR" EntityType="dataModel.Store.UR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="URI" EntityType="dataModel.Store.URI" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="dataModel.Store.User" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_RI_Role" Association="dataModel.Store.FK_RI_Role">
             <End Role="Role" EntitySet="Role" />
@@ -26,6 +27,14 @@
           <AssociationSet Name="FK_UR_User" Association="dataModel.Store.FK_UR_User">
             <End Role="User" EntitySet="User" />
             <End Role="UR" EntitySet="UR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_URI_RoleInfo" Association="dataModel.Store.FK_URI_RoleInfo">
+            <End Role="RoleInfo" EntitySet="RoleInfo" />
+            <End Role="URI" EntitySet="URI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_URI_User" Association="dataModel.Store.FK_URI_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="URI" EntitySet="URI" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="RI">
@@ -57,6 +66,14 @@
           </Key>
           <Property Name="UId" Type="int" Nullable="false" />
           <Property Name="RId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="URI">
+          <Key>
+            <PropertyRef Name="UId" />
+            <PropertyRef Name="RIId" />
+          </Key>
+          <Property Name="UId" Type="int" Nullable="false" />
+          <Property Name="RIId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -117,6 +134,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_URI_RoleInfo">
+          <End Role="RoleInfo" Type="dataModel.Store.RoleInfo" Multiplicity="1" />
+          <End Role="URI" Type="dataModel.Store.URI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="URI">
+              <PropertyRef Name="RIId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_URI_User">
+          <End Role="User" Type="dataModel.Store.User" Multiplicity="1" />
+          <End Role="URI" Type="dataModel.Store.URI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="URI">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -136,6 +177,10 @@
           </AssociationSet>
           <AssociationSet Name="UR" Association="dataModel.UR">
             <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="URI" Association="dataModel.URI">
+            <End Role="RoleInfo" EntitySet="RoleInfoes" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
@@ -165,6 +210,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="RIs" Relationship="dataModel.FK_RI_RoleInfo" FromRole="RoleInfo" ToRole="RI" />
+          <NavigationProperty Name="Users" Relationship="dataModel.URI" FromRole="RoleInfo" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -177,6 +223,7 @@
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Roles" Relationship="dataModel.UR" FromRole="User" ToRole="Role" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RoleInfoes" Relationship="dataModel.URI" FromRole="User" ToRole="RoleInfo" />
         </EntityType>
         <Association Name="FK_RI_Role">
           <End Role="Role" Type="dataModel.Role" Multiplicity="1" />
@@ -205,6 +252,10 @@
         <Association Name="UR">
           <End Role="Role" Type="dataModel.Role" Multiplicity="*" />
           <End Role="User" Type="dataModel.User" Multiplicity="*" />
+        </Association>
+        <Association Name="URI">
+          <End Type="dataModel.RoleInfo" Role="RoleInfo" Multiplicity="*" />
+          <End Type="dataModel.User" Role="User" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -254,6 +305,14 @@
             </EndProperty>
             <EndProperty Name="User">
               <ScalarProperty Name="Id" ColumnName="UId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="URI" TypeName="dataModel.URI" StoreEntitySet="URI">
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UId" />
+            </EndProperty>
+            <EndProperty Name="RoleInfo">
+              <ScalarProperty Name="Id" ColumnName="RIId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

@@ -45,5 +45,13 @@
         <ScalarProperty Name="Id" ColumnName="UId" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="URI" TypeName="dataModel.URI" StoreEntitySet="URI">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="UId" />
+      </EndProperty>
+      <EndProperty Name="RoleInfo">
+        <ScalarProperty Name="Id" ColumnName="RIId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -17,6 +17,10 @@
       <End Role="Role" EntitySet="Roles" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
+    <AssociationSet Name="URI" Association="dataModel.URI">
+      <End Role="RoleInfo" EntitySet="RoleInfoes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="RI">
     <Key>
@@ -44,6 +48,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="RIs" Relationship="dataModel.FK_RI_RoleInfo" FromRole="RoleInfo" ToRole="RI" />
+    <NavigationProperty Name="Users" Relationship="dataModel.URI" FromRole="RoleInfo" ToRole="User" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -56,6 +61,7 @@
     <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="Roles" Relationship="dataModel.UR" FromRole="User" ToRole="Role" />
     <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="RoleInfoes" Relationship="dataModel.URI" FromRole="User" ToRole="RoleInfo" />
   </EntityType>
   <Association Name="FK_RI_Role">
     <End Role="Role" Type="dataModel.Role" Multiplicity="1" />
@@ -84,5 +90,9 @@
   <Association Name="UR">
     <End Role="Role" Type="dataModel.Role" Multiplicity="*" />
     <End Role="User" Type="dataModel.User" Multiplicity="*" />
+  </Association>
+  <Association Name="URI">
+    <End Type="dataModel.RoleInfo" Role="RoleInfo" Multiplicity="*" />
+    <End Type="dataModel.User" Role="User" Multiplicity="*" />
   </Association>
 </Schema>
