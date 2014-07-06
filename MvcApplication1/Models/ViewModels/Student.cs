@@ -1,4 +1,5 @@
-﻿using MvcApplication1.Models.DBModels;
+﻿using MvcApplication1.Controllers;
+using MvcApplication1.Models.DBModels;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Validation;
@@ -46,8 +47,10 @@ namespace MvcApplication1.Models.ViewModels
             user_student.Email = Email;
 
             User tempUser = dbContext.Users.FirstOrDefault(c => c.UserName == user_student.UserName);
+            
             if (tempUser != null)
             {
+                //already a user in database
                 return false;
             }
             else

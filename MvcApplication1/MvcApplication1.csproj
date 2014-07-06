@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Models\DBModels\User.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\Account.cs" />
     <Compile Include="Models\ViewModels\Email.cs" />
     <Compile Include="Models\ViewModels\RegisterInterface.cs" />
     <Compile Include="Models\ViewModels\Student.cs" />
@@ -181,7 +183,9 @@
     <Content Include="Scripts\ie-emulation-modes-warning.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -190,6 +194,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Account\ForgetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\DBModels\EFModel.edmx">

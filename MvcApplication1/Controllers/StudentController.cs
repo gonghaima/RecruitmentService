@@ -7,8 +7,8 @@ namespace MvcApplication1.Controllers
         //
         // GET: /Student/
 
-        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Student")]
-        //[MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Employers")]
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        //[MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Employer")]
         public ActionResult Index()
         {
             return View();
@@ -45,8 +45,8 @@ namespace MvcApplication1.Controllers
             {
                 return RedirectToAction("Index");
             }
+
             return View();
         }
-
     }
 }
