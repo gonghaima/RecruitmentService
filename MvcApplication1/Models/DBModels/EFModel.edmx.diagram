@@ -5,14 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d6d2ed5d7d574ba18b33e12b5626ca22" Name="Diagram1">
-        <EntityTypeShape EntityType="dataModel.RI" Width="1.5" PointX="3.25" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="dataModel.Role" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dataModel.RoleInfo" Width="1.5" PointX="3.125" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="dataModel.User" Width="1.5" PointX="0.5" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="dataModel.FK_RI_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="dataModel.FK_RI_RoleInfo" ManuallyRouted="false" />
         <AssociationConnector Association="dataModel.UR" ManuallyRouted="false" />
-        <AssociationConnector Association="dataModel.URI" />
+        <EntityTypeShape EntityType="dataModel.Graduate" Width="1.5" PointX="3.125" PointY="0.875" />
+        <EntityTypeShape EntityType="dataModel.JobType" Width="1.5" PointX="5.375" PointY="3.5" />
+        <AssociationConnector Association="dataModel.FK_dbo_Graduate_JobType" />
+        <AssociationConnector Association="dataModel.FK_dbo_Graduate_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
