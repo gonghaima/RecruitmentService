@@ -12,16 +12,16 @@ namespace MvcApplication1.Models.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class WorkingExprience
     {
-        public Role()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
+        public System.DateTime Start { get; set; }
+        public Nullable<System.DateTime> Finish { get; set; }
+        public string JobTitle { get; set; }
+        public string Company { get; set; }
+        public string RoleDescription { get; set; }
+        public int CId { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
+        public virtual CV CV { get; set; }
     }
 }

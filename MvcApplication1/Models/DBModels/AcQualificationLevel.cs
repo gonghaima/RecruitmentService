@@ -12,16 +12,19 @@ namespace MvcApplication1.Models.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class AcQualificationLevel
     {
-        public Role()
+        public AcQualificationLevel()
         {
-            this.Users = new HashSet<User>();
+            this.AcQualifications = new HashSet<AcQualification>();
+            this.Jobs = new HashSet<Job>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public int Ranking { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<AcQualification> AcQualifications { get; set; }
+        public virtual ICollection<Job> Jobs { get; set; }
     }
 }

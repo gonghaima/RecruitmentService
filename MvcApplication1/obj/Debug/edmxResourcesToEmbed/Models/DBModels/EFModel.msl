@@ -1,25 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="dataModelStoreContainer" CdmEntityContainer="dataEntities">
-    <EntitySetMapping Name="RIs">
-      <EntityTypeMapping TypeName="dataModel.RI">
-        <MappingFragment StoreEntitySet="RI">
-          <ScalarProperty Name="RId" ColumnName="RId" />
-          <ScalarProperty Name="IId" ColumnName="IId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Roles">
       <EntityTypeMapping TypeName="dataModel.Role">
         <MappingFragment StoreEntitySet="Role">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="RoleInfoes">
-      <EntityTypeMapping TypeName="dataModel.RoleInfo">
-        <MappingFragment StoreEntitySet="RoleInfo">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
@@ -45,13 +29,189 @@
         <ScalarProperty Name="Id" ColumnName="UId" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="URI" TypeName="dataModel.URI" StoreEntitySet="URI">
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="UId" />
-      </EndProperty>
-      <EndProperty Name="RoleInfo">
-        <ScalarProperty Name="Id" ColumnName="RIId" />
-      </EndProperty>
-    </AssociationSetMapping>
+    <EntitySetMapping Name="Abilities">
+      <EntityTypeMapping TypeName="dataModel.Ability">
+        <MappingFragment StoreEntitySet="Ability">
+          <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcQualifications">
+      <EntityTypeMapping TypeName="dataModel.AcQualification">
+        <MappingFragment StoreEntitySet="AcQualification">
+          <ScalarProperty Name="AcqLevelId" ColumnName="AcqLevelId" />
+          <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcQualificationLevels">
+      <EntityTypeMapping TypeName="dataModel.AcQualificationLevel">
+        <MappingFragment StoreEntitySet="AcQualificationLevel">
+          <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Competencies">
+      <EntityTypeMapping TypeName="dataModel.Competency">
+        <MappingFragment StoreEntitySet="Competency">
+          <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoverLetters">
+      <EntityTypeMapping TypeName="dataModel.CoverLetter">
+        <MappingFragment StoreEntitySet="CoverLetter">
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CVs">
+      <EntityTypeMapping TypeName="dataModel.CV">
+        <MappingFragment StoreEntitySet="CV">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employers">
+      <EntityTypeMapping TypeName="dataModel.Employer">
+        <MappingFragment StoreEntitySet="Employer">
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Experiences">
+      <EntityTypeMapping TypeName="dataModel.Experience">
+        <MappingFragment StoreEntitySet="Experience">
+          <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grades">
+      <EntityTypeMapping TypeName="dataModel.Grade">
+        <MappingFragment StoreEntitySet="Grade">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Graduates">
+      <EntityTypeMapping TypeName="dataModel.Graduate">
+        <MappingFragment StoreEntitySet="Graduate">
+          <ScalarProperty Name="CVId" ColumnName="CVId" />
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="JobTypeId" ColumnName="JobTypeId" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="IELTS" ColumnName="IELTS" />
+          <ScalarProperty Name="FirstLanguage" ColumnName="FirstLanguage" />
+          <ScalarProperty Name="VisaStatus" ColumnName="VisaStatus" />
+          <ScalarProperty Name="DoB" ColumnName="DoB" />
+          <ScalarProperty Name="KnownAs" ColumnName="KnownAs" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="dataModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="Activated" ColumnName="Activated" />
+          <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+          <ScalarProperty Name="JobTypeId" ColumnName="JobTypeId" />
+          <ScalarProperty Name="RequiredAcqLevelId" ColumnName="RequiredAcqLevelId" />
+          <ScalarProperty Name="JobTitleId" ColumnName="JobTitleId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobTitles">
+      <EntityTypeMapping TypeName="dataModel.JobTitle">
+        <MappingFragment StoreEntitySet="JobTitle">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobTypes">
+      <EntityTypeMapping TypeName="dataModel.JobType">
+        <MappingFragment StoreEntitySet="JobType">
+          <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Papers">
+      <EntityTypeMapping TypeName="dataModel.Paper">
+        <MappingFragment StoreEntitySet="Paper">
+          <ScalarProperty Name="AcQId" ColumnName="AcQId" />
+          <ScalarProperty Name="GId" ColumnName="GId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Promotions">
+      <EntityTypeMapping TypeName="dataModel.Promotion">
+        <MappingFragment StoreEntitySet="Promotion">
+          <ScalarProperty Name="SUId" ColumnName="SUId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteSuperVisors">
+      <EntityTypeMapping TypeName="dataModel.SiteSuperVisor">
+        <MappingFragment StoreEntitySet="SiteSuperVisor">
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VdQualifications">
+      <EntityTypeMapping TypeName="dataModel.VdQualification">
+        <MappingFragment StoreEntitySet="VdQualification">
+          <ScalarProperty Name="CVId" ColumnName="CVId" />
+          <ScalarProperty Name="CompetencyId" ColumnName="CompetencyId" />
+          <ScalarProperty Name="AbilityId" ColumnName="AbilityId" />
+          <ScalarProperty Name="ExperienceId" ColumnName="ExperienceId" />
+          <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkingExpriences">
+      <EntityTypeMapping TypeName="dataModel.WorkingExprience">
+        <MappingFragment StoreEntitySet="WorkingExprience">
+          <ScalarProperty Name="CId" ColumnName="CId" />
+          <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="Finish" ColumnName="Finish" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

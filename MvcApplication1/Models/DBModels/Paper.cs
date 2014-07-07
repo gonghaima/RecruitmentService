@@ -12,16 +12,14 @@ namespace MvcApplication1.Models.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Paper
     {
-        public Role()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
+        public int GId { get; set; }
+        public int AcQId { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
+        public virtual AcQualification AcQualification { get; set; }
+        public virtual Grade Grade { get; set; }
     }
 }

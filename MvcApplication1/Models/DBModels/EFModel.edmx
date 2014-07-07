@@ -6,19 +6,86 @@
     <edmx:StorageModels>
     <Schema Namespace="dataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="dataModelStoreContainer">
-          <EntitySet Name="RI" EntityType="dataModel.Store.RI" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Ability" EntityType="dataModel.Store.Ability" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AcQualification" EntityType="dataModel.Store.AcQualification" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AcQualificationLevel" EntityType="dataModel.Store.AcQualificationLevel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Competency" EntityType="dataModel.Store.Competency" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CoverLetter" EntityType="dataModel.Store.CoverLetter" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CV" EntityType="dataModel.Store.CV" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employer" EntityType="dataModel.Store.Employer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Experience" EntityType="dataModel.Store.Experience" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Grade" EntityType="dataModel.Store.Grade" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Graduate" EntityType="dataModel.Store.Graduate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Job" EntityType="dataModel.Store.Job" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="JobTitle" EntityType="dataModel.Store.JobTitle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="JobType" EntityType="dataModel.Store.JobType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Paper" EntityType="dataModel.Store.Paper" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Promotion" EntityType="dataModel.Store.Promotion" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Role" EntityType="dataModel.Store.Role" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RoleInfo" EntityType="dataModel.Store.RoleInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SiteSuperVisor" EntityType="dataModel.Store.SiteSuperVisor" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UR" EntityType="dataModel.Store.UR" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="URI" EntityType="dataModel.Store.URI" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="dataModel.Store.User" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_RI_Role" Association="dataModel.Store.FK_RI_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="RI" EntitySet="RI" />
+          <EntitySet Name="VdQualification" EntityType="dataModel.Store.VdQualification" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WorkingExprience" EntityType="dataModel.Store.WorkingExprience" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AcQualification_AcQualificationLevel" Association="dataModel.Store.FK_AcQualification_AcQualificationLevel">
+            <End Role="AcQualificationLevel" EntitySet="AcQualificationLevel" />
+            <End Role="AcQualification" EntitySet="AcQualification" />
           </AssociationSet>
-          <AssociationSet Name="FK_RI_RoleInfo" Association="dataModel.Store.FK_RI_RoleInfo">
-            <End Role="RoleInfo" EntitySet="RoleInfo" />
-            <End Role="RI" EntitySet="RI" />
+          <AssociationSet Name="FK_CV_Graduate" Association="dataModel.Store.FK_CV_Graduate">
+            <End Role="Graduate" EntitySet="Graduate" />
+            <End Role="CV" EntitySet="CV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CoverLetter_Graduate" Association="dataModel.Store.FK_dbo_CoverLetter_Graduate">
+            <End Role="Graduate" EntitySet="Graduate" />
+            <End Role="CoverLetter" EntitySet="CoverLetter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CoverLetter_Job" Association="dataModel.Store.FK_dbo_CoverLetter_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="CoverLetter" EntitySet="CoverLetter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Employer_User" Association="dataModel.Store.FK_dbo_Employer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employer" EntitySet="Employer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduate_JobType" Association="dataModel.Store.FK_dbo_Graduate_JobType">
+            <End Role="JobType" EntitySet="JobType" />
+            <End Role="Graduate" EntitySet="Graduate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduate_User" Association="dataModel.Store.FK_dbo_Graduate_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Graduate" EntitySet="Graduate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Job_AcQualificationLevel" Association="dataModel.Store.FK_dbo_Job_AcQualificationLevel">
+            <End Role="AcQualificationLevel" EntitySet="AcQualificationLevel" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Job_Employer" Association="dataModel.Store.FK_dbo_Job_Employer">
+            <End Role="Employer" EntitySet="Employer" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Job_JobTitle" Association="dataModel.Store.FK_dbo_Job_JobTitle">
+            <End Role="JobTitle" EntitySet="JobTitle" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Job_JobType" Association="dataModel.Store.FK_dbo_Job_JobType">
+            <End Role="JobType" EntitySet="JobType" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Promotion_SiteSuperVisor" Association="dataModel.Store.FK_dbo_Promotion_SiteSuperVisor">
+            <End Role="SiteSuperVisor" EntitySet="SiteSuperVisor" />
+            <End Role="Promotion" EntitySet="Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SiteSuperVisor_User" Association="dataModel.Store.FK_dbo_SiteSuperVisor_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="SiteSuperVisor" EntitySet="SiteSuperVisor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paper_AcQualification" Association="dataModel.Store.FK_Paper_AcQualification">
+            <End Role="AcQualification" EntitySet="AcQualification" />
+            <End Role="Paper" EntitySet="Paper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paper_Grade" Association="dataModel.Store.FK_Paper_Grade">
+            <End Role="Grade" EntitySet="Grade" />
+            <End Role="Paper" EntitySet="Paper" />
           </AssociationSet>
           <AssociationSet Name="FK_UR_Role" Association="dataModel.Store.FK_UR_Role">
             <End Role="Role" EntitySet="Role" />
@@ -28,22 +95,160 @@
             <End Role="User" EntitySet="User" />
             <End Role="UR" EntitySet="UR" />
           </AssociationSet>
-          <AssociationSet Name="FK_URI_RoleInfo" Association="dataModel.Store.FK_URI_RoleInfo">
-            <End Role="RoleInfo" EntitySet="RoleInfo" />
-            <End Role="URI" EntitySet="URI" />
+          <AssociationSet Name="FK_VdQualification_Ability" Association="dataModel.Store.FK_VdQualification_Ability">
+            <End Role="Ability" EntitySet="Ability" />
+            <End Role="VdQualification" EntitySet="VdQualification" />
           </AssociationSet>
-          <AssociationSet Name="FK_URI_User" Association="dataModel.Store.FK_URI_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="URI" EntitySet="URI" />
+          <AssociationSet Name="FK_VdQualification_Competency" Association="dataModel.Store.FK_VdQualification_Competency">
+            <End Role="Competency" EntitySet="Competency" />
+            <End Role="VdQualification" EntitySet="VdQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VdQualification_CV" Association="dataModel.Store.FK_VdQualification_CV">
+            <End Role="CV" EntitySet="CV" />
+            <End Role="VdQualification" EntitySet="VdQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VdQualification_Experience" Association="dataModel.Store.FK_VdQualification_Experience">
+            <End Role="Experience" EntitySet="Experience" />
+            <End Role="VdQualification" EntitySet="VdQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkingExprience_CV" Association="dataModel.Store.FK_WorkingExprience_CV">
+            <End Role="CV" EntitySet="CV" />
+            <End Role="WorkingExprience" EntitySet="WorkingExprience" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="RI">
+        <EntityType Name="Ability">
           <Key>
-            <PropertyRef Name="RId" />
-            <PropertyRef Name="IId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="RId" Type="int" Nullable="false" />
-          <Property Name="IId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Ranking" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AcQualification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="DateCompleted" Type="datetime" />
+          <Property Name="AcqLevelId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AcQualificationLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Ranking" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Competency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Ranking" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoverLetter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="StudentId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="StudentId" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Company" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="UId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Experience">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Ranking" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Graduate">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="KnownAs" Type="varchar" MaxLength="50" />
+          <Property Name="DoB" Type="datetime" Nullable="false" />
+          <Property Name="VisaStatus" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstLanguage" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IELTS" Type="decimal" Nullable="false" Precision="2" Scale="1" />
+          <Property Name="PhoneNumber" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Location" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="JobTypeId" Type="int" Nullable="false" />
+          <Property Name="UId" Type="int" />
+          <Property Name="CVId" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="JobTitleId" Type="int" Nullable="false" />
+          <Property Name="RequiredAcqLevelId" Type="int" Nullable="false" />
+          <Property Name="JobTypeId" Type="int" Nullable="false" />
+          <Property Name="EmployerId" Type="int" Nullable="false" />
+          <Property Name="Activated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="JobType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Ranking" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="GId" Type="int" Nullable="false" />
+          <Property Name="AcQId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="400" />
+          <Property Name="SUId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -52,12 +257,13 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
         </EntityType>
-        <EntityType Name="RoleInfo">
+        <EntityType Name="SiteSuperVisor">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="UId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UR">
           <Key>
@@ -66,14 +272,6 @@
           </Key>
           <Property Name="UId" Type="int" Nullable="false" />
           <Property Name="RId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="URI">
-          <Key>
-            <PropertyRef Name="UId" />
-            <PropertyRef Name="RIId" />
-          </Key>
-          <Property Name="UId" Type="int" Nullable="false" />
-          <Property Name="RIId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -86,27 +284,207 @@
           <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Email" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
-        <Association Name="FK_RI_Role">
-          <End Role="Role" Type="dataModel.Store.Role" Multiplicity="1" />
-          <End Role="RI" Type="dataModel.Store.RI" Multiplicity="*" />
+        <EntityType Name="VdQualification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="DateCompleted" Type="datetime" />
+          <Property Name="ExperienceId" Type="int" Nullable="false" />
+          <Property Name="AbilityId" Type="int" Nullable="false" />
+          <Property Name="CompetencyId" Type="int" Nullable="false" />
+          <Property Name="CVId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkingExprience">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="Finish" Type="datetime" />
+          <Property Name="JobTitle" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Company" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RoleDescription" Type="varchar" MaxLength="500" />
+          <Property Name="CId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AcQualification_AcQualificationLevel">
+          <End Role="AcQualificationLevel" Type="dataModel.Store.AcQualificationLevel" Multiplicity="1" />
+          <End Role="AcQualification" Type="dataModel.Store.AcQualification" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Role">
+            <Principal Role="AcQualificationLevel">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="RI">
-              <PropertyRef Name="RId" />
+            <Dependent Role="AcQualification">
+              <PropertyRef Name="AcqLevelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RI_RoleInfo">
-          <End Role="RoleInfo" Type="dataModel.Store.RoleInfo" Multiplicity="1" />
-          <End Role="RI" Type="dataModel.Store.RI" Multiplicity="*" />
+        <Association Name="FK_CV_Graduate">
+          <End Role="Graduate" Type="dataModel.Store.Graduate" Multiplicity="1" />
+          <End Role="CV" Type="dataModel.Store.CV" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RoleInfo">
+            <Principal Role="Graduate">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="CV">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CoverLetter_Graduate">
+          <End Role="Graduate" Type="dataModel.Store.Graduate" Multiplicity="1" />
+          <End Role="CoverLetter" Type="dataModel.Store.CoverLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="CoverLetter">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CoverLetter_Job">
+          <End Role="Job" Type="dataModel.Store.Job" Multiplicity="1" />
+          <End Role="CoverLetter" Type="dataModel.Store.CoverLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="RI">
-              <PropertyRef Name="RId" />
+            <Dependent Role="CoverLetter">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Employer_User">
+          <End Role="User" Type="dataModel.Store.User" Multiplicity="1" />
+          <End Role="Employer" Type="dataModel.Store.Employer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employer">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduate_JobType">
+          <End Role="JobType" Type="dataModel.Store.JobType" Multiplicity="1" />
+          <End Role="Graduate" Type="dataModel.Store.Graduate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate">
+              <PropertyRef Name="JobTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduate_User">
+          <End Role="User" Type="dataModel.Store.User" Multiplicity="0..1" />
+          <End Role="Graduate" Type="dataModel.Store.Graduate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Job_AcQualificationLevel">
+          <End Role="AcQualificationLevel" Type="dataModel.Store.AcQualificationLevel" Multiplicity="1" />
+          <End Role="Job" Type="dataModel.Store.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcQualificationLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="RequiredAcqLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Job_Employer">
+          <End Role="Employer" Type="dataModel.Store.Employer" Multiplicity="1" />
+          <End Role="Job" Type="dataModel.Store.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="EmployerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Job_JobTitle">
+          <End Role="JobTitle" Type="dataModel.Store.JobTitle" Multiplicity="1" />
+          <End Role="Job" Type="dataModel.Store.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="JobTitleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Job_JobType">
+          <End Role="JobType" Type="dataModel.Store.JobType" Multiplicity="1" />
+          <End Role="Job" Type="dataModel.Store.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="JobTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Promotion_SiteSuperVisor">
+          <End Role="SiteSuperVisor" Type="dataModel.Store.SiteSuperVisor" Multiplicity="1" />
+          <End Role="Promotion" Type="dataModel.Store.Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteSuperVisor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="SUId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SiteSuperVisor_User">
+          <End Role="User" Type="dataModel.Store.User" Multiplicity="1" />
+          <End Role="SiteSuperVisor" Type="dataModel.Store.SiteSuperVisor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SiteSuperVisor">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paper_AcQualification">
+          <End Role="AcQualification" Type="dataModel.Store.AcQualification" Multiplicity="1" />
+          <End Role="Paper" Type="dataModel.Store.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcQualification">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="AcQId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paper_Grade">
+          <End Role="Grade" Type="dataModel.Store.Grade" Multiplicity="1" />
+          <End Role="Paper" Type="dataModel.Store.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="GId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -134,27 +512,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_URI_RoleInfo">
-          <End Role="RoleInfo" Type="dataModel.Store.RoleInfo" Multiplicity="1" />
-          <End Role="URI" Type="dataModel.Store.URI" Multiplicity="*" />
+        <Association Name="FK_VdQualification_Ability">
+          <End Role="Ability" Type="dataModel.Store.Ability" Multiplicity="1" />
+          <End Role="VdQualification" Type="dataModel.Store.VdQualification" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RoleInfo">
+            <Principal Role="Ability">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="URI">
-              <PropertyRef Name="RIId" />
+            <Dependent Role="VdQualification">
+              <PropertyRef Name="AbilityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_URI_User">
-          <End Role="User" Type="dataModel.Store.User" Multiplicity="1" />
-          <End Role="URI" Type="dataModel.Store.URI" Multiplicity="*" />
+        <Association Name="FK_VdQualification_Competency">
+          <End Role="Competency" Type="dataModel.Store.Competency" Multiplicity="1" />
+          <End Role="VdQualification" Type="dataModel.Store.VdQualification" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Competency">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="URI">
-              <PropertyRef Name="UId" />
+            <Dependent Role="VdQualification">
+              <PropertyRef Name="CompetencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VdQualification_CV">
+          <End Role="CV" Type="dataModel.Store.CV" Multiplicity="1" />
+          <End Role="VdQualification" Type="dataModel.Store.VdQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CV">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VdQualification">
+              <PropertyRef Name="CVId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VdQualification_Experience">
+          <End Role="Experience" Type="dataModel.Store.Experience" Multiplicity="1" />
+          <End Role="VdQualification" Type="dataModel.Store.VdQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experience">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VdQualification">
+              <PropertyRef Name="ExperienceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkingExprience_CV">
+          <End Role="CV" Type="dataModel.Store.CV" Multiplicity="1" />
+          <End Role="WorkingExprience" Type="dataModel.Store.WorkingExprience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CV">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkingExprience">
+              <PropertyRef Name="CId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -163,54 +577,118 @@
     <edmx:ConceptualModels>
       <Schema Namespace="dataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="dataEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="RIs" EntityType="dataModel.RI" />
           <EntitySet Name="Roles" EntityType="dataModel.Role" />
-          <EntitySet Name="RoleInfoes" EntityType="dataModel.RoleInfo" />
           <EntitySet Name="Users" EntityType="dataModel.User" />
-          <AssociationSet Name="FK_RI_Role" Association="dataModel.FK_RI_Role">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="RI" EntitySet="RIs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RI_RoleInfo" Association="dataModel.FK_RI_RoleInfo">
-            <End Role="RoleInfo" EntitySet="RoleInfoes" />
-            <End Role="RI" EntitySet="RIs" />
-          </AssociationSet>
           <AssociationSet Name="UR" Association="dataModel.UR">
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="URI" Association="dataModel.URI">
-            <End Role="RoleInfo" EntitySet="RoleInfoes" />
+          <EntitySet Name="Abilities" EntityType="dataModel.Ability" />
+          <EntitySet Name="AcQualifications" EntityType="dataModel.AcQualification" />
+          <EntitySet Name="AcQualificationLevels" EntityType="dataModel.AcQualificationLevel" />
+          <EntitySet Name="Competencies" EntityType="dataModel.Competency" />
+          <EntitySet Name="CoverLetters" EntityType="dataModel.CoverLetter" />
+          <EntitySet Name="CVs" EntityType="dataModel.CV" />
+          <EntitySet Name="Employers" EntityType="dataModel.Employer" />
+          <EntitySet Name="Experiences" EntityType="dataModel.Experience" />
+          <EntitySet Name="Grades" EntityType="dataModel.Grade" />
+          <EntitySet Name="Graduates" EntityType="dataModel.Graduate" />
+          <EntitySet Name="Jobs" EntityType="dataModel.Job" />
+          <EntitySet Name="JobTitles" EntityType="dataModel.JobTitle" />
+          <EntitySet Name="JobTypes" EntityType="dataModel.JobType" />
+          <EntitySet Name="Papers" EntityType="dataModel.Paper" />
+          <EntitySet Name="Promotions" EntityType="dataModel.Promotion" />
+          <EntitySet Name="SiteSuperVisors" EntityType="dataModel.SiteSuperVisor" />
+          <EntitySet Name="VdQualifications" EntityType="dataModel.VdQualification" />
+          <EntitySet Name="WorkingExpriences" EntityType="dataModel.WorkingExprience" />
+          <AssociationSet Name="FK_VdQualification_Ability" Association="dataModel.FK_VdQualification_Ability">
+            <End Role="Ability" EntitySet="Abilities" />
+            <End Role="VdQualification" EntitySet="VdQualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcQualification_AcQualificationLevel" Association="dataModel.FK_AcQualification_AcQualificationLevel">
+            <End Role="AcQualificationLevel" EntitySet="AcQualificationLevels" />
+            <End Role="AcQualification" EntitySet="AcQualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paper_AcQualification" Association="dataModel.FK_Paper_AcQualification">
+            <End Role="AcQualification" EntitySet="AcQualifications" />
+            <End Role="Paper" EntitySet="Papers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Job_AcQualificationLevel" Association="dataModel.FK_dbo_Job_AcQualificationLevel">
+            <End Role="AcQualificationLevel" EntitySet="AcQualificationLevels" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VdQualification_Competency" Association="dataModel.FK_VdQualification_Competency">
+            <End Role="Competency" EntitySet="Competencies" />
+            <End Role="VdQualification" EntitySet="VdQualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CoverLetter_Graduate" Association="dataModel.FK_dbo_CoverLetter_Graduate">
+            <End Role="Graduate" EntitySet="Graduates" />
+            <End Role="CoverLetter" EntitySet="CoverLetters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CoverLetter_Job" Association="dataModel.FK_dbo_CoverLetter_Job">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="CoverLetter" EntitySet="CoverLetters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CV_Graduate" Association="dataModel.FK_CV_Graduate">
+            <End Role="Graduate" EntitySet="Graduates" />
+            <End Role="CV" EntitySet="CVs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VdQualification_CV" Association="dataModel.FK_VdQualification_CV">
+            <End Role="CV" EntitySet="CVs" />
+            <End Role="VdQualification" EntitySet="VdQualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkingExprience_CV" Association="dataModel.FK_WorkingExprience_CV">
+            <End Role="CV" EntitySet="CVs" />
+            <End Role="WorkingExprience" EntitySet="WorkingExpriences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Employer_User" Association="dataModel.FK_dbo_Employer_User">
             <End Role="User" EntitySet="Users" />
+            <End Role="Employer" EntitySet="Employers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Job_Employer" Association="dataModel.FK_dbo_Job_Employer">
+            <End Role="Employer" EntitySet="Employers" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VdQualification_Experience" Association="dataModel.FK_VdQualification_Experience">
+            <End Role="Experience" EntitySet="Experiences" />
+            <End Role="VdQualification" EntitySet="VdQualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paper_Grade" Association="dataModel.FK_Paper_Grade">
+            <End Role="Grade" EntitySet="Grades" />
+            <End Role="Paper" EntitySet="Papers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduate_JobType" Association="dataModel.FK_dbo_Graduate_JobType">
+            <End Role="JobType" EntitySet="JobTypes" />
+            <End Role="Graduate" EntitySet="Graduates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduate_User" Association="dataModel.FK_dbo_Graduate_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Graduate" EntitySet="Graduates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Job_JobTitle" Association="dataModel.FK_dbo_Job_JobTitle">
+            <End Role="JobTitle" EntitySet="JobTitles" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Job_JobType" Association="dataModel.FK_dbo_Job_JobType">
+            <End Role="JobType" EntitySet="JobTypes" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Promotion_SiteSuperVisor" Association="dataModel.FK_dbo_Promotion_SiteSuperVisor">
+            <End Role="SiteSuperVisor" EntitySet="SiteSuperVisors" />
+            <End Role="Promotion" EntitySet="Promotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SiteSuperVisor_User" Association="dataModel.FK_dbo_SiteSuperVisor_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SiteSuperVisor" EntitySet="SiteSuperVisors" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="RI">
-          <Key>
-            <PropertyRef Name="RId" />
-            <PropertyRef Name="IId" />
-          </Key>
-          <Property Name="RId" Type="Int32" Nullable="false" />
-          <Property Name="IId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role" Relationship="dataModel.FK_RI_Role" FromRole="RI" ToRole="Role" />
-          <NavigationProperty Name="RoleInfo" Relationship="dataModel.FK_RI_RoleInfo" FromRole="RI" ToRole="RoleInfo" />
-        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="RIs" Relationship="dataModel.FK_RI_Role" FromRole="Role" ToRole="RI" />
           <NavigationProperty Name="Users" Relationship="dataModel.UR" FromRole="Role" ToRole="User" />
-        </EntityType>
-        <EntityType Name="RoleInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="RIs" Relationship="dataModel.FK_RI_RoleInfo" FromRole="RoleInfo" ToRole="RI" />
-          <NavigationProperty Name="Users" Relationship="dataModel.URI" FromRole="RoleInfo" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -223,39 +701,456 @@
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Roles" Relationship="dataModel.UR" FromRole="User" ToRole="Role" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="RoleInfoes" Relationship="dataModel.URI" FromRole="User" ToRole="RoleInfo" />
+          <NavigationProperty Name="Employers" Relationship="dataModel.FK_dbo_Employer_User" FromRole="User" ToRole="Employer" />
+          <NavigationProperty Name="Graduates" Relationship="dataModel.FK_dbo_Graduate_User" FromRole="User" ToRole="Graduate" />
+          <NavigationProperty Name="SiteSuperVisors" Relationship="dataModel.FK_dbo_SiteSuperVisor_User" FromRole="User" ToRole="SiteSuperVisor" />
         </EntityType>
-        <Association Name="FK_RI_Role">
-          <End Role="Role" Type="dataModel.Role" Multiplicity="1" />
-          <End Role="RI" Type="dataModel.RI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RI">
-              <PropertyRef Name="RId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RI_RoleInfo">
-          <End Role="RoleInfo" Type="dataModel.RoleInfo" Multiplicity="1" />
-          <End Role="RI" Type="dataModel.RI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RoleInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RI">
-              <PropertyRef Name="RId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="UR">
           <End Role="Role" Type="dataModel.Role" Multiplicity="*" />
           <End Role="User" Type="dataModel.User" Multiplicity="*" />
         </Association>
-        <Association Name="URI">
-          <End Type="dataModel.RoleInfo" Role="RoleInfo" Multiplicity="*" />
-          <End Type="dataModel.User" Role="User" Multiplicity="*" />
+        <EntityType Name="Ability">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Ranking" Nullable="false" />
+          <NavigationProperty Name="VdQualifications" Relationship="dataModel.FK_VdQualification_Ability" FromRole="Ability" ToRole="VdQualification" />
+        </EntityType>
+        <EntityType Name="AcQualification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateCompleted" Precision="3" />
+          <Property Type="Int32" Name="AcqLevelId" Nullable="false" />
+          <NavigationProperty Name="AcQualificationLevel" Relationship="dataModel.FK_AcQualification_AcQualificationLevel" FromRole="AcQualification" ToRole="AcQualificationLevel" />
+          <NavigationProperty Name="Papers" Relationship="dataModel.FK_Paper_AcQualification" FromRole="AcQualification" ToRole="Paper" />
+        </EntityType>
+        <EntityType Name="AcQualificationLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Ranking" Nullable="false" />
+          <NavigationProperty Name="AcQualifications" Relationship="dataModel.FK_AcQualification_AcQualificationLevel" FromRole="AcQualificationLevel" ToRole="AcQualification" />
+          <NavigationProperty Name="Jobs" Relationship="dataModel.FK_dbo_Job_AcQualificationLevel" FromRole="AcQualificationLevel" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="Competency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Ranking" Nullable="false" />
+          <NavigationProperty Name="VdQualifications" Relationship="dataModel.FK_VdQualification_Competency" FromRole="Competency" ToRole="VdQualification" />
+        </EntityType>
+        <EntityType Name="CoverLetter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Content" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StudentId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="JobId" Nullable="false" />
+          <NavigationProperty Name="Graduate" Relationship="dataModel.FK_dbo_CoverLetter_Graduate" FromRole="CoverLetter" ToRole="Graduate" />
+          <NavigationProperty Name="Job" Relationship="dataModel.FK_dbo_CoverLetter_Job" FromRole="CoverLetter" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="CV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StudentId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Graduate" Relationship="dataModel.FK_CV_Graduate" FromRole="CV" ToRole="Graduate" />
+          <NavigationProperty Name="VdQualifications" Relationship="dataModel.FK_VdQualification_CV" FromRole="CV" ToRole="VdQualification" />
+          <NavigationProperty Name="WorkingExpriences" Relationship="dataModel.FK_WorkingExprience_CV" FromRole="CV" ToRole="WorkingExprience" />
+        </EntityType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Company" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UId" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="dataModel.FK_dbo_Employer_User" FromRole="Employer" ToRole="User" />
+          <NavigationProperty Name="Jobs" Relationship="dataModel.FK_dbo_Job_Employer" FromRole="Employer" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="Experience">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Ranking" Nullable="false" />
+          <NavigationProperty Name="VdQualifications" Relationship="dataModel.FK_VdQualification_Experience" FromRole="Experience" ToRole="VdQualification" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Papers" Relationship="dataModel.FK_Paper_Grade" FromRole="Grade" ToRole="Paper" />
+        </EntityType>
+        <EntityType Name="Graduate">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Type="String" Name="StudentId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="KnownAs" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DoB" Nullable="false" Precision="3" />
+          <Property Type="String" Name="VisaStatus" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstLanguage" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="IELTS" Nullable="false" Precision="2" Scale="1" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Location" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="JobTypeId" Nullable="false" />
+          <Property Type="Int32" Name="UId" />
+          <Property Type="String" Name="CVId" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="CoverLetters" Relationship="dataModel.FK_dbo_CoverLetter_Graduate" FromRole="Graduate" ToRole="CoverLetter" />
+          <NavigationProperty Name="CVs" Relationship="dataModel.FK_CV_Graduate" FromRole="Graduate" ToRole="CV" />
+          <NavigationProperty Name="JobType" Relationship="dataModel.FK_dbo_Graduate_JobType" FromRole="Graduate" ToRole="JobType" />
+          <NavigationProperty Name="User" Relationship="dataModel.FK_dbo_Graduate_User" FromRole="Graduate" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="JobTitleId" Nullable="false" />
+          <Property Type="Int32" Name="RequiredAcqLevelId" Nullable="false" />
+          <Property Type="Int32" Name="JobTypeId" Nullable="false" />
+          <Property Type="Int32" Name="EmployerId" Nullable="false" />
+          <Property Type="Boolean" Name="Activated" Nullable="false" />
+          <NavigationProperty Name="AcQualificationLevel" Relationship="dataModel.FK_dbo_Job_AcQualificationLevel" FromRole="Job" ToRole="AcQualificationLevel" />
+          <NavigationProperty Name="CoverLetters" Relationship="dataModel.FK_dbo_CoverLetter_Job" FromRole="Job" ToRole="CoverLetter" />
+          <NavigationProperty Name="Employer" Relationship="dataModel.FK_dbo_Job_Employer" FromRole="Job" ToRole="Employer" />
+          <NavigationProperty Name="JobTitle" Relationship="dataModel.FK_dbo_Job_JobTitle" FromRole="Job" ToRole="JobTitle" />
+          <NavigationProperty Name="JobType" Relationship="dataModel.FK_dbo_Job_JobType" FromRole="Job" ToRole="JobType" />
+        </EntityType>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Jobs" Relationship="dataModel.FK_dbo_Job_JobTitle" FromRole="JobTitle" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="JobType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Ranking" Nullable="false" />
+          <NavigationProperty Name="Graduates" Relationship="dataModel.FK_dbo_Graduate_JobType" FromRole="JobType" ToRole="Graduate" />
+          <NavigationProperty Name="Jobs" Relationship="dataModel.FK_dbo_Job_JobType" FromRole="JobType" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="Paper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="GId" Nullable="false" />
+          <Property Type="Int32" Name="AcQId" Nullable="false" />
+          <NavigationProperty Name="AcQualification" Relationship="dataModel.FK_Paper_AcQualification" FromRole="Paper" ToRole="AcQualification" />
+          <NavigationProperty Name="Grade" Relationship="dataModel.FK_Paper_Grade" FromRole="Paper" ToRole="Grade" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SUId" Nullable="false" />
+          <NavigationProperty Name="SiteSuperVisor" Relationship="dataModel.FK_dbo_Promotion_SiteSuperVisor" FromRole="Promotion" ToRole="SiteSuperVisor" />
+        </EntityType>
+        <EntityType Name="SiteSuperVisor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UId" Nullable="false" />
+          <NavigationProperty Name="Promotions" Relationship="dataModel.FK_dbo_Promotion_SiteSuperVisor" FromRole="SiteSuperVisor" ToRole="Promotion" />
+          <NavigationProperty Name="User" Relationship="dataModel.FK_dbo_SiteSuperVisor_User" FromRole="SiteSuperVisor" ToRole="User" />
+        </EntityType>
+        <EntityType Name="VdQualification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateCompleted" Precision="3" />
+          <Property Type="Int32" Name="ExperienceId" Nullable="false" />
+          <Property Type="Int32" Name="AbilityId" Nullable="false" />
+          <Property Type="Int32" Name="CompetencyId" Nullable="false" />
+          <Property Type="Int32" Name="CVId" Nullable="false" />
+          <NavigationProperty Name="Ability" Relationship="dataModel.FK_VdQualification_Ability" FromRole="VdQualification" ToRole="Ability" />
+          <NavigationProperty Name="Competency" Relationship="dataModel.FK_VdQualification_Competency" FromRole="VdQualification" ToRole="Competency" />
+          <NavigationProperty Name="CV" Relationship="dataModel.FK_VdQualification_CV" FromRole="VdQualification" ToRole="CV" />
+          <NavigationProperty Name="Experience" Relationship="dataModel.FK_VdQualification_Experience" FromRole="VdQualification" ToRole="Experience" />
+        </EntityType>
+        <EntityType Name="WorkingExprience">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Start" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="Finish" Precision="3" />
+          <Property Type="String" Name="JobTitle" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Company" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RoleDescription" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CId" Nullable="false" />
+          <NavigationProperty Name="CV" Relationship="dataModel.FK_WorkingExprience_CV" FromRole="WorkingExprience" ToRole="CV" />
+        </EntityType>
+        <Association Name="FK_VdQualification_Ability">
+          <End Type="dataModel.Ability" Role="Ability" Multiplicity="1" />
+          <End Type="dataModel.VdQualification" Role="VdQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ability">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VdQualification">
+              <PropertyRef Name="AbilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcQualification_AcQualificationLevel">
+          <End Type="dataModel.AcQualificationLevel" Role="AcQualificationLevel" Multiplicity="1" />
+          <End Type="dataModel.AcQualification" Role="AcQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcQualificationLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcQualification">
+              <PropertyRef Name="AcqLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paper_AcQualification">
+          <End Type="dataModel.AcQualification" Role="AcQualification" Multiplicity="1" />
+          <End Type="dataModel.Paper" Role="Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcQualification">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="AcQId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Job_AcQualificationLevel">
+          <End Type="dataModel.AcQualificationLevel" Role="AcQualificationLevel" Multiplicity="1" />
+          <End Type="dataModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcQualificationLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="RequiredAcqLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VdQualification_Competency">
+          <End Type="dataModel.Competency" Role="Competency" Multiplicity="1" />
+          <End Type="dataModel.VdQualification" Role="VdQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VdQualification">
+              <PropertyRef Name="CompetencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CoverLetter_Graduate">
+          <End Type="dataModel.Graduate" Role="Graduate" Multiplicity="1" />
+          <End Type="dataModel.CoverLetter" Role="CoverLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="CoverLetter">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CoverLetter_Job">
+          <End Type="dataModel.Job" Role="Job" Multiplicity="1" />
+          <End Type="dataModel.CoverLetter" Role="CoverLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoverLetter">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CV_Graduate">
+          <End Type="dataModel.Graduate" Role="Graduate" Multiplicity="1" />
+          <End Type="dataModel.CV" Role="CV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="CV">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VdQualification_CV">
+          <End Type="dataModel.CV" Role="CV" Multiplicity="1" />
+          <End Type="dataModel.VdQualification" Role="VdQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CV">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VdQualification">
+              <PropertyRef Name="CVId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkingExprience_CV">
+          <End Type="dataModel.CV" Role="CV" Multiplicity="1" />
+          <End Type="dataModel.WorkingExprience" Role="WorkingExprience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CV">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkingExprience">
+              <PropertyRef Name="CId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Employer_User">
+          <End Type="dataModel.User" Role="User" Multiplicity="1" />
+          <End Type="dataModel.Employer" Role="Employer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employer">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Job_Employer">
+          <End Type="dataModel.Employer" Role="Employer" Multiplicity="1" />
+          <End Type="dataModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="EmployerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VdQualification_Experience">
+          <End Type="dataModel.Experience" Role="Experience" Multiplicity="1" />
+          <End Type="dataModel.VdQualification" Role="VdQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experience">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VdQualification">
+              <PropertyRef Name="ExperienceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paper_Grade">
+          <End Type="dataModel.Grade" Role="Grade" Multiplicity="1" />
+          <End Type="dataModel.Paper" Role="Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="GId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduate_JobType">
+          <End Type="dataModel.JobType" Role="JobType" Multiplicity="1" />
+          <End Type="dataModel.Graduate" Role="Graduate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate">
+              <PropertyRef Name="JobTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduate_User">
+          <End Type="dataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="dataModel.Graduate" Role="Graduate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Job_JobTitle">
+          <End Type="dataModel.JobTitle" Role="JobTitle" Multiplicity="1" />
+          <End Type="dataModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="JobTitleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Job_JobType">
+          <End Type="dataModel.JobType" Role="JobType" Multiplicity="1" />
+          <End Type="dataModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="JobTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Promotion_SiteSuperVisor">
+          <End Type="dataModel.SiteSuperVisor" Role="SiteSuperVisor" Multiplicity="1" />
+          <End Type="dataModel.Promotion" Role="Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteSuperVisor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="SUId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SiteSuperVisor_User">
+          <End Type="dataModel.User" Role="User" Multiplicity="1" />
+          <End Type="dataModel.SiteSuperVisor" Role="SiteSuperVisor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SiteSuperVisor">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -263,25 +1158,9 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="dataModelStoreContainer" CdmEntityContainer="dataEntities">
-          <EntitySetMapping Name="RIs">
-            <EntityTypeMapping TypeName="dataModel.RI">
-              <MappingFragment StoreEntitySet="RI">
-                <ScalarProperty Name="RId" ColumnName="RId" />
-                <ScalarProperty Name="IId" ColumnName="IId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="dataModel.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RoleInfoes">
-            <EntityTypeMapping TypeName="dataModel.RoleInfo">
-              <MappingFragment StoreEntitySet="RoleInfo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -307,14 +1186,190 @@
               <ScalarProperty Name="Id" ColumnName="UId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="URI" TypeName="dataModel.URI" StoreEntitySet="URI">
-            <EndProperty Name="User">
-              <ScalarProperty Name="Id" ColumnName="UId" />
-            </EndProperty>
-            <EndProperty Name="RoleInfo">
-              <ScalarProperty Name="Id" ColumnName="RIId" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="Abilities">
+            <EntityTypeMapping TypeName="dataModel.Ability">
+              <MappingFragment StoreEntitySet="Ability">
+                <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcQualifications">
+            <EntityTypeMapping TypeName="dataModel.AcQualification">
+              <MappingFragment StoreEntitySet="AcQualification">
+                <ScalarProperty Name="AcqLevelId" ColumnName="AcqLevelId" />
+                <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcQualificationLevels">
+            <EntityTypeMapping TypeName="dataModel.AcQualificationLevel">
+              <MappingFragment StoreEntitySet="AcQualificationLevel">
+                <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competencies">
+            <EntityTypeMapping TypeName="dataModel.Competency">
+              <MappingFragment StoreEntitySet="Competency">
+                <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoverLetters">
+            <EntityTypeMapping TypeName="dataModel.CoverLetter">
+              <MappingFragment StoreEntitySet="CoverLetter">
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CVs">
+            <EntityTypeMapping TypeName="dataModel.CV">
+              <MappingFragment StoreEntitySet="CV">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employers">
+            <EntityTypeMapping TypeName="dataModel.Employer">
+              <MappingFragment StoreEntitySet="Employer">
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiences">
+            <EntityTypeMapping TypeName="dataModel.Experience">
+              <MappingFragment StoreEntitySet="Experience">
+                <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grades">
+            <EntityTypeMapping TypeName="dataModel.Grade">
+              <MappingFragment StoreEntitySet="Grade">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Graduates">
+            <EntityTypeMapping TypeName="dataModel.Graduate">
+              <MappingFragment StoreEntitySet="Graduate">
+                <ScalarProperty Name="CVId" ColumnName="CVId" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="JobTypeId" ColumnName="JobTypeId" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="IELTS" ColumnName="IELTS" />
+                <ScalarProperty Name="FirstLanguage" ColumnName="FirstLanguage" />
+                <ScalarProperty Name="VisaStatus" ColumnName="VisaStatus" />
+                <ScalarProperty Name="DoB" ColumnName="DoB" />
+                <ScalarProperty Name="KnownAs" ColumnName="KnownAs" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="dataModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="Activated" ColumnName="Activated" />
+                <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+                <ScalarProperty Name="JobTypeId" ColumnName="JobTypeId" />
+                <ScalarProperty Name="RequiredAcqLevelId" ColumnName="RequiredAcqLevelId" />
+                <ScalarProperty Name="JobTitleId" ColumnName="JobTitleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTitles">
+            <EntityTypeMapping TypeName="dataModel.JobTitle">
+              <MappingFragment StoreEntitySet="JobTitle">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTypes">
+            <EntityTypeMapping TypeName="dataModel.JobType">
+              <MappingFragment StoreEntitySet="JobType">
+                <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Papers">
+            <EntityTypeMapping TypeName="dataModel.Paper">
+              <MappingFragment StoreEntitySet="Paper">
+                <ScalarProperty Name="AcQId" ColumnName="AcQId" />
+                <ScalarProperty Name="GId" ColumnName="GId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promotions">
+            <EntityTypeMapping TypeName="dataModel.Promotion">
+              <MappingFragment StoreEntitySet="Promotion">
+                <ScalarProperty Name="SUId" ColumnName="SUId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteSuperVisors">
+            <EntityTypeMapping TypeName="dataModel.SiteSuperVisor">
+              <MappingFragment StoreEntitySet="SiteSuperVisor">
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VdQualifications">
+            <EntityTypeMapping TypeName="dataModel.VdQualification">
+              <MappingFragment StoreEntitySet="VdQualification">
+                <ScalarProperty Name="CVId" ColumnName="CVId" />
+                <ScalarProperty Name="CompetencyId" ColumnName="CompetencyId" />
+                <ScalarProperty Name="AbilityId" ColumnName="AbilityId" />
+                <ScalarProperty Name="ExperienceId" ColumnName="ExperienceId" />
+                <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkingExpriences">
+            <EntityTypeMapping TypeName="dataModel.WorkingExprience">
+              <MappingFragment StoreEntitySet="WorkingExprience">
+                <ScalarProperty Name="CId" ColumnName="CId" />
+                <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Finish" ColumnName="Finish" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

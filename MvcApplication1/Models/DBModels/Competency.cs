@@ -12,16 +12,17 @@ namespace MvcApplication1.Models.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Competency
     {
-        public Role()
+        public Competency()
         {
-            this.Users = new HashSet<User>();
+            this.VdQualifications = new HashSet<VdQualification>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public int Ranking { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<VdQualification> VdQualifications { get; set; }
     }
 }

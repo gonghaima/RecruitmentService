@@ -17,7 +17,9 @@ namespace MvcApplication1.Models.DBModels
         public User()
         {
             this.Roles = new HashSet<Role>();
-            this.RoleInfoes = new HashSet<RoleInfo>();
+            this.Employers = new HashSet<Employer>();
+            this.Graduates = new HashSet<Graduate>();
+            this.SiteSuperVisors = new HashSet<SiteSuperVisor>();
         }
     
         public int Id { get; set; }
@@ -28,6 +30,8 @@ namespace MvcApplication1.Models.DBModels
         public string Email { get; set; }
     
         public virtual ICollection<Role> Roles { get; set; }
-        public virtual ICollection<RoleInfo> RoleInfoes { get; set; }
+        public virtual ICollection<Employer> Employers { get; set; }
+        public virtual ICollection<Graduate> Graduates { get; set; }
+        public virtual ICollection<SiteSuperVisor> SiteSuperVisors { get; set; }
     }
 }

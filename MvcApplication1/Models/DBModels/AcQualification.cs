@@ -12,16 +12,19 @@ namespace MvcApplication1.Models.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class AcQualification
     {
-        public Role()
+        public AcQualification()
         {
-            this.Users = new HashSet<User>();
+            this.Papers = new HashSet<Paper>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public Nullable<System.DateTime> DateCompleted { get; set; }
+        public int AcqLevelId { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
+        public virtual AcQualificationLevel AcQualificationLevel { get; set; }
+        public virtual ICollection<Paper> Papers { get; set; }
     }
 }

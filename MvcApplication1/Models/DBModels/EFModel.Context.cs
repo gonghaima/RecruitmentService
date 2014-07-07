@@ -25,9 +25,25 @@ namespace MvcApplication1.Models.DBModels
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<RI> RIs { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<RoleInfo> RoleInfoes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Ability> Abilities { get; set; }
+        public DbSet<AcQualification> AcQualifications { get; set; }
+        public DbSet<AcQualificationLevel> AcQualificationLevels { get; set; }
+        public DbSet<Competency> Competencies { get; set; }
+        public DbSet<CoverLetter> CoverLetters { get; set; }
+        public DbSet<CV> CVs { get; set; }
+        public DbSet<Employer> Employers { get; set; }
+        public DbSet<Experience> Experiences { get; set; }
+        public DbSet<Grade> Grades { get; set; }
+        public DbSet<Graduate> Graduates { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<JobTitle> JobTitles { get; set; }
+        public DbSet<JobType> JobTypes { get; set; }
+        public DbSet<Paper> Papers { get; set; }
+        public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<SiteSuperVisor> SiteSuperVisors { get; set; }
+        public DbSet<VdQualification> VdQualifications { get; set; }
+        public DbSet<WorkingExprience> WorkingExpriences { get; set; }
     }
 }

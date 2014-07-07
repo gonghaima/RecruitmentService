@@ -12,16 +12,18 @@ namespace MvcApplication1.Models.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class SiteSuperVisor
     {
-        public Role()
+        public SiteSuperVisor()
         {
-            this.Users = new HashSet<User>();
+            this.Promotions = new HashSet<Promotion>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Phone { get; set; }
+        public int UId { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Promotion> Promotions { get; set; }
+        public virtual User User { get; set; }
     }
 }

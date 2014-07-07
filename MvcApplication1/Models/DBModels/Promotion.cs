@@ -12,16 +12,12 @@ namespace MvcApplication1.Models.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Promotion
     {
-        public Role()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Description { get; set; }
+        public int SUId { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
+        public virtual SiteSuperVisor SiteSuperVisor { get; set; }
     }
 }
