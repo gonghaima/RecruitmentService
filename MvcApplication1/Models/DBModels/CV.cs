@@ -18,6 +18,7 @@ namespace MvcApplication1.Models.DBModels
         {
             this.VdQualifications = new HashSet<VdQualification>();
             this.WorkingExpriences = new HashSet<WorkingExprience>();
+            this.AcQualifications = new HashSet<AcQualification>();
         }
     
         public int Id { get; set; }
@@ -27,5 +28,6 @@ namespace MvcApplication1.Models.DBModels
         public virtual Graduate Graduate { get; set; }
         public virtual ICollection<VdQualification> VdQualifications { get; set; }
         public virtual ICollection<WorkingExprience> WorkingExpriences { get; set; }
+        public virtual ICollection<AcQualification> AcQualifications { get; set; }
     }
 }

@@ -26,6 +26,10 @@
       <End Role="AcQualificationLevel" EntitySet="AcQualificationLevel" />
       <End Role="AcQualification" EntitySet="AcQualification" />
     </AssociationSet>
+    <AssociationSet Name="FK_AcQualification_CV" Association="dataModel.Store.FK_AcQualification_CV">
+      <End Role="CV" EntitySet="CV" />
+      <End Role="AcQualification" EntitySet="AcQualification" />
+    </AssociationSet>
     <AssociationSet Name="FK_CV_Graduate" Association="dataModel.Store.FK_CV_Graduate">
       <End Role="Graduate" EntitySet="Graduate" />
       <End Role="CV" EntitySet="CV" />
@@ -127,6 +131,7 @@
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
     <Property Name="DateCompleted" Type="datetime" />
     <Property Name="AcqLevelId" Type="int" Nullable="false" />
+    <Property Name="CVId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AcQualificationLevel">
     <Key>
@@ -312,6 +317,18 @@
       </Principal>
       <Dependent Role="AcQualification">
         <PropertyRef Name="AcqLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AcQualification_CV">
+    <End Role="CV" Type="dataModel.Store.CV" Multiplicity="1" />
+    <End Role="AcQualification" Type="dataModel.Store.AcQualification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CV">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AcQualification">
+        <PropertyRef Name="CVId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

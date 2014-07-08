@@ -23,8 +23,10 @@ namespace MvcApplication1.Models.DBModels
         public string Name { get; set; }
         public Nullable<System.DateTime> DateCompleted { get; set; }
         public int AcqLevelId { get; set; }
+        public int CVId { get; set; }
     
         public virtual AcQualificationLevel AcQualificationLevel { get; set; }
         public virtual ICollection<Paper> Papers { get; set; }
+        public virtual CV CV { get; set; }
     }
 }

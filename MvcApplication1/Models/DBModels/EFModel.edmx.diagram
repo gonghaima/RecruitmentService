@@ -4,29 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d6d2ed5d7d574ba18b33e12b5626ca22" Name="Diagram1" ZoomLevel="48">
-        <EntityTypeShape EntityType="dataModel.Graduate" Width="1.5" PointX="3.125" PointY="0.875" />
-        <EntityTypeShape EntityType="dataModel.JobType" Width="1.5" PointX="5.375" PointY="3.5" />
+      <Diagram DiagramId="d6d2ed5d7d574ba18b33e12b5626ca22" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="dataModel.Graduate" Width="1.5" PointX="6.5" PointY="0.625" />
+        <EntityTypeShape EntityType="dataModel.JobType" Width="1.5" PointX="7.75" PointY="5" />
         <AssociationConnector Association="dataModel.FK_dbo_Graduate_JobType" />
-        <AssociationConnector Association="dataModel.FK_dbo_Graduate_JobType" />
-        <EntityTypeShape EntityType="dataModel.Ability" Width="1.5" PointX="9.875" PointY="31.375" />
-        <EntityTypeShape EntityType="dataModel.AcQualification" Width="1.5" PointX="12.875" PointY="32.875" />
-        <EntityTypeShape EntityType="dataModel.AcQualificationLevel" Width="1.5" PointX="15.875" PointY="34.375" />
-        <EntityTypeShape EntityType="dataModel.Competency" Width="1.5" PointX="6.7822810256771184" PointY="3.9405923653117347" />
-        <EntityTypeShape EntityType="dataModel.CoverLetter" Width="1.5" PointX="3.5663380192435987" PointY="13.621318704272303" />
-        <EntityTypeShape EntityType="dataModel.CV" Width="1.5" PointX="11.457628262908024" PointY="9.5492469712855517" />
-        <EntityTypeShape EntityType="dataModel.Employer" Width="1.5" PointX="11.364464096429042" PointY="14.632574699182332" />
-        <EntityTypeShape EntityType="dataModel.Experience" Width="1.5" PointX="0.58904543732714165" PointY="17.154556774140595" />
-        <EntityTypeShape EntityType="dataModel.Grade" Width="1.5" PointX="6.5623578850935944" PointY="31.092475801283715" />
-        <EntityTypeShape EntityType="dataModel.Job" Width="1.5" PointX="6.2183267316866324" PointY="20.39937276598037" />
-        <EntityTypeShape EntityType="dataModel.JobTitle" Width="1.5" PointX="0.5" PointY="35.75" />
-        <EntityTypeShape EntityType="dataModel.Paper" Width="1.5" PointX="3" PointY="37.25" />
-        <EntityTypeShape EntityType="dataModel.Promotion" Width="1.5" PointX="6" PointY="38.75" />
-        <EntityTypeShape EntityType="dataModel.Role" Width="1.5" PointX="9" PointY="40.25" />
-        <EntityTypeShape EntityType="dataModel.SiteSuperVisor" Width="1.5" PointX="12" PointY="41.75" />
-        <EntityTypeShape EntityType="dataModel.User" Width="1.5" PointX="15" PointY="43.25" />
-        <EntityTypeShape EntityType="dataModel.VdQualification" Width="1.5" PointX="18" PointY="44.75" />
-        <EntityTypeShape EntityType="dataModel.WorkingExprience" Width="1.5" PointX="3.375" PointY="42" />
+        <EntityTypeShape EntityType="dataModel.Ability" Width="1.5" PointX="12.5" PointY="5.5" />
+        <EntityTypeShape EntityType="dataModel.AcQualification" Width="1.5" PointX="9.75" PointY="4.125" />
+        <EntityTypeShape EntityType="dataModel.AcQualificationLevel" Width="1.5" PointX="8" PointY="8.875" />
+        <EntityTypeShape EntityType="dataModel.Competency" Width="1.5" PointX="12.5" PointY="3.5" />
+        <EntityTypeShape EntityType="dataModel.CoverLetter" Width="1.5" PointX="5.125" PointY="5" />
+        <EntityTypeShape EntityType="dataModel.CV" Width="1.5" PointX="11.75" PointY="0.625" />
+        <EntityTypeShape EntityType="dataModel.Employer" Width="1.5" PointX="2.375" PointY="5.25" />
+        <EntityTypeShape EntityType="dataModel.Experience" Width="1.5" PointX="14.5" PointY="6.625" />
+        <EntityTypeShape EntityType="dataModel.Grade" Width="1.5" PointX="12.75" PointY="7.5" />
+        <EntityTypeShape EntityType="dataModel.Job" Width="1.5" PointX="5" PointY="8.125" />
+        <EntityTypeShape EntityType="dataModel.JobTitle" Width="1.5" PointX="2.875" PointY="8.125" />
+        <EntityTypeShape EntityType="dataModel.Paper" Width="1.5" PointX="10.75" PointY="7.375" />
+        <EntityTypeShape EntityType="dataModel.Promotion" Width="1.5" PointX="0.5" PointY="7.375" />
+        <EntityTypeShape EntityType="dataModel.Role" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="dataModel.SiteSuperVisor" Width="1.5" PointX="0.5" PointY="3.375" />
+        <EntityTypeShape EntityType="dataModel.User" Width="1.5" PointX="3.25" PointY="1" />
+        <EntityTypeShape EntityType="dataModel.VdQualification" Width="1.5" PointX="14.25" PointY="0.5" />
+        <EntityTypeShape EntityType="dataModel.WorkingExprience" Width="1.5" PointX="9.25" PointY="1" />
         <AssociationConnector Association="dataModel.FK_VdQualification_Ability" />
         <AssociationConnector Association="dataModel.FK_AcQualification_AcQualificationLevel" />
         <AssociationConnector Association="dataModel.FK_Paper_AcQualification" />
@@ -35,7 +34,10 @@
         <AssociationConnector Association="dataModel.FK_dbo_CoverLetter_Graduate" />
         <AssociationConnector Association="dataModel.FK_dbo_CoverLetter_Job" />
         <AssociationConnector Association="dataModel.FK_CV_Graduate" />
-        <AssociationConnector Association="dataModel.FK_VdQualification_CV" />
+        <AssociationConnector Association="dataModel.FK_VdQualification_CV" ManuallyRouted="true" >
+          <ConnectorPoint PointX="13.25" PointY="2.3126947252453118" />
+          <ConnectorPoint PointX="14.25" PointY="2.3126947252453118" />
+        </AssociationConnector>
         <AssociationConnector Association="dataModel.FK_WorkingExprience_CV" />
         <AssociationConnector Association="dataModel.FK_dbo_Employer_User" />
         <AssociationConnector Association="dataModel.FK_dbo_Job_Employer" />
@@ -47,6 +49,7 @@
         <AssociationConnector Association="dataModel.FK_dbo_Promotion_SiteSuperVisor" />
         <AssociationConnector Association="dataModel.FK_dbo_SiteSuperVisor_User" />
         <AssociationConnector Association="dataModel.UR" />
+        <AssociationConnector Association="dataModel.FK_AcQualification_CV" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

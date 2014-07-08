@@ -41,6 +41,7 @@
     <EntitySetMapping Name="AcQualifications">
       <EntityTypeMapping TypeName="dataModel.AcQualification">
         <MappingFragment StoreEntitySet="AcQualification">
+          <ScalarProperty Name="CVId" ColumnName="CVId" />
           <ScalarProperty Name="AcqLevelId" ColumnName="AcqLevelId" />
           <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
           <ScalarProperty Name="Name" ColumnName="Name" />

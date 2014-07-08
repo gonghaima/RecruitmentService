@@ -4,7 +4,7 @@ namespace MvcApplication1.Models.ViewModels
 {
     public interface IRegisterInterface
     {
-        bool register();
+        bool register(string roleName);
     }
 
     public interface IUserInterface

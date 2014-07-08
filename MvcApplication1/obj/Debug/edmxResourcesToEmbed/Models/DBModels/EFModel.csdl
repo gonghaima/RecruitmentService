@@ -105,6 +105,10 @@
       <End Role="User" EntitySet="Users" />
       <End Role="SiteSuperVisor" EntitySet="SiteSuperVisors" />
     </AssociationSet>
+    <AssociationSet Name="FK_AcQualification_CV" Association="dataModel.FK_AcQualification_CV">
+      <End Role="CV" EntitySet="CVs" />
+      <End Role="AcQualification" EntitySet="AcQualifications" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Role">
     <Key>
@@ -152,6 +156,8 @@
     <Property Type="Int32" Name="AcqLevelId" Nullable="false" />
     <NavigationProperty Name="AcQualificationLevel" Relationship="dataModel.FK_AcQualification_AcQualificationLevel" FromRole="AcQualification" ToRole="AcQualificationLevel" />
     <NavigationProperty Name="Papers" Relationship="dataModel.FK_Paper_AcQualification" FromRole="AcQualification" ToRole="Paper" />
+    <Property Type="Int32" Name="CVId" Nullable="false" />
+    <NavigationProperty Name="CV" Relationship="dataModel.FK_AcQualification_CV" FromRole="AcQualification" ToRole="CV" />
   </EntityType>
   <EntityType Name="AcQualificationLevel">
     <Key>
@@ -193,6 +199,7 @@
     <NavigationProperty Name="Graduate" Relationship="dataModel.FK_CV_Graduate" FromRole="CV" ToRole="Graduate" />
     <NavigationProperty Name="VdQualifications" Relationship="dataModel.FK_VdQualification_CV" FromRole="CV" ToRole="VdQualification" />
     <NavigationProperty Name="WorkingExpriences" Relationship="dataModel.FK_WorkingExprience_CV" FromRole="CV" ToRole="WorkingExprience" />
+    <NavigationProperty Name="AcQualifications" Relationship="dataModel.FK_AcQualification_CV" FromRole="CV" ToRole="AcQualification" />
   </EntityType>
   <EntityType Name="Employer">
     <Key>
@@ -573,6 +580,18 @@
       </Principal>
       <Dependent Role="SiteSuperVisor">
         <PropertyRef Name="UId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AcQualification_CV">
+    <End Type="dataModel.CV" Role="CV" Multiplicity="1" />
+    <End Type="dataModel.AcQualification" Role="AcQualification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CV">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AcQualification">
+        <PropertyRef Name="CVId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
