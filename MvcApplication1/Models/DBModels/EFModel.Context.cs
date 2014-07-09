@@ -45,5 +45,7 @@ namespace MvcApplication1.Models.DBModels
         public DbSet<SiteSuperVisor> SiteSuperVisors { get; set; }
         public DbSet<VdQualification> VdQualifications { get; set; }
         public DbSet<WorkingExprience> WorkingExpriences { get; set; }
+        public DbSet<SoftSkill> SoftSkills { get; set; }
+        public DbSet<SoftSkillLevel> SoftSkillLevels { get; set; }
     }
 }

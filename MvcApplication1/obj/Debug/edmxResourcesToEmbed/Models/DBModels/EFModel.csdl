@@ -109,6 +109,20 @@
       <End Role="CV" EntitySet="CVs" />
       <End Role="AcQualification" EntitySet="AcQualifications" />
     </AssociationSet>
+    <EntitySet Name="SoftSkills" EntityType="dataModel.SoftSkill" />
+    <EntitySet Name="SoftSkillLevels" EntityType="dataModel.SoftSkillLevel" />
+    <AssociationSet Name="FK_dbo_SoftSkill_SoftSkillLevel" Association="dataModel.FK_dbo_SoftSkill_SoftSkillLevel">
+      <End Role="SoftSkillLevel" EntitySet="SoftSkillLevels" />
+      <End Role="SoftSkill" EntitySet="SoftSkills" />
+    </AssociationSet>
+    <AssociationSet Name="GSkill" Association="dataModel.GSkill">
+      <End Role="Graduate" EntitySet="Graduates" />
+      <End Role="SoftSkill" EntitySet="SoftSkills" />
+    </AssociationSet>
+    <AssociationSet Name="JSkill" Association="dataModel.JSkill">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="SoftSkill" EntitySet="SoftSkills" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Role">
     <Key>
@@ -249,6 +263,7 @@
     <NavigationProperty Name="CVs" Relationship="dataModel.FK_CV_Graduate" FromRole="Graduate" ToRole="CV" />
     <NavigationProperty Name="JobType" Relationship="dataModel.FK_dbo_Graduate_JobType" FromRole="Graduate" ToRole="JobType" />
     <NavigationProperty Name="User" Relationship="dataModel.FK_dbo_Graduate_User" FromRole="Graduate" ToRole="User" />
+    <NavigationProperty Name="SoftSkills" Relationship="dataModel.GSkill" FromRole="Graduate" ToRole="SoftSkill" />
   </EntityType>
   <EntityType Name="Job">
     <Key>
@@ -265,6 +280,7 @@
     <NavigationProperty Name="Employer" Relationship="dataModel.FK_dbo_Job_Employer" FromRole="Job" ToRole="Employer" />
     <NavigationProperty Name="JobTitle" Relationship="dataModel.FK_dbo_Job_JobTitle" FromRole="Job" ToRole="JobTitle" />
     <NavigationProperty Name="JobType" Relationship="dataModel.FK_dbo_Job_JobType" FromRole="Job" ToRole="JobType" />
+    <NavigationProperty Name="SoftSkills" Relationship="dataModel.JSkill" FromRole="Job" ToRole="SoftSkill" />
   </EntityType>
   <EntityType Name="JobTitle">
     <Key>
@@ -594,5 +610,45 @@
         <PropertyRef Name="CVId" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SoftSkill">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="SSLevelId" Nullable="false" />
+    <NavigationProperty Name="SoftSkillLevel" Relationship="dataModel.FK_dbo_SoftSkill_SoftSkillLevel" FromRole="SoftSkill" ToRole="SoftSkillLevel" />
+    <NavigationProperty Name="Graduates" Relationship="dataModel.GSkill" FromRole="SoftSkill" ToRole="Graduate" />
+    <NavigationProperty Name="Jobs" Relationship="dataModel.JSkill" FromRole="SoftSkill" ToRole="Job" />
+  </EntityType>
+  <EntityType Name="SoftSkillLevel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Ranking" Nullable="false" />
+    <NavigationProperty Name="SoftSkills" Relationship="dataModel.FK_dbo_SoftSkill_SoftSkillLevel" FromRole="SoftSkillLevel" ToRole="SoftSkill" />
+  </EntityType>
+  <Association Name="FK_dbo_SoftSkill_SoftSkillLevel">
+    <End Type="dataModel.SoftSkillLevel" Role="SoftSkillLevel" Multiplicity="1" />
+    <End Type="dataModel.SoftSkill" Role="SoftSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SoftSkillLevel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SoftSkill">
+        <PropertyRef Name="SSLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GSkill">
+    <End Type="dataModel.Graduate" Role="Graduate" Multiplicity="*" />
+    <End Type="dataModel.SoftSkill" Role="SoftSkill" Multiplicity="*" />
+  </Association>
+  <Association Name="JSkill">
+    <End Type="dataModel.Job" Role="Job" Multiplicity="*" />
+    <End Type="dataModel.SoftSkill" Role="SoftSkill" Multiplicity="*" />
   </Association>
 </Schema>

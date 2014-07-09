@@ -11,13 +11,17 @@
     <EntitySet Name="Experience" EntityType="dataModel.Store.Experience" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Grade" EntityType="dataModel.Store.Grade" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Graduate" EntityType="dataModel.Store.Graduate" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GSkill" EntityType="dataModel.Store.GSkill" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Job" EntityType="dataModel.Store.Job" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="JobTitle" EntityType="dataModel.Store.JobTitle" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="JobType" EntityType="dataModel.Store.JobType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JSkill" EntityType="dataModel.Store.JSkill" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Paper" EntityType="dataModel.Store.Paper" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Promotion" EntityType="dataModel.Store.Promotion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Role" EntityType="dataModel.Store.Role" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SiteSuperVisor" EntityType="dataModel.Store.SiteSuperVisor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SoftSkill" EntityType="dataModel.Store.SoftSkill" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SoftSkillLevel" EntityType="dataModel.Store.SoftSkillLevel" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UR" EntityType="dataModel.Store.UR" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="User" EntityType="dataModel.Store.User" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="VdQualification" EntityType="dataModel.Store.VdQualification" store:Type="Tables" Schema="dbo" />
@@ -77,6 +81,26 @@
     <AssociationSet Name="FK_dbo_SiteSuperVisor_User" Association="dataModel.Store.FK_dbo_SiteSuperVisor_User">
       <End Role="User" EntitySet="User" />
       <End Role="SiteSuperVisor" EntitySet="SiteSuperVisor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_SoftSkill_SoftSkillLevel" Association="dataModel.Store.FK_dbo_SoftSkill_SoftSkillLevel">
+      <End Role="SoftSkillLevel" EntitySet="SoftSkillLevel" />
+      <End Role="SoftSkill" EntitySet="SoftSkill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GSkill_Graduate" Association="dataModel.Store.FK_GSkill_Graduate">
+      <End Role="Graduate" EntitySet="Graduate" />
+      <End Role="GSkill" EntitySet="GSkill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GSkill_SoftSkill" Association="dataModel.Store.FK_GSkill_SoftSkill">
+      <End Role="SoftSkill" EntitySet="SoftSkill" />
+      <End Role="GSkill" EntitySet="GSkill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JSkill_Job" Association="dataModel.Store.FK_JSkill_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="JSkill" EntitySet="JSkill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JSkill_SoftSkill" Association="dataModel.Store.FK_JSkill_SoftSkill">
+      <End Role="SoftSkill" EntitySet="SoftSkill" />
+      <End Role="JSkill" EntitySet="JSkill" />
     </AssociationSet>
     <AssociationSet Name="FK_Paper_AcQualification" Association="dataModel.Store.FK_Paper_AcQualification">
       <End Role="AcQualification" EntitySet="AcQualification" />
@@ -207,6 +231,14 @@
     <Property Name="UId" Type="int" />
     <Property Name="CVId" Type="nchar" MaxLength="10" />
   </EntityType>
+  <EntityType Name="GSkill">
+    <Key>
+      <PropertyRef Name="GId" />
+      <PropertyRef Name="SId" />
+    </Key>
+    <Property Name="GId" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="SId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Job">
     <Key>
       <PropertyRef Name="Id" />
@@ -232,6 +264,14 @@
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
     <Property Name="Ranking" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JSkill">
+    <Key>
+      <PropertyRef Name="JId" />
+      <PropertyRef Name="SId" />
+    </Key>
+    <Property Name="JId" Type="int" Nullable="false" />
+    <Property Name="SId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Paper">
     <Key>
@@ -264,6 +304,22 @@
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="20" />
     <Property Name="UId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SoftSkill">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="SSLevelId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SoftSkillLevel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Ranking" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UR">
     <Key>
@@ -473,6 +529,66 @@
       </Principal>
       <Dependent Role="SiteSuperVisor">
         <PropertyRef Name="UId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_SoftSkill_SoftSkillLevel">
+    <End Role="SoftSkillLevel" Type="dataModel.Store.SoftSkillLevel" Multiplicity="1" />
+    <End Role="SoftSkill" Type="dataModel.Store.SoftSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SoftSkillLevel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SoftSkill">
+        <PropertyRef Name="SSLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GSkill_Graduate">
+    <End Role="Graduate" Type="dataModel.Store.Graduate" Multiplicity="1" />
+    <End Role="GSkill" Type="dataModel.Store.GSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Graduate">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="GSkill">
+        <PropertyRef Name="GId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GSkill_SoftSkill">
+    <End Role="SoftSkill" Type="dataModel.Store.SoftSkill" Multiplicity="1" />
+    <End Role="GSkill" Type="dataModel.Store.GSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SoftSkill">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GSkill">
+        <PropertyRef Name="SId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JSkill_Job">
+    <End Role="Job" Type="dataModel.Store.Job" Multiplicity="1" />
+    <End Role="JSkill" Type="dataModel.Store.JSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JSkill">
+        <PropertyRef Name="JId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JSkill_SoftSkill">
+    <End Role="SoftSkill" Type="dataModel.Store.SoftSkill" Multiplicity="1" />
+    <End Role="JSkill" Type="dataModel.Store.JSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SoftSkill">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JSkill">
+        <PropertyRef Name="SId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

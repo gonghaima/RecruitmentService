@@ -191,6 +191,12 @@
     <Compile Include="Models\DBModels\SiteSuperVisor.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBModels\SoftSkill.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBModels\SoftSkillLevel.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DBModels\User.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>

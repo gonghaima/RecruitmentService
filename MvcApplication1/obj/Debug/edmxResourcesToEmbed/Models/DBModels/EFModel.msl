@@ -214,5 +214,39 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SoftSkills">
+      <EntityTypeMapping TypeName="dataModel.SoftSkill">
+        <MappingFragment StoreEntitySet="SoftSkill">
+          <ScalarProperty Name="SSLevelId" ColumnName="SSLevelId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SoftSkillLevels">
+      <EntityTypeMapping TypeName="dataModel.SoftSkillLevel">
+        <MappingFragment StoreEntitySet="SoftSkillLevel">
+          <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GSkill" TypeName="dataModel.GSkill" StoreEntitySet="GSkill">
+      <EndProperty Name="SoftSkill">
+        <ScalarProperty Name="Id" ColumnName="SId" />
+      </EndProperty>
+      <EndProperty Name="Graduate">
+        <ScalarProperty Name="StudentId" ColumnName="GId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="JSkill" TypeName="dataModel.JSkill" StoreEntitySet="JSkill">
+      <EndProperty Name="SoftSkill">
+        <ScalarProperty Name="Id" ColumnName="SId" />
+      </EndProperty>
+      <EndProperty Name="Job">
+        <ScalarProperty Name="Id" ColumnName="JId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

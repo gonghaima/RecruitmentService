@@ -12,26 +12,17 @@ namespace MvcApplication1.Models.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Job
+    public partial class SoftSkillLevel
     {
-        public Job()
+        public SoftSkillLevel()
         {
-            this.CoverLetters = new HashSet<CoverLetter>();
             this.SoftSkills = new HashSet<SoftSkill>();
         }
     
         public int Id { get; set; }
-        public int JobTitleId { get; set; }
-        public int RequiredAcqLevelId { get; set; }
-        public int JobTypeId { get; set; }
-        public int EmployerId { get; set; }
-        public bool Activated { get; set; }
+        public string Name { get; set; }
+        public int Ranking { get; set; }
     
-        public virtual AcQualificationLevel AcQualificationLevel { get; set; }
-        public virtual ICollection<CoverLetter> CoverLetters { get; set; }
-        public virtual Employer Employer { get; set; }
-        public virtual JobTitle JobTitle { get; set; }
-        public virtual JobType JobType { get; set; }
         public virtual ICollection<SoftSkill> SoftSkills { get; set; }
     }
 }

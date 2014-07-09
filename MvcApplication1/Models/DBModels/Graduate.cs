@@ -18,6 +18,7 @@ namespace MvcApplication1.Models.DBModels
         {
             this.CoverLetters = new HashSet<CoverLetter>();
             this.CVs = new HashSet<CV>();
+            this.SoftSkills = new HashSet<SoftSkill>();
         }
     
         public string StudentId { get; set; }
@@ -36,5 +37,6 @@ namespace MvcApplication1.Models.DBModels
         public virtual ICollection<CV> CVs { get; set; }
         public virtual JobType JobType { get; set; }
         public virtual User User { get; set; }
+        public virtual ICollection<SoftSkill> SoftSkills { get; set; }
     }
 }

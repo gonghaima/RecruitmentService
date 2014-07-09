@@ -6,7 +6,7 @@
 <h2>Student Login</h2>
 @using (Html.BeginForm())
 {
-    <ol>
+    <ul>
         <li>
             @Html.LabelFor(c=>c.UserName)
             @Html.TextBoxFor(c=>c.UserName)
@@ -15,6 +15,6 @@
             @Html.LabelFor(c=>c.Password)
             @Html.PasswordFor(c=>c.Password)
         </li>
-    </ol>
+    </ul>
     <input type="submit" value="Login" />
 }
