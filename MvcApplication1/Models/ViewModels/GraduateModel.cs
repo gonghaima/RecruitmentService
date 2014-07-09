@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 using MvcApplication1.Models.DBModels;
 using System.Linq;
 using System.Net.Http;
+using System.Collections.Generic;
+using System.Web.Mvc;
 namespace MvcApplication1.Models.ViewModels
 {
     public class GraduateModel : Account
@@ -36,6 +38,8 @@ namespace MvcApplication1.Models.ViewModels
         [Required]
         public int JobTypeId { get; set; }
 
+        public IEnumerable<JobType> IenumJobType { get; set; }
+
         [Required]
         public Nullable<int> UId { get; set; }
 
@@ -59,8 +63,14 @@ namespace MvcApplication1.Models.ViewModels
                 this.JobTypeId = grad.JobTypeId;
                 this.UId = grad.UId;
                 this.CVId = grad.CVId;
+                this.IenumJobType = dbContext.JobTypes;
+            }
+            else
+            {
+                this.IenumJobType = dbContext.JobTypes;
             }
         }
+
 
 
         Graduate convertToGraduate()

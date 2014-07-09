@@ -80,8 +80,13 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.JobTypeId)
         </div>
-        <div class="editor-field">
+        @*<div class="editor-field">
             @Html.EditorFor(model => model.JobTypeId)
+            @Html.ValidationMessageFor(model => model.JobTypeId)
+        </div>*@
+        <div class="editor-field">
+            @*@Html.EditorFor(m => m.JobTypeId, new SelectList { Items = Model.IenumJobType.Select(m => m.Name), SelectedValues = Model.IenumJobType.Select(m => m.Id) })*@
+            @Html.DropDownListFor((m => m.JobTypeId), (SelectList)ViewBag.jt )
             @Html.ValidationMessageFor(model => model.JobTypeId)
         </div>
 
