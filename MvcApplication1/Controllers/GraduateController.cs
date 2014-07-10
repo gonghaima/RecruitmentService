@@ -53,17 +53,8 @@ namespace MvcApplication1.Controllers
         {
             string UserName = User.Identity.Name;
             GraduateModel gm = new GraduateModel(UserName);
-            ViewBag.jt = new SelectList(gm.IenumJobType,gm);
-            if (gm.UId == null)
-            {
-                
-                return View();
-            }
-            else
-            {
-                return View(gm);
-            }
-            //return View(gm);
+            ViewBag.jt = new SelectList(gm.IenumJobType,"Id","Name");
+            return View(gm);
         }
 
         [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
