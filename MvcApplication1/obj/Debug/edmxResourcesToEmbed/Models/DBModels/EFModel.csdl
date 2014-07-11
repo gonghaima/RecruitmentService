@@ -123,6 +123,10 @@
       <End Role="Job" EntitySet="Jobs" />
       <End Role="SoftSkill" EntitySet="SoftSkills" />
     </AssociationSet>
+    <AssociationSet Name="GraduateJobTitle" Association="dataModel.GraduateJobTitle">
+      <End Role="Graduate" EntitySet="Graduates" />
+      <End Role="JobTitle" EntitySet="JobTitles" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Role">
     <Key>
@@ -264,6 +268,7 @@
     <NavigationProperty Name="JobType" Relationship="dataModel.FK_dbo_Graduate_JobType" FromRole="Graduate" ToRole="JobType" />
     <NavigationProperty Name="User" Relationship="dataModel.FK_dbo_Graduate_User" FromRole="Graduate" ToRole="User" />
     <NavigationProperty Name="SoftSkills" Relationship="dataModel.GSkill" FromRole="Graduate" ToRole="SoftSkill" />
+    <NavigationProperty Name="JobTitles" Relationship="dataModel.GraduateJobTitle" FromRole="Graduate" ToRole="JobTitle" />
   </EntityType>
   <EntityType Name="Job">
     <Key>
@@ -289,6 +294,7 @@
     <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Jobs" Relationship="dataModel.FK_dbo_Job_JobTitle" FromRole="JobTitle" ToRole="Job" />
+    <NavigationProperty Name="Graduates" Relationship="dataModel.GraduateJobTitle" FromRole="JobTitle" ToRole="Graduate" />
   </EntityType>
   <EntityType Name="JobType">
     <Key>
@@ -650,5 +656,9 @@
   <Association Name="JSkill">
     <End Type="dataModel.Job" Role="Job" Multiplicity="*" />
     <End Type="dataModel.SoftSkill" Role="SoftSkill" Multiplicity="*" />
+  </Association>
+  <Association Name="GraduateJobTitle">
+    <End Type="dataModel.Graduate" Role="Graduate" Multiplicity="*" />
+    <End Type="dataModel.JobTitle" Role="JobTitle" Multiplicity="*" />
   </Association>
 </Schema>

@@ -32,5 +32,11 @@ namespace MvcApplication1.Controllers
                 return View(pr);
             }
         }
+
+        public ActionResult Logout()
+        {
+            Account.logout();
+            return RedirectToAction("login","Account");
+        }
     }
 }

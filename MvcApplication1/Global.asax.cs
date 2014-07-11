@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using MvcApplication1.App_Start;
+using System.Web.Optimization;
 
 namespace MvcApplication1
 {
@@ -20,6 +22,7 @@ namespace MvcApplication1
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         public class OptionalAuthorizeAttribute : System.Web.Mvc.AuthorizeAttribute
@@ -43,20 +46,35 @@ namespace MvcApplication1
 
                 //string[] roles = rolesProvider.GetRolesForUser(httpContext.User.Identity.Name);
                 dataEntities dbContext = new dataEntities();
-                var roles = dbContext.Users.FirstOrDefault(m => m.UserName == httpContext.User.Identity.Name).Roles;
+                List<string> RoleNames = new List<string>();
+                try
+                {
+                    var roles = dbContext.Users.FirstOrDefault(m => m.UserName == httpContext.User.Identity.Name).Roles;
+                    if (roles != null)
+                    {
+                        
+                        foreach (Role r in roles)
+                        {
+                            RoleNames.Add(r.Name);
+                        }
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
 
                 bool boRo=false;
-                List<string> RoleNames = new List<string>();
-                foreach (Role r in roles)
-                {
-                    RoleNames.Add(r.Name);
-                }
 
-                foreach (string strRole in RoleNames)
+                if (RoleNames != null)
                 {
-                    if (Roles.Contains(strRole))
-                        boRo = true;
+                    foreach (string strRole in RoleNames)
+                    {
+                        if (Roles.Contains(strRole))
+                            boRo = true;
+                    }
                 }
+                
 
                 //if(RoleNames.Contains(Website.Roles.RegisteredClient, StringComparer.OrdinalIgnoreCase)
 

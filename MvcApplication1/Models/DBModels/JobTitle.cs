@@ -17,11 +17,13 @@ namespace MvcApplication1.Models.DBModels
         public JobTitle()
         {
             this.Jobs = new HashSet<Job>();
+            this.Graduates = new HashSet<Graduate>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<Job> Jobs { get; set; }
+        public virtual ICollection<Graduate> Graduates { get; set; }
     }
 }

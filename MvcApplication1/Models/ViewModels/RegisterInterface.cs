@@ -10,6 +10,5 @@ namespace MvcApplication1.Models.ViewModels
     public interface IUserInterface
     {
         bool login();
-        void logout();
     }
 }

@@ -91,3 +91,8 @@ E:\ttttt\19\MvcApplication1\bin\System.Web.WebPages.Razor.xml
 E:\ttttt\19\MvcApplication1\obj\Debug\MvcApplication1.csprojResolveAssemblyReference.cache
 E:\ttttt\19\MvcApplication1\obj\Debug\MvcApplication1.dll
 E:\ttttt\19\MvcApplication1\obj\Debug\MvcApplication1.pdb
+C:\Steven\temp23\MvcApplication1\bin\Antlr3.Runtime.dll
+C:\Steven\temp23\MvcApplication1\bin\System.Web.Optimization.dll
+C:\Steven\temp23\MvcApplication1\bin\WebGrease.dll
+C:\Steven\temp23\MvcApplication1\bin\Antlr3.Runtime.pdb
+C:\Steven\temp23\MvcApplication1\bin\System.Web.Optimization.xml

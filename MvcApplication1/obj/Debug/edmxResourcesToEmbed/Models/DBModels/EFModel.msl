@@ -248,5 +248,13 @@
         <ScalarProperty Name="Id" ColumnName="JId" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="GraduateJobTitle" TypeName="dataModel.GraduateJobTitle" StoreEntitySet="GraduateJobTitle">
+      <EndProperty Name="JobTitle">
+        <ScalarProperty Name="Id" ColumnName="JobTitleId" />
+      </EndProperty>
+      <EndProperty Name="Graduate">
+        <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

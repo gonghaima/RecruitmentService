@@ -63,5 +63,21 @@ namespace MvcApplication1.Controllers
         {
             return View(gradModel);
         }
+
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public ActionResult WorkingExperience()
+        {
+            //string UserName = User.Identity.Name;
+            //GraduateModel gm = new GraduateModel(UserName);
+            //ViewBag.jt = new SelectList(gm.IenumJobType, "Id", "Name");
+            return View();
+        }
+
+        public ActionResult test()
+        {
+            return View();
+        }
+
+
     }
 }

@@ -14,6 +14,7 @@
         <li>
             @Html.LabelFor(c=>c.Password)
             @Html.PasswordFor(c=>c.Password)
+            @Html.ActionLink("I forget my password","ForgetPassword","Account")
         </li>
     </ul>
     <input type="submit" value="Login" />

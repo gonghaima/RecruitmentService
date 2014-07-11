@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d6d2ed5d7d574ba18b33e12b5626ca22" Name="Diagram1" ZoomLevel="39">
+      <Diagram DiagramId="d6d2ed5d7d574ba18b33e12b5626ca22" Name="Diagram1" ZoomLevel="57">
         <EntityTypeShape EntityType="dataModel.Graduate" Width="1.5" PointX="6.5" PointY="0.625" />
         <EntityTypeShape EntityType="dataModel.JobType" Width="1.5" PointX="7.75" PointY="5" />
         <AssociationConnector Association="dataModel.FK_dbo_Graduate_JobType" />
@@ -53,6 +53,7 @@
         <AssociationConnector Association="dataModel.FK_dbo_SoftSkill_SoftSkillLevel" />
         <AssociationConnector Association="dataModel.GSkill" />
         <AssociationConnector Association="dataModel.JSkill" />
+        <AssociationConnector Association="dataModel.GraduateJobTitle" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

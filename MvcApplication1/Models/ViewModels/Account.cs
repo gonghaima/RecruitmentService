@@ -78,10 +78,11 @@ namespace MvcApplication1.Models.ViewModels
             }
         }
 
-        public void logout()
+        public static void logout()
         {
             FormsAuthentication.SignOut();
         }
+
 
         public static string[] retrievePassword(string UserName)
         {
