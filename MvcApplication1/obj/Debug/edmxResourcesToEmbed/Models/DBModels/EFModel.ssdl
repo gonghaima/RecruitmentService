@@ -230,10 +230,8 @@
     </Key>
     <Property Name="StudentId" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="KnownAs" Type="varchar" MaxLength="50" />
-    <Property Name="DoB" Type="datetime" Nullable="false" />
     <Property Name="VisaStatus" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="FirstLanguage" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="IELTS" Type="decimal" Nullable="false" Precision="2" Scale="1" />
     <Property Name="PhoneNumber" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="Location" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="JobTypeId" Type="int" Nullable="false" />

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MvcApplication1.Models.DBModels.Paper>
+
+@{
+    ViewBag.Title = "Papers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (@Model.Any())
+{
+    <h2>Papers</h2>
+}
+else
+{
+    <h2>There is no paper under your qualification yet</h2>   
+}

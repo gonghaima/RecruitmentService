@@ -33,10 +33,11 @@ namespace MvcApplication1.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult Logout()
         {
             Account.logout();
-            return RedirectToAction("login","Account");
+            return RedirectToAction("login","Graduate");
         }
     }
 }

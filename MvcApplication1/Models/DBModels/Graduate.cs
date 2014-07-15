@@ -24,10 +24,8 @@ namespace MvcApplication1.Models.DBModels
     
         public string StudentId { get; set; }
         public string KnownAs { get; set; }
-        public System.DateTime DoB { get; set; }
         public string VisaStatus { get; set; }
         public string FirstLanguage { get; set; }
-        public decimal IELTS { get; set; }
         public string PhoneNumber { get; set; }
         public string Location { get; set; }
         public int JobTypeId { get; set; }

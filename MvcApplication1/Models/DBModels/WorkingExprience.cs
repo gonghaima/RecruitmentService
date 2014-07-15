@@ -11,7 +11,7 @@ namespace MvcApplication1.Models.DBModels
 {
     using System;
     using System.Collections.Generic;
-   
+    
     public partial class WorkingExprience
     {
         public int Id { get; set; }

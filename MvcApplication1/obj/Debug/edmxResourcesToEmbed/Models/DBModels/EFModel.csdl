@@ -254,10 +254,8 @@
     </Key>
     <Property Type="String" Name="StudentId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="KnownAs" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="DoB" Nullable="false" Precision="3" />
     <Property Type="String" Name="VisaStatus" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="FirstLanguage" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Decimal" Name="IELTS" Nullable="false" Precision="2" Scale="1" />
     <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Location" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="JobTypeId" Nullable="false" />

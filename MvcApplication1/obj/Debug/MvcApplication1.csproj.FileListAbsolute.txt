@@ -96,3 +96,8 @@ C:\Steven\temp23\MvcApplication1\bin\System.Web.Optimization.dll
 C:\Steven\temp23\MvcApplication1\bin\WebGrease.dll
 C:\Steven\temp23\MvcApplication1\bin\Antlr3.Runtime.pdb
 C:\Steven\temp23\MvcApplication1\bin\System.Web.Optimization.xml
+E:\ttttt\19\MvcApplication1\bin\Antlr3.Runtime.dll
+E:\ttttt\19\MvcApplication1\bin\System.Web.Optimization.dll
+E:\ttttt\19\MvcApplication1\bin\WebGrease.dll
+E:\ttttt\19\MvcApplication1\bin\Antlr3.Runtime.pdb
+E:\ttttt\19\MvcApplication1\bin\System.Web.Optimization.xml

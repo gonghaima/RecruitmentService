@@ -1,0 +1,29 @@
+﻿@model MvcApplication1.Models.ViewModels.AcQualificationModel
+
+@{
+    ViewBag.Title = "AcademicQualification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AcademicQualification</h2>
+
+@*@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>AcQualificationModel</legend>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}*@
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

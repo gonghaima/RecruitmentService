@@ -1,5 +1,7 @@
-﻿@{
+﻿@model MvcApplication1.Models.ViewModels.Account
+@{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     
 }
 
@@ -7,6 +9,13 @@
 
 <ul>
     @Html.ActionLink("View & Edit profile", "GraduateProfile")
+</ul>
+<ul>
+    @*@Html.ActionLink("View & Edit working experience", "ShowEditExperience", new {userName= @Model.UserName})*@
+    @Html.ActionLink("View & Edit working experience", "ShowEditExperience")
+</ul>
+<ul>
+    @Html.ActionLink("View & Edit Academic Qualification", "AcademicQualification")
 </ul>
 <ul>
     @Html.ActionLink("View & Edit CV", "cv")

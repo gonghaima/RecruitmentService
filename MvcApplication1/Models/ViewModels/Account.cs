@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Security;
 namespace MvcApplication1.Models.ViewModels
 {
-    public class Account:IRegisterInterface, IUserInterface
+    public class Account:Person, IRegisterInterface, IUserInterface
     {
         static dataEntities dbContext = new dataEntities();
 
@@ -17,23 +17,15 @@ namespace MvcApplication1.Models.ViewModels
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 
-        //[Required]
+        [Required]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        //[Required]
+        [Required]
         [Display(Name = "Confirm Password")]
         //[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-
-        [Display(Name = "Email")]
-        public string Email { get; set; }
 
         public Role role{ get; set; }
         User user = new User();
@@ -110,7 +102,13 @@ namespace MvcApplication1.Models.ViewModels
             string mailBody = "Your password is     " + dbContext.Users.FirstOrDefault(c => c.UserName == UserName).Password;
             email.sendMail(mailTo, mailSub, mailBody);
         }
+
+        public bool hasGraduateInfo()
+        {
+            return (dbContext.Graduates.FirstOrDefault(c => c.User.UserName == UserName) != null);
+        }
     }
+
 
     public class PasswordRetrieval
     {

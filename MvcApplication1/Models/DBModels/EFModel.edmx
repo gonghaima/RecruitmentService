@@ -235,10 +235,8 @@
           </Key>
           <Property Name="StudentId" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="KnownAs" Type="varchar" MaxLength="50" />
-          <Property Name="DoB" Type="datetime" Nullable="false" />
           <Property Name="VisaStatus" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="FirstLanguage" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="IELTS" Type="decimal" Nullable="false" Precision="2" Scale="1" />
           <Property Name="PhoneNumber" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Location" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="JobTypeId" Type="int" Nullable="false" />
@@ -1004,10 +1002,8 @@
           </Key>
           <Property Type="String" Name="StudentId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="KnownAs" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="DoB" Nullable="false" Precision="3" />
           <Property Type="String" Name="VisaStatus" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="FirstLanguage" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Decimal" Name="IELTS" Nullable="false" Precision="2" Scale="1" />
           <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Location" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="JobTypeId" Nullable="false" />
@@ -1538,10 +1534,8 @@
                 <ScalarProperty Name="JobTypeId" ColumnName="JobTypeId" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="IELTS" ColumnName="IELTS" />
                 <ScalarProperty Name="FirstLanguage" ColumnName="FirstLanguage" />
                 <ScalarProperty Name="VisaStatus" ColumnName="VisaStatus" />
-                <ScalarProperty Name="DoB" ColumnName="DoB" />
                 <ScalarProperty Name="KnownAs" ColumnName="KnownAs" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
               </MappingFragment>

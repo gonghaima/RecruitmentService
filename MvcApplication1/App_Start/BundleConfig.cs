@@ -19,7 +19,14 @@ namespace MvcApplication1.App_Start
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                        "~/Scripts/bootstrap*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/main").Include(
+                        "~/Scripts/main*"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/customizedCss").Include("~/Content/myMain.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
@@ -33,6 +40,7 @@ namespace MvcApplication1.App_Start
                         "~/Content/themes/base/jquery.ui.tabs.css",
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
+                        "~/Content/bootstrap*",
                         "~/Content/themes/base/jquery.ui.theme.css"));
         }
     }

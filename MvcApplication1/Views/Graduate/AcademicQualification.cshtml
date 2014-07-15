@@ -1,0 +1,64 @@
+﻿@model MvcApplication1.Models.DBModels.AcQualification
+
+@{
+    ViewBag.Title = "AcademicQualification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AcademicQualification</h2>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>AcQualification</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateCompleted)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateCompleted)
+            @Html.ValidationMessageFor(model => model.DateCompleted)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AcqLevelId)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.AcqLevelId)*@
+            @Html.DropDownListFor((m => m.AcqLevelId), (SelectList)@ViewBag.jobTypeList, new { @class = "text-box single-line dropDownWidth" })
+            @Html.ValidationMessageFor(model => model.AcqLevelId)
+        </div>
+
+        @*     <div class="editor-label">
+            @Html.LabelFor(model => model.CVId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CVId)
+            @Html.ValidationMessageFor(model => model.CVId)
+        </div>*@
+
+        <p>
+            <input type="submit" value="Save" />
+            @Html.ActionLink("Papers", "Papers")
+            @Html.ActionLink("Back to Student Home", "Index")
+
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

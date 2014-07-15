@@ -146,6 +146,7 @@
     <Compile Include="Models\DBModels\AcQualificationLevel.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBModels\MetaDataType\AcQualificationMetadata.cs" />
     <Compile Include="Models\DBModels\Competency.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
@@ -218,9 +219,12 @@
     <Compile Include="Models\DBModels\WorkingExprience.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModels\WorkingExprienceMetadata.cs" />
+    <Compile Include="Models\DBModels\MetaDataType\WorkingExprienceMetadata.cs" />
     <Compile Include="Models\ViewModels\Account.cs" />
+    <Compile Include="Models\ViewModels\AcQualificationModel.cs" />
+    <Compile Include="Models\ViewModels\CVInitializer.cs" />
     <Compile Include="Models\ViewModels\Email.cs" />
+    <Compile Include="Models\ViewModels\Person.cs" />
     <Compile Include="Models\ViewModels\RegisterInterface.cs" />
     <Compile Include="Models\ViewModels\GraduateModel.cs" />
     <Compile Include="Models\ViewModels\WorkingExperiencesModel.cs" />
@@ -238,6 +242,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\myMain.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -301,11 +306,27 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\job4bit.jpg" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ie-emulation-modes-warning.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -319,9 +340,15 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Account\ForgetPassword.cshtml" />
     <Content Include="Views\Graduate\GraduateProfile.cshtml" />
-    <Content Include="Views\Graduate\WorkingExperience.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Graduate\test.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Graduate\ShowEditExperience.cshtml" />
+    <Content Include="Views\Shared\WorkingExperience.cshtml" />
+    <Content Include="Views\Graduate\EditExperience.cshtml" />
+    <Content Include="Views\Graduate\AcademicQualification.cshtml" />
+    <Content Include="Views\Graduate\AcademicQualification_back.cshtml" />
+    <Content Include="Views\Graduate\Papers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\DBModels\EFModel.edmx">
@@ -371,6 +398,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\Lib\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
