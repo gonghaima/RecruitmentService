@@ -18,9 +18,9 @@ namespace MvcApplication1.Models.DBModels
         [Required(ErrorMessage = "The Name of the qualification is required.")]
         public string Name;
 
-        [DisplayName("Level of the qualification")]
+        [Display(Name="Level of the qualification")]
         [Required(ErrorMessage = "The level of the qualification is required.")]
-        public int AcqLevelId { get; set; }
+        public int AcqLevelId;
         
     }
 }

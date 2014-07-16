@@ -85,9 +85,9 @@ namespace MvcApplication1.Controllers
             return View();
         }
 
+         [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
         public ActionResult ShowEditExperience()
         {
-
             WorkingExperiencesModel wem = new WorkingExperiencesModel(User.Identity.Name);
             if (wem.WorkingExperiences != null)
             {
@@ -142,11 +142,13 @@ namespace MvcApplication1.Controllers
             
         }
 
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
         public ActionResult EditExperience(string id)
         {
             return View(dbContext.WorkingExpriences.FirstOrDefault(c=>c.Id.ToString()==id));
         }
 
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
         public ActionResult DeleteExperience(string id)
         {
             WorkingExperiencesModel wem = new WorkingExperiencesModel(User.Identity.Name);
@@ -154,6 +156,7 @@ namespace MvcApplication1.Controllers
             return RedirectToAction("ShowEditExperience");
         }
 
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
         public ActionResult AcademicQualification()
         {
             ViewBag.jobTypeList = new SelectList(dbContext.AcQualificationLevels, "Id", "Name");
@@ -185,10 +188,92 @@ namespace MvcApplication1.Controllers
             
         }
 
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
         public ActionResult Papers()
         {
-
+            IEnumerable<Paper> paperList = dbContext.Papers.Where(c => c.AcQualification.CV.Graduate.User.UserName == User.Identity.Name);
+            if (paperList.Any())
+            {
+                return View(paperList);
+            }
             return View();
+        }
+
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public PartialViewResult CreatePaper()
+        {
+            ViewBag.grade = new SelectList(dbContext.Grades, "Id", "Name");
+            return PartialView("Paper", new Paper());
+        }
+
+        [HttpPost]
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public ActionResult CreatePaper(Paper pr)
+        {
+            ViewBag.grade = new SelectList(dbContext.Grades, "Id", "Name");
+            if (ModelState.IsValid)
+            {
+                pr.AcQId = dbContext.AcQualifications.SingleOrDefault(c => c.CV.Graduate.User.UserName == User.Identity.Name).Id;
+                dbContext.Papers.Add(pr);
+                dbContext.SaveChanges();
+            }
+            return RedirectToAction("Papers");
+        }
+
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public ActionResult ShowVendorQualification()
+        {
+            IEnumerable<VdQualification> exsitingVQ;
+            exsitingVQ = dbContext.VdQualifications.Where(c => c.CV.Graduate.User.UserName == User.Identity.Name);
+            if (exsitingVQ != null)
+            {
+                return View(exsitingVQ);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public PartialViewResult CreateVdQualification(int? VdQualificationId)
+        {
+            generateSelectList();
+            if (ModelState.IsValid)
+            {
+                if (VdQualificationId == null)
+                {
+                    return PartialView("VdQualification", new VdQualification());
+                }
+                else
+                {
+                    VdQualification we = dbContext.VdQualifications.FirstOrDefault(c => c.Id == VdQualificationId);
+                    return PartialView("VdQualification", we);
+                }
+            }
+            return PartialView("VdQualification", new VdQualification());
+        }
+
+        private void generateSelectList()
+        {
+            ViewBag.vdExperience = new SelectList(dbContext.Experiences, "Id", "Name");
+            ViewBag.ability = new SelectList(dbContext.Abilities, "Id", "Name");
+            ViewBag.Competency = new SelectList(dbContext.Competencies, "Id", "Name");
+        }
+
+        [HttpPost]
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public ActionResult CreateVdQualification(VdQualification vdq)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            else
+            {
+                return View(vdq);
+            }
+            return RedirectToAction("ShowVendorQualification");
         }
     }
 }

@@ -24,6 +24,8 @@ namespace MvcApplication1.App_Start
 
             bundles.Add(new ScriptBundle("~/bundles/main").Include(
                         "~/Scripts/main*"));
+            bundles.Add(new ScriptBundle("~/bundles/ShowEditExperience").Include(
+                        "~/Scripts/PageSpecific/ShowEditExperience.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
             bundles.Add(new StyleBundle("~/Content/customizedCss").Include("~/Content/myMain.css"));

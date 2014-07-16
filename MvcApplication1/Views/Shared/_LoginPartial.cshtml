@@ -3,12 +3,12 @@
         Logged in: @Html.ActionLink(User.Identity.Name, "GraduateProfile", "Graduate", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
         @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            <a href="javascript:document.getElementById('logoutForm').submit()" class="myButton">Log off</a>
         }
     </text>
 } else {
     <ul>
-        <li>@Html.ActionLink("Register", "Register", "Graduate", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Graduate", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Register", "Register", "Graduate", routeValues: null, htmlAttributes: new { id = "registerLink", @class="myButton" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Graduate", routeValues: null, htmlAttributes: new { id = "loginLink", @class="myButton" })</li>
     </ul>
 }

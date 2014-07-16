@@ -15,14 +15,6 @@ namespace MvcApplication1.Models.ViewModels
         public WorkingExperiencesModel(string uName)
         {
             userName= uName;
-            //CVInfo = dbContext.CVs.FirstOrDefault(c => c.Graduate.User.UserName == uName);
-            //if (CVInfo == null)
-            //{
-            //    string SId=dbContext.Graduates.FirstOrDefault(c=>c.User.UserName==uName).StudentId ;
-            //    CVInfo = new CV() { Name = uName, StudentId = SId };
-            //    dbContext.CVs.Add(CVInfo);
-            //    dbContext.SaveChanges();
-            //}
             CVInfo = CVInitializer.getCV(uName);
             WorkingExperiences = findExperienceByUserName();
         }

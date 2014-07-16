@@ -4,8 +4,8 @@ $(".showDiv").click(function () {
     $(".showDiv").css("display", "none");
 });
 
-var d = $('[name="Company"]').val();
-if (d != "")
-{
-    $(".isHide").slideDown(1000);
-}
+//var d = $('[name="Company"]').val();
+//if (d != "")
+//{
+//    $(".isHide").slideDown(1000);
+//}

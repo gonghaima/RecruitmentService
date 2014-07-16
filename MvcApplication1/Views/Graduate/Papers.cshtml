@@ -6,11 +6,39 @@
 }
 
 
-@if (@Model.Any())
+@if (@Model!=null&&@Model.Any())
 {
     <h2>Papers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Grade
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MvcApplication1.Models.DBModels.Paper p in Model)
+            {
+                <tr>
+                    <td>
+                        @p.Name
+                    </td>
+                    <td>
+                        @p.Grade.Name
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 else
 {
     <h2>There is no paper under your qualification yet</h2>   
 }
+<button class="showDiv myButton">Add New Paper</button>
+@Html.Action("CreatePaper")
+@Html.ActionLink("Back","AcademicQualification")

@@ -1,0 +1,36 @@
+﻿@model MvcApplication1.Models.DBModels.Paper
+
+@using (Html.BeginForm("CreatePaper", "Graduate", FormMethod.Post, new { @class = "isHide" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Paper</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GId)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.GId)*@
+            @Html.DropDownListFor(model => model.GId, (SelectList)ViewBag.grade,new { @class="text-box single-line dropDownWidth"})
+            @Html.ValidationMessageFor(model => model.GId)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" class="myButton" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

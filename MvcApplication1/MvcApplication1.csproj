@@ -192,6 +192,8 @@
     <Compile Include="Models\DBModels\JobType.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBModels\MetaDataType\PaperMetadata.cs" />
+    <Compile Include="Models\DBModels\VdQualificationMetadata.cs" />
     <Compile Include="Models\DBModels\Paper.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
@@ -327,6 +329,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\PageSpecific\ShowEditExperience.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -349,6 +352,9 @@
     <Content Include="Views\Graduate\AcademicQualification.cshtml" />
     <Content Include="Views\Graduate\AcademicQualification_back.cshtml" />
     <Content Include="Views\Graduate\Papers.cshtml" />
+    <Content Include="Views\Shared\Paper.cshtml" />
+    <Content Include="Views\Graduate\ShowVendorQualification.cshtml" />
+    <Content Include="Views\Shared\VdQualification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\DBModels\EFModel.edmx">
