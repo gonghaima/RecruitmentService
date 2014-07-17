@@ -8,7 +8,7 @@
     
   
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/css")
+    
    @*   @Styles.Render("~/Content/themes/base/css")*@
       @Styles.Render("~/Content/customizedCss")
 </head>
@@ -27,7 +27,7 @@
                     <ul id="menu">
                         <li>@Html.ActionLink("Home", "Index", "Graduate")</li>
                         <li>@Html.ActionLink("Qualification", "AcademicQualification", "Graduate")</li>
-                        <li>@Html.ActionLink("CV", "Index", "Graduate")</li>
+                        <li>@Html.ActionLink("CV", "cv", "Graduate")</li>
                     </ul>
                 </nav>
             </div>
@@ -49,7 +49,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/main")
-@*    @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
+    @RenderSection("css", required: false)
+    @Styles.Render("~/Content/myCss")
 </body>
 </html>

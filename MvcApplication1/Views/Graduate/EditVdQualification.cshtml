@@ -1,0 +1,17 @@
+﻿@model MvcApplication1.Models.DBModels.VdQualification
+
+@{
+    ViewBag.Title = "EditVdQualification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Vender Qualification</h2>
+@Html.Action("CreateVdQualification", new { VdQualificationId = @Model.Id })
+@Html.ActionLink("Back", "ShowVendorQualification")
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+ @Scripts.Render("~/bundles/ShowEditExperience")
+}
+@section css {
+    @Styles.Render("~/Content/themes/base/css")
+}

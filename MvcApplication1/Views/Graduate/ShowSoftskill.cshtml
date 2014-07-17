@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MvcApplication1.Models.DBModels.StudentSoftskillLevel>
+
+@{
+    ViewBag.Title = "ShowSoftskill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowSoftskill</h2>
+
+@if (Model!=null && Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ssl in Model)
+            {
+                <tr>
+                    <td>@ssl.SoftSkill.Name</td>
+                    <td>@ssl.SoftSkillLevel.Name</td>
+                    <td>@Html.ActionLink("Delete","DeleteStudentSoftskill", ssl)</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <h3>There is no softskills under your profile yet</h3>
+}
+<button class="showDiv myButton">Add/Edit Soft skills</button>
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
+@Html.Action("AddSoftskill")

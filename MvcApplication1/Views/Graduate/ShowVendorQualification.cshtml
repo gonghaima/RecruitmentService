@@ -13,8 +13,9 @@
             <tr>
                 <th>Name</th>
                 <th>Date Completed</th>
-                <th>Experience Level</th>
-                <th>Ability Level</th>
+                <th>Experience</th>
+                <th>Ability</th>
+                <th>Competency</th>
             </tr>
         </thead>
         <tbody>
@@ -28,14 +29,16 @@
                         @vdq.DateCompleted
                     </td>
                     <td>
-                        @vdq.ExperienceId
+                        @vdq.Experience.Name
                     </td>
                     <td>
-                        @vdq.AbilityId
+                        @vdq.Ability.Name
                     </td>
                     <td>
-                        @vdq.CompetencyId
+                        @vdq.Competency.Name
                     </td>
+                    <td>@Html.ActionLink("Edit", "EditVdQualification", new { id = @vdq.Id })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteVdQualification", new { id = @vdq.Id })</td>
                 </tr>
             }
 
@@ -50,3 +53,9 @@ else
 <button class="showDiv myButton">Add New Vendor Qualification</button>
 @Html.Action("CreateVdQualification")
 @Html.ActionLink("Back", "Index")
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+}
+@section css {
+    @Styles.Render("~/Content/themes/base/css")
+}

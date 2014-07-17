@@ -1,0 +1,40 @@
+﻿@model MvcApplication1.Models.DBModels.StudentSoftskillLevel
+
+@*<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+@using (Html.BeginForm("SoftskillProcessing", "Graduate", FormMethod.Post, new { @class = "isHide" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>StudentSoftskillLevel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SoftSkillId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model=>model.SoftSkillId,(SelectList)ViewBag.skillList,new { @class="text-box single-line dropDownWidth"})
+            @Html.ValidationMessageFor(model => model.SoftSkillId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SoftSkillLevelId)
+        </div>
+        <div class="editor-field">
+            @Html.ValidationMessageFor(model => model.SoftSkillLevelId)
+            @Html.DropDownListFor(model=>model.SoftSkillLevelId,(SelectList)ViewBag.skillLevelList,new { @class="text-box single-line dropDownWidth"})
+        </div>
+
+        <p>
+            <input type="submit" value="Create" class="myButton" />
+            @Html.ActionLink("Not on the list?", "CreateSoftskill")
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back", "ShowSoftskill")
+</div>

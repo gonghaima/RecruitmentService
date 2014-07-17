@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcApplication1.Models.DBModels.CoverLetter>
+
+@{
+    ViewBag.Title = "CoverLetter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CoverLetter</h2>
+
+@if (Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Job Title</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cl in Model)
+            {
+                <tr>
+                    <td>@cl.Job.Employer.Company</td>
+                    <td>@cl.Job.JobTitle.Name</td>
+                    <td>@cl.Content</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h3>There is no cover letter under your account &nbsp; &nbsp; @Html.ActionLink("Back","Index")</h3>
+}

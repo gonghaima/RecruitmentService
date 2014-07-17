@@ -212,10 +212,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="GraduateJobTitle" TypeName="dataModel.GraduateJobTitle" StoreEntitySet="GraduateJobTitle">
+      <EndProperty Name="JobTitle">
+        <ScalarProperty Name="Id" ColumnName="JobTitleId" />
+      </EndProperty>
+      <EndProperty Name="Graduate">
+        <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+      </EndProperty>
+    </AssociationSetMapping>
     <EntitySetMapping Name="SoftSkills">
       <EntityTypeMapping TypeName="dataModel.SoftSkill">
         <MappingFragment StoreEntitySet="SoftSkill">
-          <ScalarProperty Name="SSLevelId" ColumnName="SSLevelId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
@@ -230,14 +237,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="GSkill" TypeName="dataModel.GSkill" StoreEntitySet="GSkill">
-      <EndProperty Name="SoftSkill">
-        <ScalarProperty Name="Id" ColumnName="SId" />
-      </EndProperty>
-      <EndProperty Name="Graduate">
-        <ScalarProperty Name="StudentId" ColumnName="GId" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="JSkill" TypeName="dataModel.JSkill" StoreEntitySet="JSkill">
       <EndProperty Name="SoftSkill">
         <ScalarProperty Name="Id" ColumnName="SId" />
@@ -246,13 +245,14 @@
         <ScalarProperty Name="Id" ColumnName="JId" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="GraduateJobTitle" TypeName="dataModel.GraduateJobTitle" StoreEntitySet="GraduateJobTitle">
-      <EndProperty Name="JobTitle">
-        <ScalarProperty Name="Id" ColumnName="JobTitleId" />
-      </EndProperty>
-      <EndProperty Name="Graduate">
-        <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-      </EndProperty>
-    </AssociationSetMapping>
+    <EntitySetMapping Name="StudentSoftskillLevels">
+      <EntityTypeMapping TypeName="dataModel.StudentSoftskillLevel">
+        <MappingFragment StoreEntitySet="StudentSoftskillLevel">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="SoftSkillLevelId" ColumnName="SoftSkillLevelId" />
+          <ScalarProperty Name="SoftSkillId" ColumnName="SoftSkillId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

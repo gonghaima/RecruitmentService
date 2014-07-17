@@ -3,6 +3,7 @@ using MvcApplication1.Models.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq;
+using System.Data.Entity;
 namespace MvcApplication1.Controllers
 {
     public class GraduateController : Controller
@@ -265,9 +266,26 @@ namespace MvcApplication1.Controllers
         [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
         public ActionResult CreateVdQualification(VdQualification vdq)
         {
+            generateSelectList();
+            vdq.CVId = dbContext.CVs.FirstOrDefault(c => c.Graduate.User.UserName == User.Identity.Name).Id;
             if (ModelState.IsValid)
             {
-
+                //Update existing or create new
+                if (dbContext.VdQualifications.Any(c => c.Id == vdq.Id))
+                {
+                    VdQualification tmpVdq = dbContext.VdQualifications.FirstOrDefault(c => c.Id == vdq.Id);
+                    tmpVdq.Name = vdq.Name;
+                    tmpVdq.DateCompleted= vdq.DateCompleted;
+                    tmpVdq.ExperienceId= vdq.ExperienceId;
+                    tmpVdq.AbilityId= vdq.AbilityId;
+                    tmpVdq.CompetencyId= vdq.CompetencyId;
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    dbContext.VdQualifications.Add(vdq);
+                    dbContext.SaveChanges();
+                }
             }
             else
             {
@@ -275,5 +293,115 @@ namespace MvcApplication1.Controllers
             }
             return RedirectToAction("ShowVendorQualification");
         }
+
+        public ActionResult EditVdQualification(string id)
+        {
+            return View(dbContext.VdQualifications.FirstOrDefault(c=>c.Id.ToString()==id));
+        }
+
+        public ActionResult DeleteVdQualification(string id)
+        {
+            int vId = int.Parse(id);
+            var c = new VdQualification() { Id = vId };
+            dbContext.Entry(c).State = EntityState.Deleted;
+            dbContext.SaveChanges();
+            return RedirectToAction("ShowVendorQualification");
+        }
+
+        public ActionResult CV()
+        {
+            CVModel cvModel = new CVModel(User.Identity.Name);
+            return View(cvModel);
+        }
+
+        public ActionResult CoverLetter()
+        {
+            IEnumerable<CoverLetter> ienumCL = dbContext.CoverLetters.Where(c => c.Graduate.User.UserName == User.Identity.Name);
+            return View(ienumCL);
+        }
+
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public ActionResult ShowSoftskill()
+        {
+            string sId = dbContext.Graduates.FirstOrDefault(c => c.User.UserName == User.Identity.Name).StudentId;
+            IEnumerable<StudentSoftskillLevel> softSkills = dbContext.StudentSoftskillLevels.Where(c => c.StudentId == sId);
+            return View(softSkills);
+        }
+
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public PartialViewResult CreateSoftskill(int? SoftSkillId)
+        {
+            return PartialView("SoftSkill", new SoftSkill());
+        }
+
+        [HttpPost]
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public ActionResult CreateSoftskill(SoftSkill sskill)
+        {
+            SoftSkill exsitingssk = dbContext.SoftSkills.FirstOrDefault(c => c.Id == sskill.Id);
+            SoftSkill exsitingName = dbContext.SoftSkills.FirstOrDefault(c => c.Name == sskill.Name.Trim());
+            //If already a record with same id, just update name
+            if (exsitingssk != null)
+            {
+                exsitingssk.Name = sskill.Name;
+                dbContext.SaveChanges();
+            }//If there is already a same skill name, return
+            else if (exsitingName != null)
+            {
+                return RedirectToAction("ShowSoftskill");
+            }//New, add the new softskill
+            else
+            {
+                dbContext.SoftSkills.Add(sskill);
+                dbContext.SaveChanges();
+            }
+            return RedirectToAction("ShowSoftskill");
+        }
+
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public PartialViewResult AddSoftskill(int? SoftSkillId)
+        {
+            generateSoftSkillSelectList();
+            return PartialView("AddSoftskill", new StudentSoftskillLevel());
+        }
+
+        private void generateSoftSkillSelectList()
+        {
+            ViewBag.skillList = new SelectList(dbContext.SoftSkills, "Id", "Name");
+            ViewBag.skillLevelList = new SelectList(dbContext.SoftSkillLevels, "Id", "Name");
+        }
+
+        [HttpPost]
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
+        public ActionResult SoftskillProcessing(StudentSoftskillLevel ssssl)
+        {
+            string sId = dbContext.Graduates.FirstOrDefault(c => c.User.UserName.ToString() == User.Identity.Name).StudentId;
+            ssssl.StudentId = sId;
+            StudentSoftskillLevel exsitsk = dbContext.StudentSoftskillLevels.FirstOrDefault(c => c.StudentId == sId && c.SoftSkillId == ssssl.SoftSkillId);
+            StudentSoftskillLevel exsitskl = dbContext.StudentSoftskillLevels.FirstOrDefault(c => c.StudentId == sId && c.SoftSkillId == ssssl.SoftSkillId && c.SoftSkillLevelId == ssssl.SoftSkillLevelId);
+            
+            //If there is already a graduate with the skill, remove it and add new record
+            if (exsitsk != null)
+            {
+                dbContext.Entry(exsitsk).State = EntityState.Deleted;
+                dbContext.StudentSoftskillLevels.Add(ssssl);
+                dbContext.SaveChanges();
+            } //If no such graduate information at all, insert a new record.
+            else if (exsitskl == null)
+            {
+                dbContext.StudentSoftskillLevels.Add(ssssl);
+                dbContext.SaveChanges();
+            }
+
+            return RedirectToAction("ShowSoftskill");
+        }
+
+        public ActionResult DeleteStudentSoftskill(StudentSoftskillLevel sskl)
+        {
+            dbContext.Entry(sskl).State = EntityState.Deleted;
+            dbContext.SaveChanges();
+            return RedirectToAction("ShowSoftskill");
+        }
+
     }
 }

@@ -1,12 +1,19 @@
-﻿    /* my own
+﻿/* my own
     ----------------------------------------------------------*/
-.isHide{
-    display:none;
+.isHide {
+    display: none;
 }
+
 .myButton:hover {
-    color:#FFFFFF;
-    background-color:#c7d1d6;
+    color: #FFFFFF;
+    background-color: #c7d1d6;
 }
+
 .dropDownWidth {
     width: 311px;
+}
+
+h2 > a {
+    font-size: .60em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
 }

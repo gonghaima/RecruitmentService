@@ -9,3 +9,12 @@ $(".showDiv").click(function () {
 //{
 //    $(".isHide").slideDown(1000);
 //}
+
+$(document).ready(function () {
+    
+
+    if ($(".datepicker")[0]) {
+        $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+    }
+});
+

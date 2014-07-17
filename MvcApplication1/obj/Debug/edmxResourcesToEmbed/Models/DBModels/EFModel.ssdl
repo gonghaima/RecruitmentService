@@ -12,7 +12,6 @@
     <EntitySet Name="Grade" EntityType="dataModel.Store.Grade" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Graduate" EntityType="dataModel.Store.Graduate" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GraduateJobTitle" EntityType="dataModel.Store.GraduateJobTitle" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="GSkill" EntityType="dataModel.Store.GSkill" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Job" EntityType="dataModel.Store.Job" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="JobTitle" EntityType="dataModel.Store.JobTitle" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="JobType" EntityType="dataModel.Store.JobType" store:Type="Tables" Schema="dbo" />
@@ -23,6 +22,7 @@
     <EntitySet Name="SiteSuperVisor" EntityType="dataModel.Store.SiteSuperVisor" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SoftSkill" EntityType="dataModel.Store.SoftSkill" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SoftSkillLevel" EntityType="dataModel.Store.SoftSkillLevel" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentSoftskillLevel" EntityType="dataModel.Store.StudentSoftskillLevel" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UR" EntityType="dataModel.Store.UR" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="User" EntityType="dataModel.Store.User" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="VdQualification" EntityType="dataModel.Store.VdQualification" store:Type="Tables" Schema="dbo" />
@@ -83,10 +83,6 @@
       <End Role="User" EntitySet="User" />
       <End Role="SiteSuperVisor" EntitySet="SiteSuperVisor" />
     </AssociationSet>
-    <AssociationSet Name="FK_dbo_SoftSkill_SoftSkillLevel" Association="dataModel.Store.FK_dbo_SoftSkill_SoftSkillLevel">
-      <End Role="SoftSkillLevel" EntitySet="SoftSkillLevel" />
-      <End Role="SoftSkill" EntitySet="SoftSkill" />
-    </AssociationSet>
     <AssociationSet Name="FK_GraduateJobTitle_Graduate" Association="dataModel.Store.FK_GraduateJobTitle_Graduate">
       <End Role="Graduate" EntitySet="Graduate" />
       <End Role="GraduateJobTitle" EntitySet="GraduateJobTitle" />
@@ -94,14 +90,6 @@
     <AssociationSet Name="FK_GraduateJobTitle_JobTitle" Association="dataModel.Store.FK_GraduateJobTitle_JobTitle">
       <End Role="JobTitle" EntitySet="JobTitle" />
       <End Role="GraduateJobTitle" EntitySet="GraduateJobTitle" />
-    </AssociationSet>
-    <AssociationSet Name="FK_GSkill_Graduate" Association="dataModel.Store.FK_GSkill_Graduate">
-      <End Role="Graduate" EntitySet="Graduate" />
-      <End Role="GSkill" EntitySet="GSkill" />
-    </AssociationSet>
-    <AssociationSet Name="FK_GSkill_SoftSkill" Association="dataModel.Store.FK_GSkill_SoftSkill">
-      <End Role="SoftSkill" EntitySet="SoftSkill" />
-      <End Role="GSkill" EntitySet="GSkill" />
     </AssociationSet>
     <AssociationSet Name="FK_JSkill_Job" Association="dataModel.Store.FK_JSkill_Job">
       <End Role="Job" EntitySet="Job" />
@@ -118,6 +106,18 @@
     <AssociationSet Name="FK_Paper_Grade" Association="dataModel.Store.FK_Paper_Grade">
       <End Role="Grade" EntitySet="Grade" />
       <End Role="Paper" EntitySet="Paper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentSoftskillLevel_Graduate" Association="dataModel.Store.FK_StudentSoftskillLevel_Graduate">
+      <End Role="Graduate" EntitySet="Graduate" />
+      <End Role="StudentSoftskillLevel" EntitySet="StudentSoftskillLevel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentSoftskillLevel_Softskill" Association="dataModel.Store.FK_StudentSoftskillLevel_Softskill">
+      <End Role="SoftSkill" EntitySet="SoftSkill" />
+      <End Role="StudentSoftskillLevel" EntitySet="StudentSoftskillLevel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentSoftskillLevel_SoftskillLevel" Association="dataModel.Store.FK_StudentSoftskillLevel_SoftskillLevel">
+      <End Role="SoftSkillLevel" EntitySet="SoftSkillLevel" />
+      <End Role="StudentSoftskillLevel" EntitySet="StudentSoftskillLevel" />
     </AssociationSet>
     <AssociationSet Name="FK_UR_Role" Association="dataModel.Store.FK_UR_Role">
       <End Role="Role" EntitySet="Role" />
@@ -246,14 +246,6 @@
     <Property Name="StudentId" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="JobTitleId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="GSkill">
-    <Key>
-      <PropertyRef Name="GId" />
-      <PropertyRef Name="SId" />
-    </Key>
-    <Property Name="GId" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="SId" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Job">
     <Key>
       <PropertyRef Name="Id" />
@@ -326,7 +318,6 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="SSLevelId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SoftSkillLevel">
     <Key>
@@ -335,6 +326,16 @@
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="Ranking" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentSoftskillLevel">
+    <Key>
+      <PropertyRef Name="SoftSkillId" />
+      <PropertyRef Name="SoftSkillLevelId" />
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="SoftSkillId" Type="int" Nullable="false" />
+    <Property Name="SoftSkillLevelId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="varchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="UR">
     <Key>
@@ -547,18 +548,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_dbo_SoftSkill_SoftSkillLevel">
-    <End Role="SoftSkillLevel" Type="dataModel.Store.SoftSkillLevel" Multiplicity="1" />
-    <End Role="SoftSkill" Type="dataModel.Store.SoftSkill" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SoftSkillLevel">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="SoftSkill">
-        <PropertyRef Name="SSLevelId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_GraduateJobTitle_Graduate">
     <End Role="Graduate" Type="dataModel.Store.Graduate" Multiplicity="1" />
     <End Role="GraduateJobTitle" Type="dataModel.Store.GraduateJobTitle" Multiplicity="*" />
@@ -580,30 +569,6 @@
       </Principal>
       <Dependent Role="GraduateJobTitle">
         <PropertyRef Name="JobTitleId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_GSkill_Graduate">
-    <End Role="Graduate" Type="dataModel.Store.Graduate" Multiplicity="1" />
-    <End Role="GSkill" Type="dataModel.Store.GSkill" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Graduate">
-        <PropertyRef Name="StudentId" />
-      </Principal>
-      <Dependent Role="GSkill">
-        <PropertyRef Name="GId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_GSkill_SoftSkill">
-    <End Role="SoftSkill" Type="dataModel.Store.SoftSkill" Multiplicity="1" />
-    <End Role="GSkill" Type="dataModel.Store.GSkill" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SoftSkill">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="GSkill">
-        <PropertyRef Name="SId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -652,6 +617,42 @@
       </Principal>
       <Dependent Role="Paper">
         <PropertyRef Name="GId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentSoftskillLevel_Graduate">
+    <End Role="Graduate" Type="dataModel.Store.Graduate" Multiplicity="1" />
+    <End Role="StudentSoftskillLevel" Type="dataModel.Store.StudentSoftskillLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Graduate">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="StudentSoftskillLevel">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentSoftskillLevel_Softskill">
+    <End Role="SoftSkill" Type="dataModel.Store.SoftSkill" Multiplicity="1" />
+    <End Role="StudentSoftskillLevel" Type="dataModel.Store.StudentSoftskillLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SoftSkill">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentSoftskillLevel">
+        <PropertyRef Name="SoftSkillId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentSoftskillLevel_SoftskillLevel">
+    <End Role="SoftSkillLevel" Type="dataModel.Store.SoftSkillLevel" Multiplicity="1" />
+    <End Role="StudentSoftskillLevel" Type="dataModel.Store.StudentSoftskillLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SoftSkillLevel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentSoftskillLevel">
+        <PropertyRef Name="SoftSkillLevelId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -16,16 +16,14 @@ namespace MvcApplication1.Models.DBModels
     {
         public SoftSkill()
         {
-            this.Graduates = new HashSet<Graduate>();
             this.Jobs = new HashSet<Job>();
+            this.StudentSoftskillLevels = new HashSet<StudentSoftskillLevel>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public int SSLevelId { get; set; }
     
-        public virtual SoftSkillLevel SoftSkillLevel { get; set; }
-        public virtual ICollection<Graduate> Graduates { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
+        public virtual ICollection<StudentSoftskillLevel> StudentSoftskillLevels { get; set; }
     }
 }

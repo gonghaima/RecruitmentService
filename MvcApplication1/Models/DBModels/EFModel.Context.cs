@@ -47,5 +47,6 @@ namespace MvcApplication1.Models.DBModels
         public DbSet<WorkingExprience> WorkingExpriences { get; set; }
         public DbSet<SoftSkill> SoftSkills { get; set; }
         public DbSet<SoftSkillLevel> SoftSkillLevels { get; set; }
+        public DbSet<StudentSoftskillLevel> StudentSoftskillLevels { get; set; }
     }
 }

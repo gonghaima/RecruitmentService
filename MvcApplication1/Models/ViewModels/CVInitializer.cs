@@ -8,6 +8,7 @@ namespace MvcApplication1.Models.ViewModels
         public static CV getCV(string uName)
         {
             dataEntities dbContext = new dataEntities();
+            
             CV existingCV = dbContext.CVs.FirstOrDefault(c => c.Graduate.User.UserName == uName);
             if (existingCV == null)
             {

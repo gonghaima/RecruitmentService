@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 namespace MvcApplication1.Models.DBModels
 {
@@ -12,6 +13,8 @@ namespace MvcApplication1.Models.DBModels
     {
         [Required(ErrorMessage = "Job Start Date is required.")]
         public System.DateTime Start;
+
+        public Nullable<System.DateTime> Finish { get; set; }
 
         [Required(ErrorMessage = "Job Title is required.")]
         public string JobTitle;
