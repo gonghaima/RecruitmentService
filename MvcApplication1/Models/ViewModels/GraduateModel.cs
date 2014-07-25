@@ -49,16 +49,19 @@ namespace MvcApplication1.Models.ViewModels
         public SelectList JobTypeList;
         //ViewBag.jt = new SelectList(gradModel.IenumJobType, "Id", "Name");
 
+        public Email mail {get;set;}
+
         public GraduateModel()
         {
             this.IenumJobType = dbContext.JobTypes;
+            mail = new ViewModels.Email();
             JobTypeList = new SelectList(this.IenumJobType, "Id", "Name");
 
         }
 
         public GraduateModel(string un)
         {
-            
+            mail = new ViewModels.Email();
             existingGrad = dbContext.Graduates.FirstOrDefault(c => c.User.UserName == un);
             this.IenumJobType = dbContext.JobTypes;
             JobTypeList = new SelectList(this.IenumJobType, "Id", "Name");
@@ -130,6 +133,12 @@ namespace MvcApplication1.Models.ViewModels
             {
                 updateExistingGrad();
                 dbContext.SaveChanges();
+
+                //Confirmation email to the graduate
+                string mailSub = "Profile Updated";
+                string mailBody = "The graduate: " + this.FirstName + " " + this.LastName + " has updated his/her profile";
+                mail.sendMail(this.Email, mailSub, mailBody);
+
                 profileSaved = true;
                 return profileSaved;
             }
@@ -137,6 +146,13 @@ namespace MvcApplication1.Models.ViewModels
             {
                 dbContext.Graduates.Add(convertToGraduate());
                 dbContext.SaveChanges();
+
+                //Confirmation email to the graduate
+                Email mail = new Email();
+                string mailSub = "Your graduate profiles has been created";
+                string mailBody = "The graduate: " + this.FirstName + " " + this.LastName + " has updated his/her profile";
+                mail.sendMail(this.Email, mailSub, mailBody);
+
                 profileSaved = true;
                 return profileSaved;
             }

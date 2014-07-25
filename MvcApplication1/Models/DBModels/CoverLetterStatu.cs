@@ -12,16 +12,17 @@ namespace MvcApplication1.Models.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class CoverLetter
+    public partial class CoverLetterStatu
     {
-        public int Id { get; set; }
-        public string Content { get; set; }
-        public string StudentId { get; set; }
-        public int JobId { get; set; }
-        public int StatusId { get; set; }
+        public CoverLetterStatu()
+        {
+            this.CoverLetters = new HashSet<CoverLetter>();
+        }
     
-        public virtual Graduate Graduate { get; set; }
-        public virtual Job Job { get; set; }
-        public virtual CoverLetterStatu CoverLetterStatu { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Ranking { get; set; }
+    
+        public virtual ICollection<CoverLetter> CoverLetters { get; set; }
     }
 }

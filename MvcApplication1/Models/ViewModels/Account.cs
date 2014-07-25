@@ -52,6 +52,12 @@ namespace MvcApplication1.Models.ViewModels
                 dbContext.SaveChanges();
                 dbContext.Users.SingleOrDefault(c => c.UserName == user.UserName).Roles.Add(r);
                 dbContext.SaveChanges();
+
+                //Confirmation email of register
+                Email mail = new Email();
+                string mailSub = "Account Created";
+                string mailBody = "Your Name: " + this.FirstName + " " + this.LastName + " User Name: "+user.UserName+" has registered as a new user.";
+                mail.sendMail(this.Email, mailSub, mailBody);
                 return true;
             }
         }

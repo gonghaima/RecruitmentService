@@ -3,19 +3,33 @@
 
 @{
     ViewBag.Title = "CV";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutEmployer.cshtml";
 }
 
-<h1>CV - @Model.user.FirstName &nbsp; @Model.user.LastName </h1>
+<h1>
+    CV - @Model.user.FirstName &nbsp; @Model.user.LastName &nbsp;
+</h1>
 
-<h2>Graduate Profile &nbsp; &nbsp;@Html.ActionLink("Edit", "GraduateProfile")</h2>
+<h2>
+    Candidate Profile
+@*    <div>
+         @using(Html.BeginForm("deleteupdate", "home"))
+        {
+                @Html.DropDownList("jobId",(SelectList)ViewBag.JobList )
+    @Html.Hidden("studentId",Model.graduate.StudentId)
+    <input type="submit" class="myButton" value="Send Invitation" />
+        }
+</div>*@
+</h2>
+
 <table>
     <thead>
         <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>Known As</th>
             <th>Visa Status</th>
             <th>First Language</th>
-            <th>Phone Number</th>
             <th>Location</th>
             <th>Preferred Job Type</th>
              
@@ -23,20 +37,21 @@
     </thead>
     <tbody>
         <tr>
+            <td>@Model.graduate.User.FirstName</td>
+            <td>@Model.graduate.User.LastName</td>
             <td>@Model.graduate.KnownAs</td>
             <td>@Model.graduate.VisaStatus</td>
             <td>@Model.graduate.FirstLanguage</td>
-            <td>@Model.graduate.PhoneNumber</td>
             <td>@Model.graduate.Location</td>
             <td>@Model.graduate.JobType.Name</td>
         </tr>
     </tbody>
 </table>
 <br />
-<h2>Academic Qualification  &nbsp;&nbsp;@Html.ActionLink("Edit", "AcademicQualification")</h2>
+<h2>Academic Qualification</h2>
 @if (Model.acQualification == null)
 {
-    <h4>There is no academic qualification in your profile yet</h4>
+    <h4>There is no academic qualification in the profile yet</h4>
 }
 else
 {
@@ -57,10 +72,10 @@ else
         </tbody>
     </table>
 }
-<h2>Vendor Qualification &nbsp;&nbsp;@Html.ActionLink("Edit","ShowVendorQualification")</h2>
+<h2>Vendor Qualification</h2>
 @if (Model.vdQualifications.Count() == 0)
 {
-    <h4>There is no vendor qualification in your profile yet</h4>
+    <h4>There is no vendor qualification in the profile yet</h4>
 }
 else
 {
@@ -89,10 +104,10 @@ else
     </table>
 }
 <br />
-<h2>Working Experience @Html.ActionLink("Edit", "ShowEditExperience")</h2>
+<h2>Working Experience</h2>
 @if (Model.wkExperiences.Count() == 0)
 {
-    <h4>There is no working experience in your profile yet</h4>
+    <h4>There is no working experience in the profile yet</h4>
 }
 else
 {
@@ -112,14 +127,12 @@ else
                 <tr>
                     <td>@we.Company</td>
                     <td>@we.Start.ToString("dd/MM/yyyy")</td>
-                    @*<td>@we.Finish.value.ToString("dd/MM/yyyy")</td>*@
                     @if (we.Finish == null)
                     {
                         <td></td>
                     }
                     else
                     {
-                        @*<td>@we.Finish.value.ToString("dd/MM/yyyy")</td>*@
                         <td>@we.Finish</td>
                     }
                     <td>@we.JobTitle</td>
@@ -129,5 +142,6 @@ else
         </tbody>
     </table>   
 }
-@Html.ActionLink("Back", "Index")
+@Html.ActionLink("Back", "Candidate")
+
 

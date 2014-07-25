@@ -70,6 +70,7 @@
     <EntitySetMapping Name="CoverLetters">
       <EntityTypeMapping TypeName="dataModel.CoverLetter">
         <MappingFragment StoreEntitySet="CoverLetter">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
           <ScalarProperty Name="JobId" ColumnName="JobId" />
           <ScalarProperty Name="StudentId" ColumnName="StudentId" />
           <ScalarProperty Name="Content" ColumnName="Content" />
@@ -132,6 +133,7 @@
     <EntitySetMapping Name="Jobs">
       <EntityTypeMapping TypeName="dataModel.Job">
         <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
           <ScalarProperty Name="Activated" ColumnName="Activated" />
           <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
           <ScalarProperty Name="JobTypeId" ColumnName="JobTypeId" />
@@ -251,6 +253,15 @@
           <ScalarProperty Name="StudentId" ColumnName="StudentId" />
           <ScalarProperty Name="SoftSkillLevelId" ColumnName="SoftSkillLevelId" />
           <ScalarProperty Name="SoftSkillId" ColumnName="SoftSkillId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoverLetterStatus">
+      <EntityTypeMapping TypeName="dataModel.CoverLetterStatu">
+        <MappingFragment StoreEntitySet="CoverLetterStatus">
+          <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

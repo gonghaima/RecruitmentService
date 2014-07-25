@@ -15,6 +15,21 @@ $(document).ready(function () {
 
     if ($(".datepicker")[0]) {
         $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
-    }
+    };
+
+    if ($("title").text().indexOf('Login') != -1) {
+        $("#menu").hide();
+    };
+
+    $(".lstMenu").mouseover(function () {
+        //$("header").css("margin-bottom", "100px"),
+        $('.lstDropdown').css("display","block");
+    });
+
+    $(".lstDropdown").mouseout(function () {
+        //$("header").css("margin-bottom", "0px"),
+        $('.lstDropdown').css("display", "none");
+    });
+
 });
 

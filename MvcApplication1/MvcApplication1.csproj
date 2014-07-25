@@ -135,6 +135,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GraduateController.cs" />
+    <Compile Include="Controllers\SupervisorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,6 +146,9 @@
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DBModels\AcQualificationLevel.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBModels\CoverLetterStatu.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DBModels\MetaDataType\AcQualificationMetadata.cs" />
@@ -231,6 +235,7 @@
     <Compile Include="Models\ViewModels\CVInitializer.cs" />
     <Compile Include="Models\ViewModels\CVModel.cs" />
     <Compile Include="Models\ViewModels\Email.cs" />
+    <Compile Include="Models\ViewModels\EmployerModel.cs" />
     <Compile Include="Models\ViewModels\Person.cs" />
     <Compile Include="Models\ViewModels\RegisterInterface.cs" />
     <Compile Include="Models\ViewModels\GraduateModel.cs" />
@@ -376,6 +381,25 @@
     <Content Include="Views\Shared\SoftSkill.cshtml" />
     <Content Include="Views\Graduate\ShowSoftskill.cshtml" />
     <Content Include="Views\Shared\AddSoftskill.cshtml" />
+    <Content Include="Views\Employer\Register.cshtml" />
+    <Content Include="Views\Shared\_LayoutEmployer.cshtml" />
+    <Content Include="Views\Employer\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginPartialEmployer.cshtml" />
+    <Content Include="Views\Employer\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutMain.cshtml" />
+    <Content Include="Views\Employer\EmployerProfile.cshtml" />
+    <Content Include="Views\Employer\ShowActivatedJobs.cshtml" />
+    <Content Include="Views\Employer\CreateNewJob.cshtml" />
+    <Content Include="Views\Employer\JobCreated.cshtml" />
+    <Content Include="Views\Employer\EditJob.cshtml" />
+    <Content Include="Views\Employer\Candidate.cshtml" />
+    <Content Include="Views\Employer\cv.cshtml" />
+    <Content Include="Views\Employer\InvitationSent.cshtml" />
+    <Content Include="Views\Shared\_LayoutSupervisor.cshtml" />
+    <Content Include="Views\Supervisor\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginPartialSupervisor.cshtml" />
+    <Content Include="Views\Supervisor\Register.cshtml" />
+    <Content Include="Views\Supervisor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\DBModels\EFModel.edmx">

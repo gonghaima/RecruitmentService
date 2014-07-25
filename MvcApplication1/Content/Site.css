@@ -32,6 +32,20 @@ a {
         background-color: #c7d1d6;
     }
 
+    #body a:link, a:visited,
+    a:active, a:hover {
+        /*color: #333;*/
+        color: bisque;
+        text-decoration: initial;
+    }
+
+    #body a:hover {
+        background-color:transparent;
+        font-size: 1.50em;
+        font-weight:bold;
+        /*text-decoration:underline;*/
+    }
+
 header, footer, hgroup,
 nav, section {
     display: block;

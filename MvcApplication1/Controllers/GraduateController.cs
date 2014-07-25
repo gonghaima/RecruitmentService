@@ -30,7 +30,8 @@ namespace MvcApplication1.Controllers
         {
             if (ModelState.IsValid && acc.register("Graduate"))
             {
-                return RedirectToAction("GraduateProfile");
+                acc.login();
+                return RedirectToAction("Index");
             }
             else
             {

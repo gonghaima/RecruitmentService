@@ -132,6 +132,11 @@
       <End Role="SoftSkillLevel" EntitySet="SoftSkillLevels" />
       <End Role="StudentSoftskillLevel" EntitySet="StudentSoftskillLevels" />
     </AssociationSet>
+    <EntitySet Name="CoverLetterStatus" EntityType="dataModel.CoverLetterStatu" />
+    <AssociationSet Name="FK_dbo_CoverLetter_CoverLetterStatus" Association="dataModel.FK_dbo_CoverLetter_CoverLetterStatus">
+      <End Role="CoverLetterStatu" EntitySet="CoverLetterStatus" />
+      <End Role="CoverLetter" EntitySet="CoverLetters" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Role">
     <Key>
@@ -206,11 +211,13 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Content" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Content" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="StudentId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="JobId" Nullable="false" />
     <NavigationProperty Name="Graduate" Relationship="dataModel.FK_dbo_CoverLetter_Graduate" FromRole="CoverLetter" ToRole="Graduate" />
     <NavigationProperty Name="Job" Relationship="dataModel.FK_dbo_CoverLetter_Job" FromRole="CoverLetter" ToRole="Job" />
+    <Property Type="Int32" Name="StatusId" Nullable="false" />
+    <NavigationProperty Name="CoverLetterStatu" Relationship="dataModel.FK_dbo_CoverLetter_CoverLetterStatus" FromRole="CoverLetter" ToRole="CoverLetterStatu" />
   </EntityType>
   <EntityType Name="CV">
     <Key>
@@ -289,6 +296,7 @@
     <NavigationProperty Name="JobTitle" Relationship="dataModel.FK_dbo_Job_JobTitle" FromRole="Job" ToRole="JobTitle" />
     <NavigationProperty Name="JobType" Relationship="dataModel.FK_dbo_Job_JobType" FromRole="Job" ToRole="JobType" />
     <NavigationProperty Name="SoftSkills" Relationship="dataModel.JSkill" FromRole="Job" ToRole="SoftSkill" />
+    <Property Type="String" Name="JobDescription" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="JobTitle">
     <Key>
@@ -692,6 +700,27 @@
       </Principal>
       <Dependent Role="StudentSoftskillLevel">
         <PropertyRef Name="SoftSkillLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CoverLetterStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Ranking" Nullable="false" />
+    <NavigationProperty Name="CoverLetters" Relationship="dataModel.FK_dbo_CoverLetter_CoverLetterStatus" FromRole="CoverLetterStatu" ToRole="CoverLetter" />
+  </EntityType>
+  <Association Name="FK_dbo_CoverLetter_CoverLetterStatus">
+    <End Type="dataModel.CoverLetterStatu" Role="CoverLetterStatu" Multiplicity="1" />
+    <End Type="dataModel.CoverLetter" Role="CoverLetter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoverLetterStatu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CoverLetter">
+        <PropertyRef Name="StatusId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

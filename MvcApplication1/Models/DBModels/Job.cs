@@ -26,6 +26,7 @@ namespace MvcApplication1.Models.DBModels
         public int JobTypeId { get; set; }
         public int EmployerId { get; set; }
         public bool Activated { get; set; }
+        public string JobDescription { get; set; }
     
         public virtual AcQualificationLevel AcQualificationLevel { get; set; }
         public virtual ICollection<CoverLetter> CoverLetters { get; set; }

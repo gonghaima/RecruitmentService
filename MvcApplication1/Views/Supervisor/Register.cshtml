@@ -1,0 +1,44 @@
+﻿@model MvcApplication1.Models.ViewModels.Account
+@{
+    ViewBag.Title = "Create a suervisor";
+    Layout = "~/Views/Shared/_LayoutSupervisor.cshtml";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <fieldset>
+        @Html.ValidationSummary()
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(c => c.UserName)
+                @Html.EditorFor(c => c.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(c => c.Password)
+                @Html.EditorFor(c => c.Password)
+            </li>
+            <li>
+                @Html.LabelFor(c => c.ConfirmPassword)
+                @Html.EditorFor(c => c.ConfirmPassword)
+            </li>
+            <li>
+                @Html.LabelFor(c => c.FirstName)
+                @Html.EditorFor(c => c.FirstName)
+            </li>
+            <li>
+                @Html.LabelFor(c => c.LastName)
+                @Html.EditorFor(c => c.LastName)
+            </li>
+            <li>
+                @Html.LabelFor(c => c.Email)
+                @Html.EditorFor(c => c.Email)
+            </li>
+        </ol>
+        <input type="submit" value="Register" />
+    </fieldset>
+}
+

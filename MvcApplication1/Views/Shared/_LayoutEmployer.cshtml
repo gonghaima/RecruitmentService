@@ -4,15 +4,13 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title - Graduate Jobs Application</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    @Styles.Render("~/Content/myCss")
-
     <meta name="viewport" content="width=device-width" />
-
-
+    
+  
     @Scripts.Render("~/bundles/modernizr")
-
-    @*   @Styles.Render("~/Content/themes/base/css")*@
-    @Styles.Render("~/Content/customizedCss")
+    
+   @*   @Styles.Render("~/Content/themes/base/css")*@
+      @Styles.Render("~/Content/customizedCss")
 </head>
 <body>
     <header>
@@ -23,31 +21,14 @@
             </div>
             <div class="float-right">
                 <section id="login">
-                    @Html.Partial("_LoginPartial")
+                    @Html.Partial("_LoginPartialEmployer")
                 </section>
-                <nav class="nav">
+                <nav>
                     <ul id="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Graduate")</li>
-                        <li>@Html.ActionLink("Profile", "GraduateProfile", "Graduate")</li>
-                        <li class="lstMenu">@Html.ActionLink("Qualification", "hummy", null, new {href="#" })
-                            <ul class="lstDropdown">
-                                <li>
-                                    @Html.ActionLink("Academic","AcademicQualification")
-                                </li>
-                                <li>
-                                     @Html.ActionLink("Vendor","ShowVendorQualification")
-                                </li>
-                            </ul>
-                        </li>
-                        <li>@Html.ActionLink("CV", "cv", "Graduate")</li>
-                        <li>@Html.ActionLink("MainSite", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Home", "Index", "Employer")</li>
+                        <li>@Html.ActionLink("Jobs", "ShowActivatedJobs", "Employer")</li>
+                        <li>@Html.ActionLink("Candidates", "Candidate", "Employer")</li>
                     </ul>
-                    @*<ul class="lstDropdown">
-                        <li>Academic
-                        </li>
-                        <li>Vendor
-                        </li>
-                    </ul>*@
                 </nav>
             </div>
         </div>
@@ -70,6 +51,6 @@
     @Scripts.Render("~/bundles/main")
     @RenderSection("scripts", required: false)
     @RenderSection("css", required: false)
-    @*@Styles.Render("~/Content/myCss")*@
+    @Styles.Render("~/Content/myCss")
 </body>
 </html>

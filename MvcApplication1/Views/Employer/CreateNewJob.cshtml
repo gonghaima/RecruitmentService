@@ -1,0 +1,81 @@
+﻿@model MvcApplication1.Models.DBModels.Job
+
+@{
+    ViewBag.Title = "CreateNewJob";
+    Layout = "~/Views/Shared/_LayoutEmployer.cshtml";
+}
+
+<h2>CreateNewJob</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Job</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JobTitleId)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.JobTitleId)*@
+            @Html.DropDownListFor(model=>model.JobTitleId,(SelectList)ViewBag.JobTitle, new { @class = "text-box single-line dropDownWidth" })
+            @Html.ValidationMessageFor(model => model.JobTitleId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RequiredAcqLevelId)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.RequiredAcqLevelId)*@
+            @Html.DropDownListFor(model=>model.RequiredAcqLevelId,(SelectList)ViewBag.AcademicLevel,new { @class = "text-box single-line dropDownWidth" })
+            @Html.ValidationMessageFor(model => model.RequiredAcqLevelId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JobTypeId)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.JobTypeId)*@
+            @Html.DropDownListFor(model=>model.JobTypeId,(SelectList)ViewBag.JobType,new { @class = "text-box single-line dropDownWidth" })
+            @Html.ValidationMessageFor(model => model.JobTypeId)
+        </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.EmployerId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmployerId)
+            @Html.ValidationMessageFor(model => model.EmployerId)
+        </div>*@
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.Activated)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Activated)
+            @Html.ValidationMessageFor(model => model.Activated)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JobDescription)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.JobDescription)*@
+            @Html.TextAreaFor(model => model.JobDescription)
+            @Html.ValidationMessageFor(model => model.JobDescription)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back", "ShowActivatedJobs")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
