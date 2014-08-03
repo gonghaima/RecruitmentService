@@ -5,15 +5,15 @@
     ViewBag.Title = "Graduate Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if(Model.StudentId==null)
+@*@if(Model.StudentId==null)
     {
         <h2>Please complete your profile, and reture to student home page</h2>
     }
     else
     {
         <h2>Graduate Profile</h2>
-    }
-
+    }*@
+ <h2>Graduate Profile</h2>
 @if (ViewBag.saved)
 {
     <h4>The Profile has been updated.</h4> 
@@ -22,6 +22,8 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(c=>c.UserName)
+    @Html.Hidden("forRegistration",(object)ViewBag.forRegistration)
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -81,11 +83,6 @@
             @Html.LabelFor(model => model.JobTypeId)
         </div>
 
-       @* <div class="editor-field">
-            @Html.DropDownListFor((m => m.JobTypeId), (SelectList)ViewBag.jt, new { @class="text-box single-line"})
-            @Html.ValidationMessageFor(model => model.JobTypeId)
-        </div>*@
-
          <div class="editor-field">
             @Html.DropDownListFor((m => m.JobTypeId), (SelectList)Model.JobTypeList, new { @class="text-box single-line dropDownWidth"})
             @Html.ValidationMessageFor(model => model.JobTypeId)
@@ -116,8 +113,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
-             @Html.ActionLink("Back to Student Home", "Index")
+            <input type="submit" value='@ViewBag.subTxt' class="myButton" />
         </p>
     </fieldset>
 }

@@ -36,7 +36,8 @@ a {
     a:active, a:hover {
         /*color: #333;*/
         color: bisque;
-        text-decoration: initial;
+        /*text-decoration: initial;*/
+        text-decoration: underline;
     }
 
     #body a:hover {

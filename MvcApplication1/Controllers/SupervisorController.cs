@@ -57,5 +57,25 @@ namespace MvcApplication1.Controllers
             return View();
         }
 
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Supervisor")]
+        public ActionResult UserActivation()
+        {
+            return View(dbContext.Users);
+        }
+
+        [HttpPost]
+        [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Supervisor")]
+        public ActionResult UserActivation(IEnumerable<MvcApplication1.Models.DBModels.User> users)
+        {
+            foreach (User us in users)
+            {
+                dbContext.Users.Attach(us);
+                var entry = dbContext.Entry(us);
+                entry.Property(e => e.Activated).IsModified = true;
+                dbContext.SaveChanges();
+            }
+            ViewBag.updated = true;
+            return View(dbContext.Users);
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace MvcApplication1.Models.ViewModels
     {
         dataEntities dbContext = new dataEntities();
 
+        public string UserName { get; set; }
+
         [Required]
         public string StudentId { get; set; }
 
@@ -66,7 +68,8 @@ namespace MvcApplication1.Models.ViewModels
             this.IenumJobType = dbContext.JobTypes;
             JobTypeList = new SelectList(this.IenumJobType, "Id", "Name");
             us = dbContext.Users.FirstOrDefault(c => c.UserName == un);
-            
+
+            this.UserName = us.UserName;
             this.FirstName = us.FirstName;
             this.LastName = us.LastName;
             this.Email = us.Email;
@@ -129,6 +132,7 @@ namespace MvcApplication1.Models.ViewModels
 
         public bool addToDB()
         {
+            graduateExist = dbContext.Graduates.Any(c => c.User.UserName == this.UserName);
             if (graduateExist)
             {
                 updateExistingGrad();

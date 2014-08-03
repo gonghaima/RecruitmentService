@@ -8,6 +8,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
+    @Html.Hidden("userName",(object)ViewBag.userName)
 
     <fieldset>
         <legend>StudentSoftskillLevel</legend>
@@ -30,11 +31,11 @@
 
         <p>
             <input type="submit" value="Create" class="myButton" />
-            @Html.ActionLink("Not on the list?", "CreateSoftskill")
+            @Html.ActionLink("Not on the list?", "CreateSoftskill", new {userName=ViewBag.userName})
         </p>
     </fieldset>
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back", "Index")
-</div>
+</div>*@

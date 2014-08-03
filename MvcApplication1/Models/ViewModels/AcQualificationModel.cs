@@ -15,6 +15,7 @@ namespace MvcApplication1.Models.ViewModels
         public AcQualificationModel(string userName)
         {
             acqLevel = new SelectList(dbContext.AcQualificationLevels, "Id", "Name");
+            CVInitializer.initAllCV();
             CVInfo = CVInitializer.getCV(userName);
             try
             {

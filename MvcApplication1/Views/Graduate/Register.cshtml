@@ -4,13 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Register</h2>
+<h2>Graduate Registration</h2>
 
 @using (Html.BeginForm())
 {
+    if (string.IsNullOrEmpty(ViewBag.userExist)) { }
+    else
+    {
+     <h3>@ViewBag.userExist</h3>
+    }
     @Html.ValidationSummary()
     <fieldset>
-        @Html.ValidationSummary()
         <legend>Registration Form</legend>
         <ol>
             <li>
@@ -38,7 +42,7 @@
                 @Html.EditorFor(c => c.Email)
             </li>
         </ol>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Next Step" class="myButton" />
     </fieldset>
 }
 

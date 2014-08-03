@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Security;
 namespace MvcApplication1.Models.ViewModels
 {
-    public class Account:Person, IRegisterInterface, IUserInterface
+    public class Account : Person, IRegisterInterface, IUserInterface
     {
         static dataEntities dbContext = new dataEntities();
 
@@ -23,12 +23,20 @@ namespace MvcApplication1.Models.ViewModels
 
         [Required]
         [Display(Name = "Confirm Password")]
-        //[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
 
-        public Role role{ get; set; }
+        public Role role { get; set; }
         User user = new User();
+
+        public Account()
+        {
+        }
+        public Account(string userName)
+        {
+            this.UserName = UserName;
+        }
 
         public bool register(string roleName)
         {
@@ -38,34 +46,52 @@ namespace MvcApplication1.Models.ViewModels
             user.LastName = LastName;
             user.Email = Email;
 
+            Role role4Register = dbContext.Roles.SingleOrDefault(c => c.Name == roleName);
             User tempUser = dbContext.Users.FirstOrDefault(c => c.UserName == user.UserName);
-
+            Role tempRole = new Role();
             if (tempUser != null)
             {
-                //already a user in database
+                tempRole = tempUser.Roles.FirstOrDefault(c => c.Name == roleName);
+            }
+
+            //already a same user with the same role
+            if (tempUser != null && tempRole != null)
+            {
                 return false;
             }
+            //already a user in database, but does not have the role.
+            else if (tempUser != null && tempRole == null)
+            {
+                tempUser.Roles.Add(role4Register);
+                dbContext.SaveChanges();
+                return true;
+            }
+            //new user with new role
             else
             {
                 dbContext.Users.Add(user);
-                Role r = dbContext.Roles.SingleOrDefault(c => c.Name == roleName);
                 dbContext.SaveChanges();
-                dbContext.Users.SingleOrDefault(c => c.UserName == user.UserName).Roles.Add(r);
+                dbContext.Users.SingleOrDefault(c => c.UserName == user.UserName).Roles.Add(role4Register);
                 dbContext.SaveChanges();
-
-                //Confirmation email of register
-                Email mail = new Email();
-                string mailSub = "Account Created";
-                string mailBody = "Your Name: " + this.FirstName + " " + this.LastName + " User Name: "+user.UserName+" has registered as a new user.";
-                mail.sendMail(this.Email, mailSub, mailBody);
                 return true;
             }
+        }
+
+        public void sendRegConfirmation()
+        {
+            //Confirmation email of register
+            Email mail = new Email();
+            string mailSub = "Account Created";
+            string mailBody = "Your Name: " + this.FirstName + " " + this.LastName + " User Name: " + user.UserName + " has registered as a new user.";
+            mail.sendMail(this.Email, mailSub, mailBody);
         }
 
         public bool login()
         {
             User ur = dbContext.Users.SingleOrDefault(c => c.UserName == UserName);
-            if (ur != null && ur.Password == Password)
+            bool activated = false;
+            if (ur.Activated != null && ur.Activated == true) { activated = true; }
+            if (ur != null && activated && ur.Password == Password)
             {
                 FormsAuthentication.SetAuthCookie(UserName, false);
                 return true;
@@ -84,18 +110,18 @@ namespace MvcApplication1.Models.ViewModels
 
         public static string[] retrievePassword(string UserName)
         {
-            Dictionary<string, string> dicResult= new Dictionary<string,string>();
-            string strU="";
-            string strP="";
-            if(dbContext.Users.Any(c=>c.UserName.Contains(UserName)))
+            Dictionary<string, string> dicResult = new Dictionary<string, string>();
+            string strU = "";
+            string strP = "";
+            if (dbContext.Users.Any(c => c.UserName.Contains(UserName)))
             {
-                strU=UserName;
-                strP=dbContext.Users.FirstOrDefault(c=>c.UserName==UserName).Password;
+                strU = UserName;
+                strP = dbContext.Users.FirstOrDefault(c => c.UserName == UserName).Password;
                 sendPasswordToUser(UserName);
             }
-            string[] result2Return= new string[2];
-            result2Return[0]=strU;
-            result2Return[1]=strP;
+            string[] result2Return = new string[2];
+            result2Return[0] = strU;
+            result2Return[1] = strP;
 
             return result2Return;
         }
@@ -103,7 +129,7 @@ namespace MvcApplication1.Models.ViewModels
         private static void sendPasswordToUser(String UserName)
         {
             Email email = new Email();
-            string mailTo = dbContext.Users.FirstOrDefault(c=>c.UserName==UserName).Email;
+            string mailTo = dbContext.Users.FirstOrDefault(c => c.UserName == UserName).Email;
             string mailSub = "Please keep your password in a safe place";
             string mailBody = "Your password is     " + dbContext.Users.FirstOrDefault(c => c.UserName == UserName).Password;
             email.sendMail(mailTo, mailSub, mailBody);

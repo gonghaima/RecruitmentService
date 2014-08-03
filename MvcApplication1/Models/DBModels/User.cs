@@ -28,6 +28,7 @@ namespace MvcApplication1.Models.DBModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public Nullable<bool> Activated { get; set; }
     
         public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<Employer> Employers { get; set; }

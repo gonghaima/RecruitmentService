@@ -366,6 +366,7 @@
     <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="Email" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Activated" Type="bit" />
   </EntityType>
   <EntityType Name="VdQualification">
     <Key>

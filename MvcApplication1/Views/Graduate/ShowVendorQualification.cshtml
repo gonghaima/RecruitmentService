@@ -6,6 +6,7 @@
 }
 
 <h2>Vendor Qualification</h2>
+@Html.Hidden("userName", (object)ViewBag.userName)
 @if (Model.Any())
 {
     <table>
@@ -46,13 +47,15 @@
     </table>
     
 }
-else
-{
-    <h3>There is no Vendor Qualification under your account yet.</h3>
-}
+
 <button class="showDiv myButton">Add New Vendor Qualification</button>
-@Html.Action("CreateVdQualification")
-@Html.ActionLink("Back", "Index")
+@Html.Action("CreateVdQualification", new { userName = ViewBag.userName })
+@*<button type="submit" class="myButton">Next Step</button>*@
+
+<input type="button" value="Next Step" class="myButton" onclick="location.href='@Url.Action("ShowSoftskill", "Graduate", new { userName = ViewBag.userName })'" />
+
+
+@*@Html.ActionLink("Back", "Index")*@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryui")
 }

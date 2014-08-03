@@ -6,8 +6,9 @@
 }
 
 <h2>ShowSoftskill</h2>
+@Html.Hidden("userName", (object)ViewBag.userName)
 
-@if (Model!=null && Model.Any())
+@if (Model != null && Model.Any())
 {
     <table>
         <thead>
@@ -22,19 +23,19 @@
                 <tr>
                     <td>@ssl.SoftSkill.Name</td>
                     <td>@ssl.SoftSkillLevel.Name</td>
-                    <td>@Html.ActionLink("Delete","DeleteStudentSoftskill", ssl)</td>
+                    <td>@Html.ActionLink("Delete", "DeleteStudentSoftskill", ssl)</td>
                 </tr>
             }
 
         </tbody>
     </table>
 }
-else
-{
-    <h3>There is no softskills under your profile yet</h3>
-}
+
 <button class="showDiv myButton">Add/Edit Soft skills</button>
 @*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }*@
-@Html.Action("AddSoftskill")
+@Html.Action("AddSoftskill", new { userName = ViewBag.userName })
+@*<button class="myButton">Complete my Registration</button>*@
+<input type="button" value="Complete my Registration" class="myButton" onclick="location.href='@Url.Action("RegistrationCompleted", "Graduate", new { userName = ViewBag.userName })'" />
+

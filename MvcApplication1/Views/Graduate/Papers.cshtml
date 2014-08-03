@@ -4,11 +4,11 @@
     ViewBag.Title = "Papers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@Html.Hidden("userName",(object)ViewBag.userName)
 
-
+<h2>Papers</h2>
 @if (@Model!=null&&@Model.Any())
-{
-    <h2>Papers</h2>
+{    
     <table>
         <thead>
             <tr>
@@ -35,10 +35,7 @@
         </tbody>
     </table>
 }
-else
-{
-    <h2>There is no paper under your qualification yet</h2>   
-}
+
 <button class="showDiv myButton">Add New Paper</button>
-@Html.Action("CreatePaper")
-@Html.ActionLink("Back","AcademicQualification")
+@Html.Action("CreatePaper", new { userName=ViewBag.userName})
+@Html.ActionLink("Back", "AcademicQualification", new { userName=ViewBag.userName})

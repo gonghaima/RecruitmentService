@@ -7,26 +7,28 @@
 
 <h2>Welcome to student Home Page</h2>
 
+@Html.Hidden("userName",Model.UserName)
+
 <ul>
-    @Html.ActionLink("Profile", "GraduateProfile")
+    @Html.ActionLink("Profile", "GraduateProfile", new {userName=Model.UserName,submitTxt="Update" ,forRegistration="false" })
 </ul>
 <ul>
-    @Html.ActionLink("Working experience", "ShowEditExperience")
+    @Html.ActionLink("Working experience", "ShowEditExperience", new {userName=Model.UserName })
 </ul>
 <ul>
-    @Html.ActionLink("Academic Qualification", "AcademicQualification")
+    @Html.ActionLink("Academic Qualification", "AcademicQualification", new {userName=Model.UserName })
 </ul>
 <ul>
-    @Html.ActionLink("Vendor Qualification", "ShowVendorQualification")
+    @Html.ActionLink("Vendor Qualification", "ShowVendorQualification", new {userName=Model.UserName })
 </ul>
 <ul>
-    @Html.ActionLink("Soft Skills", "ShowSoftskill")
+    @Html.ActionLink("Soft Skills", "ShowSoftskill", new {userName=Model.UserName })
 </ul>
 <ul>
-    @Html.ActionLink("CV", "cv")
+    @Html.ActionLink("CV", "cv", new { userName = Model.UserName })
 </ul>
 <ul>
-    @Html.ActionLink("Invitation & Cover Letter", "CoverLetter")
+    @Html.ActionLink("Invitation & Cover Letter", "CoverLetter", new {userName=Model.UserName })
 </ul>
 
 <h2>Useful Information</h2>

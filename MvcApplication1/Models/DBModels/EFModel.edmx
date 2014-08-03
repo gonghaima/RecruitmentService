@@ -371,6 +371,7 @@
           <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Email" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Activated" Type="bit" />
         </EntityType>
         <EntityType Name="VdQualification">
           <Key>
@@ -920,6 +921,7 @@
           <NavigationProperty Name="Employers" Relationship="dataModel.FK_dbo_Employer_User" FromRole="User" ToRole="Employer" />
           <NavigationProperty Name="Graduates" Relationship="dataModel.FK_dbo_Graduate_User" FromRole="User" ToRole="Graduate" />
           <NavigationProperty Name="SiteSuperVisors" Relationship="dataModel.FK_dbo_SiteSuperVisor_User" FromRole="User" ToRole="SiteSuperVisor" />
+          <Property Type="Boolean" Name="Activated" Nullable="true" />
         </EntityType>
         <Association Name="UR">
           <End Role="Role" Type="dataModel.Role" Multiplicity="*" />
@@ -1501,6 +1503,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="dataModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Activated" ColumnName="Activated" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />

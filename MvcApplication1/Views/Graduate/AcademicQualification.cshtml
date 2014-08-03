@@ -11,6 +11,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
+    @Html.Hidden("userName", (object)ViewBag.userName)
 
     <fieldset>
         <legend>AcQualification</legend>
@@ -41,10 +42,13 @@
             @Html.ValidationMessageFor(model => model.AcqLevelId)
         </div>
         <p>
-            <input type="submit" value="Save" />
-            @Html.ActionLink("Papers", "Papers")
-            @Html.ActionLink("Back", "Index")
+            @*@Html.ActionLink("Papers", "Papers", new { userName=ViewBag.userName})*@
+            @*<input type="button" name="submitButton" value="Add Papers" class="myButton" onclick="location.href='@Url.Action("Papers", "Graduate",new { userName = ViewBag.userName })'" />*@
+            <input type="submit" name="submitButton" value="Add Papers" class="myButton"/>
+            
 
+            <input type="submit" name="submitButton" value="Next Step" class="myButton" />
+            @*<input type="button" value="Next Step" class="myButton" onclick="location.href='@Url.Action("ShowVendorQualification", "Graduate",new { userName = ViewBag.userName })'" />*@
         </p>
     </fieldset>
 }
