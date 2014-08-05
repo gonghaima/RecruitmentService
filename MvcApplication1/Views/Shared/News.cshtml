@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MvcApplication1.Models.DBModels.News>
+
+@Html.Hidden("userName", (object)ViewBag.userName)
+@foreach (var item in Model)
+{
+    <h5>
+        @Html.DisplayFor(modelItem => item.Title)
+    </h5>
+    <h5>
+       @item.Content.Substring(0,100)...
+        @Html.ActionLink("More", "NewsDetails", new { userName=ViewBag.userName, newsId = item.Id})
+    </h5> 
+    
+        <hr />
+}
+

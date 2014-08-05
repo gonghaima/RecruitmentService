@@ -198,6 +198,9 @@
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DBModels\MetaDataType\PaperMetadata.cs" />
+    <Compile Include="Models\DBModels\News.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DBModels\StudentSoftskillLevel.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
@@ -400,6 +403,10 @@
     <Content Include="Views\Shared\_LoginPartialSupervisor.cshtml" />
     <Content Include="Views\Supervisor\Register.cshtml" />
     <Content Include="Views\Supervisor\Index.cshtml" />
+    <Content Include="Views\Supervisor\ShowNews.cshtml" />
+    <Content Include="Views\Supervisor\CreateNews.cshtml" />
+    <Content Include="Views\Shared\News.cshtml" />
+    <Content Include="Views\Graduate\NewsDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\DBModels\EFModel.edmx">

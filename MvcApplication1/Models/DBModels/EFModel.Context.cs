@@ -49,5 +49,6 @@ namespace MvcApplication1.Models.DBModels
         public DbSet<SoftSkillLevel> SoftSkillLevels { get; set; }
         public DbSet<StudentSoftskillLevel> StudentSoftskillLevels { get; set; }
         public DbSet<CoverLetterStatu> CoverLetterStatus { get; set; }
+        public DbSet<News> News { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Mail;
 
 namespace MvcApplication1.Models.ViewModels
@@ -63,7 +64,11 @@ namespace MvcApplication1.Models.ViewModels
             mail.Subject = mailSub;
             mail.IsBodyHtml = true;
             mail.Body = htmlBody;
-            SmtpServer.Send(mail);
+            try
+            {
+                SmtpServer.Send(mail);
+            }catch(Exception ex)
+            {}
         }
 
         public void sendMail(List<string> mailTo, string mailSub, string htmlBody)

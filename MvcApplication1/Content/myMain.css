@@ -48,3 +48,17 @@ ul, menu, dir {
 form ul {
     margin-left: -39px;
 }
+
+.userActivationTable > tbody> tr> td>input
+{
+width: 100%;
+}
+
+.userActivationTable > tbody > tr > td {
+    border:0;
+}
+
+
+.userActivationTable {
+    /*border-:2px;*/
+}

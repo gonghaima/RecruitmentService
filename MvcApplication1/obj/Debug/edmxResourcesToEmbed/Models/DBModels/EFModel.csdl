@@ -137,6 +137,7 @@
       <End Role="CoverLetterStatu" EntitySet="CoverLetterStatus" />
       <End Role="CoverLetter" EntitySet="CoverLetters" />
     </AssociationSet>
+    <EntitySet Name="News" EntityType="dataModel.News" />
   </EntityContainer>
   <EntityType Name="Role">
     <Key>
@@ -725,4 +726,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Content" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

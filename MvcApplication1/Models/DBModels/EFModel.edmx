@@ -22,6 +22,7 @@
           <EntitySet Name="JobTitle" EntityType="dataModel.Store.JobTitle" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="JobType" EntityType="dataModel.Store.JobType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="JSkill" EntityType="dataModel.Store.JSkill" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="News" EntityType="dataModel.Store.News" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Paper" EntityType="dataModel.Store.Paper" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Promotion" EntityType="dataModel.Store.Promotion" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Role" EntityType="dataModel.Store.Role" store:Type="Tables" Schema="dbo" />
@@ -295,6 +296,14 @@
           </Key>
           <Property Name="JId" Type="int" Nullable="false" />
           <Property Name="SId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Content" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Paper">
           <Key>
@@ -898,6 +907,7 @@
             <End Role="CoverLetterStatu" EntitySet="CoverLetterStatus" />
             <End Role="CoverLetter" EntitySet="CoverLetters" />
           </AssociationSet>
+          <EntitySet Name="News" EntityType="dataModel.News" />
         </EntityContainer>
         <EntityType Name="Role">
           <Key>
@@ -1486,6 +1496,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Content" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1753,6 +1771,15 @@
               <MappingFragment StoreEntitySet="CoverLetterStatus">
                 <ScalarProperty Name="Ranking" ColumnName="Ranking" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="dataModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

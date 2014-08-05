@@ -121,12 +121,14 @@ namespace MvcApplication1.Models.ViewModels
 
         public void updateExistingGrad()
         {
+            existingGrad = dbContext.Graduates.FirstOrDefault(c => c.User.UserName == this.UserName);
             existingGrad.KnownAs = KnownAs;
             existingGrad.VisaStatus = VisaStatus;
             existingGrad.FirstLanguage = FirstLanguage;
             existingGrad.PhoneNumber = PhoneNumber;
             existingGrad.Location = Location;
             existingGrad.JobTypeId = JobTypeId;
+            dbContext.SaveChanges();
             updateUser(UId);
         }
 

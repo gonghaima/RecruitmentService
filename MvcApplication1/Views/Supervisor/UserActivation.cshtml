@@ -12,64 +12,57 @@
     <h3>The user has been activated.</h3>
 }
 
+@using (Html.BeginForm())
+{
+
 @*<p>
     @Html.ActionLink("Create New", "Create")
 </p>*@
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        @*<th>
+    <table class="userActivationTable">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            @*<th>
             @Html.DisplayNameFor(model => model.Password)
         </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Activated)
-        </th>
-        <th></th>
-    </tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activated)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
         
-            @Html.HiddenFor(modelItem => item.Password)
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @*@Html.DropDownListFor(modelItem => item.Activated, (IEnumerable<SelectListItem>)ViewData["activationItems"],"--Select a Value--")*@
-            @*@Html.DropDownListFor(modelItem => item.Activated, (SelectList)ViewBag.activateList )*@
-            @*@Html.DisplayFor(modelItem => item.Activated)*@
-            @*@Html.DropDownListFor(modelItem => item.Activated,(IEnumerable<SelectListItem>)ViewBag.activateList)*@
-            
-            @*@Html.DropDownListFor(modelItem => item.Activated, new SelectList(
-           new List<object>
-           {
-               new {value=bool.TrueString,text="True"},
-               new {value=bool.FalseString,text="False"},
-           }
-           ))*@
+        @for (int i=0;i<Model.Count();i++)
+        {
+            @Html.HiddenFor(m=>m.ToList()[i].Id)
+            <tr>
+                <td>
+                    @Html.TextBoxFor(m=>m.ToList()[i].UserName)
+                </td>
 
-            @Html.DropDownListFor(modelItem => item.Activated, new SelectList(
+                @Html.HiddenFor(m => m.ToList()[i].Password)
+
+                <td>
+                    @Html.TextBoxFor(m=> m.ToList()[i].FirstName)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m=> m.ToList()[i].LastName)
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.ToList()[i].Email)
+                </td>
+                <td>
+                    @Html.DropDownListFor(m=> m.ToList()[i].Activated, new SelectList(
            new List<object>
            {
                new {value=bool.TrueString,text="True"},
@@ -77,16 +70,19 @@
            },
            "value",
            "text",
-           item.Activated
-           ),"--Select a Value--")
+           Model.ToList()[i].Activated
+           ), "--Select a Value--")
 
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ToList()[i].Id }) |
+            @Html.ActionLink("Details", "Details", new { id = Model.ToList()[i].Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ToList()[i].Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <input type="submit" class="myButton" value="Update" />
 }
-
-</table>
+@Html.ActionLink("Back", "Index")

@@ -69,13 +69,61 @@ namespace MvcApplication1.Controllers
         {
             foreach (User us in users)
             {
-                dbContext.Users.Attach(us);
-                var entry = dbContext.Entry(us);
-                entry.Property(e => e.Activated).IsModified = true;
+                User tempUser = dbContext.Users.FirstOrDefault(c => c.Id == us.Id);
+                if (tempUser.Activated == false && us.Activated == true)
+                {
+                    sendingActivationEmailToUser(us.Email);
+                }
+                tempUser.UserName = us.UserName;
+                tempUser.FirstName = us.FirstName;
+                tempUser.LastName = us.LastName;
+                tempUser.Email = us.Email;
+                tempUser.Activated= us.Activated;
+                dbContext.Entry(tempUser).State = EntityState.Modified;
                 dbContext.SaveChanges();
             }
+
+            //dbContext.SaveChanges();
+
             ViewBag.updated = true;
             return View(dbContext.Users);
+        }
+
+        //Notify user that account has been activated
+        private void sendingActivationEmailToUser(string email)
+        {
+            Email mail = new Email();
+            mail.sendMail(email, "Account Activated", "Your account has been activated, now you can login with your credentials.");
+        }
+
+        //News
+        public ActionResult ShowNews()
+        {
+            return View(dbContext.News);
+        }
+
+        //Create News
+        public ActionResult CreateNews()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateNews(News news)
+        {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            //ModelState.Remove("Id"); // Remove the key  (same as [Bind(Exclude = "Id")]  )
+            if (ModelState.IsValid)
+            {
+                dbContext.News.Add(news);
+                dbContext.SaveChanges();
+                return RedirectToAction("ShowNews");
+            }
+            else
+            {
+                return View(news);
+            }
+
         }
     }
 }

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MvcApplication1.Models.DBModels.News>
+
+@{
+    ViewBag.Title = "ShowNews";
+    Layout = "~/Views/Shared/_LayoutSupervisor.cshtml";
+}
+
+<h2>ShowNews</h2>
+
+
+<table>
+    <tr>
+        @if (Model.Any())
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th></th>
+        }
+        else
+        {
+            <th>There is no news published yet.</th>   
+        }
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Create New", "CreateNews")
+</p>

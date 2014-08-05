@@ -37,7 +37,7 @@ namespace MvcApplication1.Controllers
         public ActionResult Logout()
         {
             Account.logout();
-            return RedirectToAction("login","Graduate");
+            return RedirectToAction("Index","Home");
         }
     }
 }

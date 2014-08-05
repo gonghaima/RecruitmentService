@@ -88,15 +88,22 @@ namespace MvcApplication1.Models.ViewModels
 
         public bool login()
         {
-            User ur = dbContext.Users.SingleOrDefault(c => c.UserName == UserName);
-            bool activated = false;
-            if (ur.Activated != null && ur.Activated == true) { activated = true; }
-            if (ur != null && activated && ur.Password == Password)
+            try
             {
-                FormsAuthentication.SetAuthCookie(UserName, false);
-                return true;
+                User ur = dbContext.Users.SingleOrDefault(c => c.UserName == UserName);
+                bool activated = false;
+                if (ur.Activated != null && ur.Activated == true) { activated = true; }
+                if (ur != null && activated && ur.Password == Password)
+                {
+                    FormsAuthentication.SetAuthCookie(UserName, false);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch
             {
                 return false;
             }

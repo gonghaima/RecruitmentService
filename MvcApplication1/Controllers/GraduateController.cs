@@ -14,9 +14,24 @@ namespace MvcApplication1.Controllers
         // GET: /Gradudate/
 
         [MvcApplication1.MvcApplication.OptionalAuthorize(Roles = "Graduate")]
-        public ActionResult Index(Account acc)
+        public ActionResult Index(string userName)
         {
-            return View(acc);
+            ViewBag.userName = userName;
+            return View();
+            //if (acc != null)
+            //{
+            //    return View(acc);
+            //}
+            //else
+            //{
+            //    if (userName != null)
+            //    {
+            //        Account ac = new Account(userName);
+            //        return View(ac);
+            //    }
+            //    return View(new Account());
+            //}
+            
         }
 
         [AllowAnonymous]
@@ -68,7 +83,7 @@ namespace MvcApplication1.Controllers
                 IEnumerable<Graduate> Grads = dbContext.Graduates.Where(c => c.User.UserName == acc.UserName);
                 if (Grads != null)
                 {
-                    return RedirectToAction("Index", acc);
+                    return RedirectToAction("Index", new { userName = acc.UserName });
                 }
             }
             return View();
@@ -94,8 +109,8 @@ namespace MvcApplication1.Controllers
             {
                 ViewBag.saved = gradModel.addToDB();
                 //Account acc = new Account(gra);
-                
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Index", new { userName = gradModel.UserName });
             }
             else if (ModelState.IsValid)
             {
@@ -517,5 +532,23 @@ namespace MvcApplication1.Controllers
             return RedirectToAction("ShowSoftskill");
         }
 
+        public PartialViewResult showNews(string userName)
+        {
+            return PartialView("News", dbContext.News);
+        }
+
+        public ActionResult NewsDetails(string userName, string newsId)
+        {
+            ViewBag.userName = userName;
+            News news= dbContext.News.FirstOrDefault(c => c.Id.ToString() == newsId);
+            if (news != null)
+            {
+                return View(news);
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }
