@@ -136,7 +136,7 @@ namespace MvcApplication1.Controllers
             //WorkingExperiencesModel wem = new WorkingExperiencesModel(User.Identity.Name);
             WorkingExperiencesModel wem = new WorkingExperiencesModel(userName);
             ViewBag.userName = userName;
-            if (wem.WorkingExperiences != null)
+            if (wem.WorkingExperiences.Any())
             {
                 return View(wem.WorkingExperiences);
             }

@@ -27,9 +27,9 @@
                 </section>
                 <nav class="nav">
                     <ul id="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Graduate")</li>
-                        <li>@Html.ActionLink("Profile", "GraduateProfile", "Graduate")</li>
-                        <li class="lstMenu">@Html.ActionLink("Qualification", "hummy", null, new {href="#" })
+                        <li>@Html.ActionLink("Home", "Index", new {userName=ViewBag.userName})</li>
+                        <li>@Html.ActionLink("Profile", "GraduateProfile", new {userName=ViewBag.userName})</li>
+                      @*  <li class="lstMenu">@Html.ActionLink("Qualification", "hummy", null, new {href="#" })
                             <ul class="lstDropdown">
                                 <li>
                                     @Html.ActionLink("Academic","AcademicQualification")
@@ -39,7 +39,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>@Html.ActionLink("CV", "cv", "Graduate")</li>
+                        <li>@Html.ActionLink("CV", "cv", "Graduate")</li>*@
                         <li>@Html.ActionLink("MainSite", "Index", "Home")</li>
                     </ul>
                     @*<ul class="lstDropdown">

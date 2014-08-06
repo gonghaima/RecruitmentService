@@ -6,7 +6,7 @@
 <h2>Work Experience</h2>
 @Html.Hidden("userName", (object)ViewBag.userName)
 
-@if (@Model.Any())
+@if (@Model!=null && @Model.Any())
 {
           
     <table>
