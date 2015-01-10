@@ -89,12 +89,13 @@ namespace MvcApplication1.Controllers
             return View();
         }
 
-        public ActionResult GraduateProfile(string userName, string submitTxt, bool? forRegistration)
+        public ActionResult GraduateProfile(string submitTxt, bool? forRegistration)
         {
             ViewBag.saved = false;
             ViewBag.subTxt = submitTxt;
             ViewBag.forRegistration = forRegistration;
-            return View(new GraduateModel(userName));
+            
+            return View(new GraduateModel(HttpContext.User.Identity.Name));
         }
 
         [HttpPost]

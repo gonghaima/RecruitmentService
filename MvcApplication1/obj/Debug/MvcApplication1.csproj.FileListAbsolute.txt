@@ -101,3 +101,34 @@ E:\ttttt\19\MvcApplication1\bin\System.Web.Optimization.dll
 E:\ttttt\19\MvcApplication1\bin\WebGrease.dll
 E:\ttttt\19\MvcApplication1\bin\Antlr3.Runtime.pdb
 E:\ttttt\19\MvcApplication1\bin\System.Web.Optimization.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\MvcApplication1.dll.config
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\MvcApplication1.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\MvcApplication1.pdb
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\Antlr3.Runtime.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\EntityFramework.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\EntityFramework.SqlServer.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\Microsoft.Web.Infrastructure.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\Newtonsoft.Json.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.Helpers.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.Mvc.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.Optimization.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.Razor.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.WebPages.Deployment.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.WebPages.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.WebPages.Razor.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\WebGrease.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\Antlr3.Runtime.pdb
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\EntityFramework.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\EntityFramework.SqlServer.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\Newtonsoft.Json.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.Optimization.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.Helpers.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.Mvc.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.Razor.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.WebPages.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.WebPages.Deployment.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\bin\System.Web.WebPages.Razor.xml
+F:\Study\project files\RecruitmentService\MvcApplication1\obj\Debug\MvcApplication1.csprojResolveAssemblyReference.cache
+F:\Study\project files\RecruitmentService\MvcApplication1\obj\Debug\MvcApplication1.dll
+F:\Study\project files\RecruitmentService\MvcApplication1\obj\Debug\MvcApplication1.pdb
