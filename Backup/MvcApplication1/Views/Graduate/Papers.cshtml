@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MvcApplication1.Models.DBModels.Paper>
+
+@{
+    ViewBag.Title = "Papers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Hidden("userName",(object)ViewBag.userName)
+
+<h2>Papers</h2>
+@if (@Model!=null&&@Model.Any())
+{    
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Grade
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MvcApplication1.Models.DBModels.Paper p in Model)
+            {
+                <tr>
+                    <td>
+                        @p.Name
+                    </td>
+                    <td>
+                        @p.Grade.Name
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<button class="showDiv myButton">Add New Paper</button>
+@Html.Action("CreatePaper", new { userName=ViewBag.userName})
+@Html.ActionLink("Back", "AcademicQualification", new { userName=ViewBag.userName})

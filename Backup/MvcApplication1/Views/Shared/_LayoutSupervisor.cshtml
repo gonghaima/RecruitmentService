@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Graduate Jobs Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    
+  
+    @Scripts.Render("~/bundles/modernizr")
+    
+   @*   @Styles.Render("~/Content/themes/base/css")*@
+      @Styles.Render("~/Content/customizedCss")
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left logo">
+                @*<p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>*@
+                @*<p class="site-title">@Html.ActionLink(" ","Index", "Home")</p>*@
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartialSupervisor")
+                </section>
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Candidate", "Candidates", "Supervisor")</li>
+                        <li>@Html.ActionLink("Employer", "Employers", "Supervisor")</li>
+                        <li>@Html.ActionLink("Candidates", "Candidate", "Supervisor")</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - JOB4BIT</p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/main")
+    @RenderSection("scripts", required: false)
+    @RenderSection("css", required: false)
+    @Styles.Render("~/Content/myCss")
+</body>
+</html>

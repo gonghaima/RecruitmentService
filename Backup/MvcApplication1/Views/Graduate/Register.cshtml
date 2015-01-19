@@ -1,0 +1,48 @@
+﻿@model MvcApplication1.Models.ViewModels.Account
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Graduate Registration</h2>
+
+@using (Html.BeginForm())
+{
+    if (string.IsNullOrEmpty(ViewBag.userExist)) { }
+    else
+    {
+     <h3>@ViewBag.userExist</h3>
+    }
+    @Html.ValidationSummary()
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(c => c.UserName)
+                @Html.EditorFor(c => c.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(c => c.Password)
+                @Html.EditorFor(c => c.Password)
+            </li>
+            <li>
+                @Html.LabelFor(c => c.ConfirmPassword)
+                @Html.EditorFor(c => c.ConfirmPassword)
+            </li>
+            <li>
+                @Html.LabelFor(c => c.FirstName)
+                @Html.EditorFor(c => c.FirstName)
+            </li>
+            <li>
+                @Html.LabelFor(c => c.LastName)
+                @Html.EditorFor(c => c.LastName)
+            </li>
+            <li>
+                @Html.LabelFor(c => c.Email)
+                @Html.EditorFor(c => c.Email)
+            </li>
+        </ol>
+        <input type="submit" value="Next Step" class="myButton" />
+    </fieldset>
+}
+

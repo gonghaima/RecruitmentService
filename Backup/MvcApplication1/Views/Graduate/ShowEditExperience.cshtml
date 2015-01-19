@@ -1,0 +1,45 @@
+﻿@model  IEnumerable<MvcApplication1.Models.DBModels.WorkingExprience>
+@{
+    ViewBag.Title = "ShowEditExperience";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Work Experience</h2>
+@Html.Hidden("userName", (object)ViewBag.userName)
+
+@if (@Model!=null && @Model.Any())
+{
+          
+    <table>
+        <thead>
+            <tr>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Start</th>
+                <th>Finish</th>
+                <th>Role Description</th>
+            </tr>
+        </thead>
+        @foreach (MvcApplication1.Models.DBModels.WorkingExprience ep in Model)
+        {
+            <tr>
+                <td>@ep.JobTitle</td>
+                <td>@ep.Company</td>
+                <td>@ep.Start</td>
+                <td>@ep.Finish</td>
+                <td>@ep.RoleDescription</td>
+                <td>@Html.ActionLink("Edit", "EditExperience", new { id = @ep.Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteExperience", new { id = @ep.Id })</td>
+            </tr>
+        }
+    </table>
+}
+<button class="showDiv myButton">Add New Work Experience</button>
+@Html.Action("CreateExperience", new { userName = ViewBag.userName })
+
+@*@using (Html.BeginForm("AcademicQualification", "Graduate",new { userName = ViewBag.userName },FormMethod.Get))
+{
+<button class="myButton" type="submit">Next Step</button>
+}*@
+<input type="button" value="Next Step" class="myButton" onclick="location.href='@Url.Action("AcademicQualification", "Graduate",new { userName = ViewBag.userName })'" />
+
+@*@Html.ActionLink("Back", "Index")*@

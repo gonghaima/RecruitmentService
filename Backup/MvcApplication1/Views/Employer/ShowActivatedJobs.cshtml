@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MvcApplication1.Models.DBModels.Job>
+
+@{
+    ViewBag.Title = "ShowActivatedJobs";
+    Layout = "~/Views/Shared/_LayoutEmployer.cshtml";
+}
+
+<h2>Job List in your account</h2>
+
+@if (Model.Any())
+{
+    <table>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Ac_Level
+        </th>
+        <th>
+            Job Type
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.EmployerId)
+        </th>*@
+        <th>
+            Description
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Activated)
+        </th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AcQualificationLevel.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobDescription)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Activated)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "EditJob", new { id=item.Id }) 
+            @Html.ActionLink("Delete", "DeleteJob", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+}
+else
+{
+    <h3>There is no jobs in your list. Please make sure a job is created and activated by site supervisor.</h3>
+}
+
+<p>
+    @Html.ActionLink("Create a New Job", "CreateNewJob")
+    @Html.ActionLink("Back", "Index")
+</p>
+

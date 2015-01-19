@@ -1,0 +1,64 @@
+﻿@model MvcApplication1.Models.DBModels.VdQualification
+
+@{
+    ViewBag.Title = "VdQualification";
+}
+
+@using (Html.BeginForm("CreateVdQualification", "Graduate", FormMethod.Post, new { @class = "isHide" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.Hidden("userName",(object)ViewBag.userName)
+
+    <fieldset>
+        <legend>VdQualification</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateCompleted)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.DateCompleted, new { @class="datepicker"})
+            @Html.ValidationMessageFor(model => model.DateCompleted)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExperienceId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model=>model.ExperienceId,(SelectList)ViewBag.vdExperience,new { @class="text-box single-line dropDownWidth"})
+            @Html.ValidationMessageFor(model => model.ExperienceId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AbilityId)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.AbilityId)*@
+            @Html.DropDownListFor(Model=>Model.AbilityId,(SelectList)ViewBag.ability,new { @class="text-box single-line dropDownWidth"})
+            @Html.ValidationMessageFor(model => model.AbilityId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompetencyId)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.CompetencyId)*@
+            @Html.DropDownListFor(model=>model.CompetencyId,(SelectList)ViewBag.Competency,new { @class="text-box single-line dropDownWidth"})
+            @Html.ValidationMessageFor(model => model.CompetencyId)
+        </div>
+        <p>
+            <input type="submit" class="myButton" value="Create" />
+        </p>
+    </fieldset>
+}
+
+
+

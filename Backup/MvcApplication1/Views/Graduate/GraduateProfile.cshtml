@@ -1,0 +1,119 @@
+﻿@model MvcApplication1.Models.ViewModels.GraduateModel
+
+@{
+
+    ViewBag.Title = "Graduate Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@if(Model.StudentId==null)
+    {
+        <h2>Please complete your profile, and reture to student home page</h2>
+    }
+    else
+    {
+        <h2>Graduate Profile</h2>
+    }*@
+ <h2>Graduate Profile</h2>
+@if (ViewBag.saved)
+{
+    <h4>The Profile has been updated.</h4> 
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(c=>c.UserName)
+    @Html.Hidden("forRegistration",(object)ViewBag.forRegistration)
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>GraduateModel</legend>
+        @Html.HiddenFor(model=>model.UId)
+        @Html.HiddenFor(model=>model.graduateExist)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StudentId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StudentId)
+            @Html.ValidationMessageFor(model => model.StudentId)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KnownAs)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KnownAs)
+            @Html.ValidationMessageFor(model => model.KnownAs)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VisaStatus)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VisaStatus)
+            @Html.ValidationMessageFor(model => model.VisaStatus)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstLanguage)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstLanguage)
+            @Html.ValidationMessageFor(model => model.FirstLanguage)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PhoneNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PhoneNumber)
+            @Html.ValidationMessageFor(model => model.PhoneNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Location)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Location)
+            @Html.ValidationMessageFor(model => model.Location)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JobTypeId)
+        </div>
+
+         <div class="editor-field">
+            @Html.DropDownListFor((m => m.JobTypeId), (SelectList)Model.JobTypeList, new { @class="text-box single-line dropDownWidth"})
+            @Html.ValidationMessageFor(model => model.JobTypeId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <p>
+            <input type="submit" value='@ViewBag.subTxt' class="myButton" />
+        </p>
+    </fieldset>
+}

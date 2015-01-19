@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MvcApplication1.Models.DBModels.VdQualification>
+
+@{
+    ViewBag.Title = "Vendor Qualification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vendor Qualification</h2>
+@Html.Hidden("userName", (object)ViewBag.userName)
+@if (Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date Completed</th>
+                <th>Experience</th>
+                <th>Ability</th>
+                <th>Competency</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vdq in Model)
+            {
+                <tr>
+                    <td>
+                        @vdq.Name
+                    </td>
+                    <td>
+                        @vdq.DateCompleted
+                    </td>
+                    <td>
+                        @vdq.Experience.Name
+                    </td>
+                    <td>
+                        @vdq.Ability.Name
+                    </td>
+                    <td>
+                        @vdq.Competency.Name
+                    </td>
+                    <td>@Html.ActionLink("Edit", "EditVdQualification", new { id = @vdq.Id })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteVdQualification", new { id = @vdq.Id })</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    
+}
+
+<button class="showDiv myButton">Add New Vendor Qualification</button>
+@Html.Action("CreateVdQualification", new { userName = ViewBag.userName })
+@*<button type="submit" class="myButton">Next Step</button>*@
+
+<input type="button" value="Next Step" class="myButton" onclick="location.href='@Url.Action("ShowSoftskill", "Graduate", new { userName = ViewBag.userName })'" />
+
+
+@*@Html.ActionLink("Back", "Index")*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+}
+@section css {
+    @Styles.Render("~/Content/themes/base/css")
+}

@@ -1,0 +1,10 @@
+﻿@model MvcApplication1.Models.DBModels.News
+
+@{
+    ViewBag.Title = "NewsDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Hidden("userName", (object)ViewBag.userName)
+<h3>@Model.Title</h3>
+<h5>@Model.Content</h5>
+@Html.ActionLink("Back","Index", new {userName=@ViewBag.userName})

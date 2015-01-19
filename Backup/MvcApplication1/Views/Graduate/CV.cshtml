@@ -1,0 +1,133 @@
+﻿@using System.Linq
+@model MvcApplication1.Models.ViewModels.CVModel
+
+@{
+    ViewBag.Title = "CV";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CV - @Model.user.FirstName &nbsp; @Model.user.LastName </h1>
+
+<h2>Graduate Profile &nbsp; &nbsp;@Html.ActionLink("Edit", "GraduateProfile")</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Known As</th>
+            <th>Visa Status</th>
+            <th>First Language</th>
+            <th>Phone Number</th>
+            <th>Location</th>
+            <th>Preferred Job Type</th>
+             
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.graduate.KnownAs</td>
+            <td>@Model.graduate.VisaStatus</td>
+            <td>@Model.graduate.FirstLanguage</td>
+            <td>@Model.graduate.PhoneNumber</td>
+            <td>@Model.graduate.Location</td>
+            <td>@Model.graduate.JobType.Name</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<h2>Academic Qualification  &nbsp;&nbsp;@Html.ActionLink("Edit", "AcademicQualification")</h2>
+@if (Model.acQualification == null)
+{
+    <h4>There is no academic qualification in your profile yet</h4>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date of Completion</th>
+                <th>Qualification Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.acQualification.Name</td>
+                <td>@Model.acQualification.DateCompleted.Value.ToString("dd/MM/yyyy")</td>
+                <td>@Model.acQualification.Name</td>
+            </tr>
+        </tbody>
+    </table>
+}
+<h2>Vendor Qualification &nbsp;&nbsp;@Html.ActionLink("Edit","ShowVendorQualification")</h2>
+@if (Model.vdQualifications.Count() == 0)
+{
+    <h4>There is no vendor qualification in your profile yet</h4>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date Completed</th>
+                <th>Experience Level</th>
+                <th>Ability Level</th>
+                <th>Competency Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vdq in Model.vdQualifications)
+            {
+                <tr>
+                    <td>@vdq.Name</td>
+                    <td>@vdq.DateCompleted.Value.ToString("dd/MM/yyyy")</td>
+                    <td>@vdq.Experience.Name</td>
+                    <td>@vdq.Ability.Name</td>
+                    <td>@vdq.Competency.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<br />
+<h2>Working Experience @Html.ActionLink("Edit", "ShowEditExperience")</h2>
+@if (Model.wkExperiences.Count() == 0)
+{
+    <h4>There is no working experience in your profile yet</h4>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Start</th>
+                <th>Finish</th>
+                <th>Job Title</th>
+                <th>Role Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var we in Model.wkExperiences)
+            {
+                <tr>
+                    <td>@we.Company</td>
+                    <td>@we.Start.ToString("dd/MM/yyyy")</td>
+                    @*<td>@we.Finish.value.ToString("dd/MM/yyyy")</td>*@
+                    @if (we.Finish == null)
+                    {
+                        <td></td>
+                    }
+                    else
+                    {
+                        @*<td>@we.Finish.value.ToString("dd/MM/yyyy")</td>*@
+                        <td>@we.Finish</td>
+                    }
+                    <td>@we.JobTitle</td>
+                    <td>@we.RoleDescription</td>
+                </tr>
+            }
+        </tbody>
+    </table>   
+}
+@Html.ActionLink("Back", "Index")
+

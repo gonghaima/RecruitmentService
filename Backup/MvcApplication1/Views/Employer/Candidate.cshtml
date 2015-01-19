@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MvcApplication1.Models.DBModels.Graduate>
+
+@{
+    ViewBag.Title = "Candidate";
+    Layout = "~/Views/Shared/_LayoutEmployer.cshtml";
+}
+
+<h2>Candidate</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VisaStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstLanguage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>Expected Job Type
+        </th>
+        <th></th>
+        <th>Job Invitation</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisaStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstLanguage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobType.Name)
+            </td>
+            <td class="noneBorder">
+                @Html.ActionLink("More Details", "cv", new { id = item.CVs.FirstOrDefault().Id })
+            </td>
+
+            @using (Html.BeginForm("InvitationOfCoverLetter","Employer",FormMethod.Post))
+            {
+                <td class="noneBorder">@Html.DropDownList("jobId", (SelectList)ViewBag.JobList)</td>
+                @Html.Hidden("studentId", @item.StudentId)
+                <td class="noneBorder">
+                    <input type="submit" class="myButton" value="Send Invitation" /></td>
+            }
+
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Back", "Index")

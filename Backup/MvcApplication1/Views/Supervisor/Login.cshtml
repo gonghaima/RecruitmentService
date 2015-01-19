@@ -1,0 +1,23 @@
+﻿@model MvcApplication1.Models.ViewModels.Account
+@{
+    ViewBag.Title = "Site Supervisor Login";
+    Layout = "~/Views/Shared/_LayoutSupervisor.cshtml";
+}
+
+<h2>Site Supervisor Login</h2>
+@using (Html.BeginForm())
+{
+    <ul>
+        <li>
+            @Html.LabelFor(c=>c.UserName)
+            @Html.TextBoxFor(c=>c.UserName)
+        </li>
+        <li>
+            @Html.LabelFor(c=>c.Password)
+            @Html.PasswordFor(c=>c.Password)
+            @Html.ActionLink("I forget my password","ForgetPassword","Account")
+        </li>
+    </ul>
+    <input type="submit" value="Login" class="myButton"/>
+    @Html.ActionLink("Back","Index","Home")
+}

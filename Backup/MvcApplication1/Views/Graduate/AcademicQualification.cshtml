@@ -1,0 +1,58 @@
+﻿@model MvcApplication1.Models.DBModels.AcQualification
+
+@{
+    ViewBag.Title = "AcademicQualification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AcademicQualification</h2>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.Hidden("userName", (object)ViewBag.userName)
+
+    <fieldset>
+        <legend>AcQualification</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateCompleted)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateCompleted)
+            @Html.ValidationMessageFor(model => model.DateCompleted)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AcqLevelId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor((m => m.AcqLevelId), (SelectList)@ViewBag.jobTypeList, new { @class = "text-box single-line dropDownWidth" })
+            @Html.ValidationMessageFor(model => model.AcqLevelId)
+        </div>
+        <p>
+            @*@Html.ActionLink("Papers", "Papers", new { userName=ViewBag.userName})*@
+            @*<input type="button" name="submitButton" value="Add Papers" class="myButton" onclick="location.href='@Url.Action("Papers", "Graduate",new { userName = ViewBag.userName })'" />*@
+            <input type="submit" name="submitButton" value="Add Papers" class="myButton"/>
+            
+
+            <input type="submit" name="submitButton" value="Next Step" class="myButton" />
+            @*<input type="button" value="Next Step" class="myButton" onclick="location.href='@Url.Action("ShowVendorQualification", "Graduate",new { userName = ViewBag.userName })'" />*@
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

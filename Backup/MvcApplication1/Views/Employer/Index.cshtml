@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutEmployer.cshtml";
+}
+
+<h2>Welcome to employers home page</h2>
+
+<ul>
+    @Html.ActionLink("View & Edit profile", "EmployerProfile")
+</ul>
+<ul>
+    @Html.ActionLink("View & Edit Jobs", "ShowActivatedJobs")
+</ul>
+<ul>
+    @Html.ActionLink("Candidates", "Candidate")
+</ul>
+

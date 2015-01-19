@@ -1,0 +1,11 @@
+﻿@model MvcApplication1.Models.DBModels.WorkingExprience
+
+@{
+    ViewBag.Title = "EditExperience";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Experience</h2>
+@Html.Action("CreateExperience", new { workingExperienceId=@Model.Id })
+@Html.ActionLink("Back", "ShowEditExperience")
+@Scripts.Render("~/bundles/ShowEditExperience")

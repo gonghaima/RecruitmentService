@@ -1,0 +1,66 @@
+﻿@model MvcApplication1.Models.DBModels.Job
+
+@{
+    ViewBag.Title = "EditJob";
+    Layout = "~/Views/Shared/_LayoutEmployer.cshtml";
+}
+
+<h2>EditJob</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Job</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JobTitleId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model=>model.JobTitleId,(SelectList)ViewBag.JobTitle, new { @class = "text-box single-line dropDownWidth" })
+            @Html.ValidationMessageFor(model => model.JobTitleId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RequiredAcqLevelId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model=>model.RequiredAcqLevelId,(SelectList)ViewBag.AcademicLevel,new { @class = "text-box single-line dropDownWidth" })
+            @Html.ValidationMessageFor(model => model.RequiredAcqLevelId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JobTypeId)
+        </div>
+        <div class="editor-field">
+             @Html.DropDownListFor(model=>model.JobTypeId,(SelectList)ViewBag.JobType,new { @class = "text-box single-line dropDownWidth" })
+            @Html.ValidationMessageFor(model => model.JobTypeId)
+        </div>
+
+            @Html.HiddenFor(model => model.EmployerId)
+            @Html.HiddenFor(model => model.Activated)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JobDescription)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.JobDescription)
+            @Html.ValidationMessageFor(model => model.JobDescription)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back", "ShowActivatedJobs")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
