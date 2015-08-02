@@ -380,9 +380,9 @@ namespace MvcApplication1.Controllers
             return RedirectToAction("ShowVendorQualification");
         }
 
-        public ActionResult CV(string userName)
+        public ActionResult CV()
         {
-            CVModel cvModel = new CVModel(userName);
+            CVModel cvModel = new CVModel(System.Web.HttpContext.Current.User.Identity.Name);
             return View(cvModel);
         }
 
