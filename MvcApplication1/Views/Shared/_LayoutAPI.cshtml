@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Graduate Jobs Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/Content/myCss")
+
+    <meta name="viewport" content="width=device-width" />
+
+
+    @Scripts.Render("~/bundles/modernizr")
+
+    @*   @Styles.Render("~/Content/themes/base/css")*@
+    @Styles.Render("~/Content/customizedCss")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/main")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/apps")
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left logo">
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                <nav class="nav">
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Home", "Index", new {userName=ViewBag.userName})</li>
+                        <li>@Html.ActionLink("Profile", "GraduateProfile", new {userName=ViewBag.userName})</li>
+                        <li>@Html.ActionLink("MainSite", "Index", "Home")</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - JOB4BIT</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+    @RenderSection("scripts", required: false)
+    @RenderSection("css", required: false)
+    @*@Styles.Render("~/Content/myCss")*@
+</body>
+</html>

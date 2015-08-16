@@ -56,7 +56,7 @@
         <AssociationConnector Association="dataModel.FK_StudentSoftskillLevel_Graduate" />
         <AssociationConnector Association="dataModel.FK_StudentSoftskillLevel_Softskill" ></AssociationConnector>
         <AssociationConnector Association="dataModel.FK_StudentSoftskillLevel_SoftskillLevel" />
-        <EntityTypeShape EntityType="dataModel.CoverLetterStatu" Width="1.5" PointX="9.5320580999981885" PointY="26.131930646548014" />
+        <EntityTypeShape EntityType="dataModel.CoverLetterStatu" Width="1.5" PointX="11.875" PointY="10" />
         <AssociationConnector Association="dataModel.FK_dbo_CoverLetter_CoverLetterStatus" />
         <EntityTypeShape EntityType="dataModel.News" Width="1.5" PointX="3.512550793361175" PointY="10.547139023685427" />
         </Diagram>

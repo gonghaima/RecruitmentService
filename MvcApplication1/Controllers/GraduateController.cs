@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq;
 using System.Data.Entity;
+using MvcApplication1.Repository;
+using Newtonsoft.Json;
+
 namespace MvcApplication1.Controllers
 {
     public class GraduateController : Controller
@@ -29,7 +32,7 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult Register(Account acc)
         {
-            bool valid=ModelState.IsValid ;
+            bool valid = ModelState.IsValid;
             bool regSucceed = false;
 
             //return if validation failed
@@ -45,7 +48,7 @@ namespace MvcApplication1.Controllers
             //redirect to Index page if registration succeed.
             if (regSucceed)
             {
-                return RedirectToAction("GraduateProfile", new { userName = acc.UserName, submitTxt = "Next Step", forRegistration=true });
+                return RedirectToAction("GraduateProfile", new { userName = acc.UserName, submitTxt = "Next Step", forRegistration = true });
             }
             else
             {
@@ -78,7 +81,7 @@ namespace MvcApplication1.Controllers
             ViewBag.saved = false;
             ViewBag.subTxt = submitTxt;
             ViewBag.forRegistration = forRegistration;
-            
+
             return View(new GraduateModel(HttpContext.User.Identity.Name));
         }
 
@@ -88,7 +91,7 @@ namespace MvcApplication1.Controllers
             ViewBag.saved = false;
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             string msg = Request.Form["forRegistration"];
-            bool forRegistration = (msg=="True")?true:false;
+            bool forRegistration = (msg == "True") ? true : false;
             //if valid, process and move to working experience page
             if (ModelState.IsValid && !forRegistration)
             {
@@ -99,12 +102,12 @@ namespace MvcApplication1.Controllers
             }
             else if (ModelState.IsValid)
             {
-                ViewBag.saved=gradModel.addToDB();
+                ViewBag.saved = gradModel.addToDB();
 
                 //return View(new GraduateModel(gradModel.UserName));
                 return RedirectToAction("ShowEditExperience", new { userName = gradModel.UserName });
             }
-                //otherwise, show validation message
+            //otherwise, show validation message
             else
             {
                 return View(gradModel);
@@ -134,8 +137,8 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult ShowEditExperience()
         {
-            string userName=Request.Form["userName"];
-            return RedirectToAction("AcademicQualification", new { userName=userName});
+            string userName = Request.Form["userName"];
+            return RedirectToAction("AcademicQualification", new { userName = userName });
             //return View(exs);
         }
 
@@ -171,12 +174,12 @@ namespace MvcApplication1.Controllers
             {
                 return RedirectToAction("ShowEditExperience", new { userName = userName });
             }
-            
+
         }
 
         public ActionResult EditExperience(string id)
         {
-            return View(dbContext.WorkingExpriences.FirstOrDefault(c=>c.Id.ToString()==id));
+            return View(dbContext.WorkingExpriences.FirstOrDefault(c => c.Id.ToString() == id));
         }
 
         public ActionResult DeleteExperience(string id)
@@ -208,7 +211,7 @@ namespace MvcApplication1.Controllers
             //If next step, save ACqualification and move to VDqulification
             if (AddPaperOrNextStep == "Next Step")
             {
-                
+
                 ViewBag.jobTypeList = new SelectList(dbContext.AcQualificationLevels, "Id", "Name");
                 //AcQualificationModel acqModel = new AcQualificationModel(acq, User.Identity.Name);
                 AcQualificationModel acqModel = new AcQualificationModel(acq, userName);
@@ -253,7 +256,7 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Papers(string userName)
         {
-            ViewBag.userName=userName;
+            ViewBag.userName = userName;
             //IEnumerable<Paper> paperList = dbContext.Papers.Where(c => c.AcQualification.CV.Graduate.User.UserName == User.Identity.Name);
             IEnumerable<Paper> paperList = dbContext.Papers.Where(c => c.AcQualification.CV.Graduate.User.UserName == userName);
             if (paperList.Any())
@@ -281,7 +284,7 @@ namespace MvcApplication1.Controllers
                 dbContext.Papers.Add(pr);
                 dbContext.SaveChanges();
             }
-            return RedirectToAction("Papers", new { userName=userName});
+            return RedirectToAction("Papers", new { userName = userName });
         }
 
         public ActionResult ShowVendorQualification(string userName)
@@ -336,7 +339,7 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult CreateVdQualification(VdQualification vdq)
         {
-            string userName=Request.Form["userName"];
+            string userName = Request.Form["userName"];
             generateSelectList();
             //vdq.CVId = dbContext.CVs.FirstOrDefault(c => c.Graduate.User.UserName == User.Identity.Name).Id;
             vdq.CVId = dbContext.CVs.FirstOrDefault(c => c.Graduate.User.UserName == userName).Id;
@@ -347,10 +350,10 @@ namespace MvcApplication1.Controllers
                 {
                     VdQualification tmpVdq = dbContext.VdQualifications.FirstOrDefault(c => c.Id == vdq.Id);
                     tmpVdq.Name = vdq.Name;
-                    tmpVdq.DateCompleted= vdq.DateCompleted;
-                    tmpVdq.ExperienceId= vdq.ExperienceId;
-                    tmpVdq.AbilityId= vdq.AbilityId;
-                    tmpVdq.CompetencyId= vdq.CompetencyId;
+                    tmpVdq.DateCompleted = vdq.DateCompleted;
+                    tmpVdq.ExperienceId = vdq.ExperienceId;
+                    tmpVdq.AbilityId = vdq.AbilityId;
+                    tmpVdq.CompetencyId = vdq.CompetencyId;
                     dbContext.SaveChanges();
                 }
                 else
@@ -363,12 +366,12 @@ namespace MvcApplication1.Controllers
             {
                 return View(vdq);
             }
-            return RedirectToAction("ShowVendorQualification", new { userName=userName});
+            return RedirectToAction("ShowVendorQualification", new { userName = userName });
         }
 
         public ActionResult EditVdQualification(string id)
         {
-            return View(dbContext.VdQualifications.FirstOrDefault(c=>c.Id.ToString()==id));
+            return View(dbContext.VdQualifications.FirstOrDefault(c => c.Id.ToString() == id));
         }
 
         public ActionResult DeleteVdQualification(string id)
@@ -417,15 +420,15 @@ namespace MvcApplication1.Controllers
             //Role adminRole=dbContext.Roles.SingleOrDefault(c=>c.Name=="Supervisor");
             //IEnumerable<string> adminMailList= dbContext.Users.Where(c => c.Roles.Contains(adminRole)).Select(c=>c.Email);
 
-            IEnumerable<string> adminMailList=dbContext.SiteSuperVisors.Select(c => c.User.Email);
+            IEnumerable<string> adminMailList = dbContext.SiteSuperVisors.Select(c => c.User.Email);
             List<string> emailList = adminMailList.ToList();
             //email.sendMail(emailList, "Registration Approval", "A graduate has registered, please login and activate his or her account");
             //var supers = dbContext.SiteSuperVisors;
 
             Role r = dbContext.Roles.FirstOrDefault(c => c.Name == "Supervisor");
-            IEnumerable<User> superUsers = dbContext.Users.Where(c => c.Roles.Any(g=>g.Id==r.Id));
+            IEnumerable<User> superUsers = dbContext.Users.Where(c => c.Roles.Any(g => g.Id == r.Id));
 
-            List<string> emails= new List<string>();
+            List<string> emails = new List<string>();
             foreach (User sup in superUsers)
             {
                 emails.Add(sup.Email);
@@ -462,7 +465,7 @@ namespace MvcApplication1.Controllers
             }//If there is already a same skill name, return
             else if (exsitingName != null)
             {
-                return RedirectToAction("ShowSoftskill", new {userName=userName });
+                return RedirectToAction("ShowSoftskill", new { userName = userName });
             }//New, add the new softskill
             else
             {
@@ -488,12 +491,12 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult SoftskillProcessing(StudentSoftskillLevel ssssl)
         {
-            string userName=Request.Form["userName"];
+            string userName = Request.Form["userName"];
             string sId = dbContext.Graduates.FirstOrDefault(c => c.User.UserName.ToString() == userName).StudentId;
             ssssl.StudentId = sId;
             StudentSoftskillLevel exsitsk = dbContext.StudentSoftskillLevels.FirstOrDefault(c => c.StudentId == sId && c.SoftSkillId == ssssl.SoftSkillId);
             StudentSoftskillLevel exsitskl = dbContext.StudentSoftskillLevels.FirstOrDefault(c => c.StudentId == sId && c.SoftSkillId == ssssl.SoftSkillId && c.SoftSkillLevelId == ssssl.SoftSkillLevelId);
-            
+
             //If there is already a graduate with the skill, remove it and add new record
             if (exsitsk != null)
             {
@@ -507,7 +510,7 @@ namespace MvcApplication1.Controllers
                 dbContext.SaveChanges();
             }
 
-            return RedirectToAction("ShowSoftskill", new { userName=userName});
+            return RedirectToAction("ShowSoftskill", new { userName = userName });
         }
 
         public ActionResult DeleteStudentSoftskill(StudentSoftskillLevel sskl)
@@ -525,7 +528,7 @@ namespace MvcApplication1.Controllers
         public ActionResult NewsDetails(string userName, string newsId)
         {
             ViewBag.userName = userName;
-            News news= dbContext.News.FirstOrDefault(c => c.Id.ToString() == newsId);
+            News news = dbContext.News.FirstOrDefault(c => c.Id.ToString() == newsId);
             if (news != null)
             {
                 return View(news);
@@ -534,6 +537,19 @@ namespace MvcApplication1.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult ViewAllJobs()
+        {
+            List<Job> allJobs = new JobRepository().AllJobs.Include(c => c.JobTitle).ToList();
+            var allJobsJson = JsonConvert.SerializeObject(allJobs, Formatting.None, new JsonSerializerSettings() { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore });
+            //return Json(allJobsJson, JsonRequestBehavior.AllowGet);
+            return Content(allJobsJson, "application/json");
+        }
+
+        public ActionResult APIHome()
+        {
+            return View();
         }
     }
 }

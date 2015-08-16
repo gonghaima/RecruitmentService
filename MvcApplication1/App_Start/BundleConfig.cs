@@ -5,6 +5,7 @@ namespace MvcApplication1.App_Start
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            //BundleTable.EnableOptimizations = true;
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -26,6 +27,14 @@ namespace MvcApplication1.App_Start
                         "~/Scripts/main*"));
             bundles.Add(new ScriptBundle("~/bundles/ShowEditExperience").Include(
                         "~/Scripts/PageSpecific/ShowEditExperience.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                        "~/Scripts/Angular/angular.js"
+                        ));
+            bundles.Add(new ScriptBundle("~/bundles/apps").Include(
+                       "~/AngularClient/app.js",
+                       "~/AngularClient/Graduate/Controllers/ViewJobsController.js"
+                       ));
 
             bundles.Add(new StyleBundle("~/Content/myCss").Include("~/Content/site.css"));
             bundles.Add(new StyleBundle("~/Content/customizedCss").Include("~/Content/myMain.css"));
