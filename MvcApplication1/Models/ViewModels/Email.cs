@@ -6,84 +6,120 @@ namespace MvcApplication1.Models.ViewModels
 {
     public class Email
     {
-        //static string adminEmail = "RayTonyIunisiwhitireia@hotmail.com";
-        //static string adminEmailPassword = "Passw0rd123";
+        private string _from = "RayTonyIunisiwhitireia@gmail.com";
+        private string _user = "RayTonyIunisiwhitireia@gmail.com";
+        private string _password = "Passw0rd123";
+        private string _host = "smtp.gmail.com";
+        private int _port = 587;
+        private bool _enableSsl = true;
 
-        static string adminEmail = "RayTonyIunisiwhitireia@gmail.com";
-        static string adminEmailPassword = "Passw0rd123";
-
-        System.Net.NetworkCredential mailCredential = new System.Net.NetworkCredential(adminEmail, adminEmailPassword);
-
-        //public Email(string)
-        //{
-
-        //}
-
-        private SmtpClient createMailServer()
+        public string From
         {
-            //SmtpClient SmtpServ = new SmtpClient("smtp.live.com");
-            //SmtpServ.Port = 587;
-            //SmtpServ.UseDefaultCredentials = false;
-            //SmtpServ.Credentials = mailCredential;
-            //SmtpServ.EnableSsl = true;
-            //return SmtpServ;
-
-            SmtpClient smtp = new SmtpClient
+            set
             {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new System.Net.NetworkCredential(adminEmail, adminEmailPassword)
-            };
-            return smtp;
+                _from = value;
+            }
+            get
+            {
+                return _from;
+            }
         }
+
+        public string User
+        {
+            set
+            {
+                _user = value;
+            }
+            get
+            {
+                return _user;
+            }
+        }
+
+        public string Password
+        {
+            set
+            {
+                _password = value;
+            }
+            get
+            {
+                return _password;
+            }
+        }
+
+        public string Host
+        {
+            set
+            {
+                _host = value;
+            }
+            get
+            {
+                return _host;
+            }
+        }
+
+        public int Port
+        {
+            set
+            {
+                _port = value;
+            }
+            get
+            {
+                return _port;
+            }
+        }
+
+        public bool EnableSsl
+        {
+            set
+            {
+                _enableSsl = value;
+            }
+            get
+            {
+                return _enableSsl;
+            }
+        }
+
 
         public void sendMail()
         {
-            SmtpClient SmtpServer = createMailServer();
-            var mail = new MailMessage();
-            mail.From = new MailAddress(adminEmail);
-            mail.To.Add("gonghaima@gmail.com");
-            mail.Subject = "Test Sub";
-            mail.IsBodyHtml = true;
-            string htmlBody;
-            htmlBody = "HTML code";
-            mail.Body = htmlBody;
-
-            SmtpServer.Send(mail);
+            sendMail("gonghaima@gmail.com", "Test Sub", "HTML code");
         }
 
         public void sendMail(string mailTo, string mailSub, string htmlBody)
         {
-            SmtpClient SmtpServer = createMailServer();
-            var mail = new MailMessage();
-            mail.From = new MailAddress(adminEmail);
-            mail.To.Add(mailTo);
-            mail.Subject = mailSub;
-            mail.IsBodyHtml = true;
-            mail.Body = htmlBody;
-            try
-            {
-                SmtpServer.Send(mail);
-            }catch(Exception ex)
-            {}
+            sendMail(new List<string>() { mailTo }, mailSub, htmlBody);
         }
 
         public void sendMail(List<string> mailTo, string mailSub, string htmlBody)
         {
-            SmtpClient SmtpServer = createMailServer();
-            var mail = new MailMessage();
-            mail.From = new MailAddress(adminEmail);
-            foreach (string strMail in mailTo)
+            using (SmtpClient SmtpServer = new SmtpClient
             {
-                mail.To.Add(strMail);
+                Host = _host,
+                Port = _port,
+                EnableSsl = _enableSsl,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new System.Net.NetworkCredential(_user, _password)
+            })
+            {
+
+                var mail = new MailMessage();
+                mail.From = new MailAddress(_from);
+                foreach (string strMail in mailTo)
+                {
+                    mail.To.Add(strMail);
+                }
+                mail.Subject = mailSub;
+                mail.IsBodyHtml = true;
+                mail.Body = htmlBody;
+                SmtpServer.Send(mail);
             }
-            mail.Subject = mailSub;
-            mail.IsBodyHtml = true;
-            mail.Body = htmlBody;
-            SmtpServer.Send(mail);
         }
 
     }

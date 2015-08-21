@@ -26,6 +26,10 @@ namespace MvcApplication1.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            Email email = new Email();
+            email.From = "sdljflk@dsd.com";
+            //email.Password = "dsfafd";
+            email.sendMail("sd@dsf.com","sds@dfs.com", "sdsfd");
             return View();
         }
 

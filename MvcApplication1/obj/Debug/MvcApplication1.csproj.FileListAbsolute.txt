@@ -169,3 +169,40 @@ F:\Study\recruitment service\MvcApplication1\bin\System.Web.WebPages.Razor.xml
 F:\Study\recruitment service\MvcApplication1\obj\Debug\MvcApplication1.csprojResolveAssemblyReference.cache
 F:\Study\recruitment service\MvcApplication1\obj\Debug\MvcApplication1.dll
 F:\Study\recruitment service\MvcApplication1\obj\Debug\MvcApplication1.pdb
+C:\study\MvcApplication1\bin\MvcApplication1.dll.config
+C:\study\MvcApplication1\bin\MvcApplication1.dll
+C:\study\MvcApplication1\bin\MvcApplication1.pdb
+C:\study\MvcApplication1\bin\Antlr3.Runtime.dll
+C:\study\MvcApplication1\bin\EntityFramework.dll
+C:\study\MvcApplication1\bin\EntityFramework.SqlServer.dll
+C:\study\MvcApplication1\bin\Microsoft.Web.Infrastructure.dll
+C:\study\MvcApplication1\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\study\MvcApplication1\bin\Newtonsoft.Json.dll
+C:\study\MvcApplication1\bin\System.Net.Http.Formatting.dll
+C:\study\MvcApplication1\bin\System.Web.Helpers.dll
+C:\study\MvcApplication1\bin\System.Web.Http.dll
+C:\study\MvcApplication1\bin\System.Web.Http.WebHost.dll
+C:\study\MvcApplication1\bin\System.Web.Mvc.dll
+C:\study\MvcApplication1\bin\System.Web.Optimization.dll
+C:\study\MvcApplication1\bin\System.Web.Razor.dll
+C:\study\MvcApplication1\bin\System.Web.WebPages.Deployment.dll
+C:\study\MvcApplication1\bin\System.Web.WebPages.dll
+C:\study\MvcApplication1\bin\System.Web.WebPages.Razor.dll
+C:\study\MvcApplication1\bin\WebGrease.dll
+C:\study\MvcApplication1\bin\Antlr3.Runtime.pdb
+C:\study\MvcApplication1\bin\EntityFramework.xml
+C:\study\MvcApplication1\bin\EntityFramework.SqlServer.xml
+C:\study\MvcApplication1\bin\Newtonsoft.Json.xml
+C:\study\MvcApplication1\bin\System.Web.Optimization.xml
+C:\study\MvcApplication1\bin\System.Net.Http.Formatting.xml
+C:\study\MvcApplication1\bin\System.Web.Helpers.xml
+C:\study\MvcApplication1\bin\System.Web.Http.xml
+C:\study\MvcApplication1\bin\System.Web.Http.WebHost.xml
+C:\study\MvcApplication1\bin\System.Web.Mvc.xml
+C:\study\MvcApplication1\bin\System.Web.Razor.xml
+C:\study\MvcApplication1\bin\System.Web.WebPages.xml
+C:\study\MvcApplication1\bin\System.Web.WebPages.Deployment.xml
+C:\study\MvcApplication1\bin\System.Web.WebPages.Razor.xml
+C:\study\MvcApplication1\obj\Debug\MvcApplication1.csprojResolveAssemblyReference.cache
+C:\study\MvcApplication1\obj\Debug\MvcApplication1.dll
+C:\study\MvcApplication1\obj\Debug\MvcApplication1.pdb
